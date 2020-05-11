@@ -1,16 +1,16 @@
 <template lang="pug">
   q-layout(view="lHh Lpr lFf").main-layout
-    vue-particles(
-      color="#fff"
-      shape-type="edge"
-      :particles-number="6"
-      :particle-size="240"
-      :particle-opacity="0.006"
-      :line-linked="false"
-      :move-speed="3"
-      hover-mode="none"
-      :click-effect="false"
-    ).particles
+    //- vue-particles(
+    //-   color="#fff"
+    //-   shape-type="edge"
+    //-   :particles-number="6"
+    //-   :particle-size="240"
+    //-   :particle-opacity="0.006"
+    //-   :line-linked="false"
+    //-   :move-speed="3"
+    //-   hover-mode="none"
+    //-   :click-effect="false"
+    //- ).particles
     q-page-container.container.flex
       //- vertical-menu
       div.flex-1
