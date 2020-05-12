@@ -41,7 +41,7 @@ export default {
   margin-bottom: -300px;
 }
 
-$color: rgb(16, 161, 89);
+$color: rgb(36, 36, 36);
 $dark: #FFFFFF;
 $borderW: 2px;
 

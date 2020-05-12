@@ -47,24 +47,44 @@ export default {
   padding: 2px 20px
 
 .cloud-small
-  max-width: 500px
-  left: -200px
+  max-width: 550px
+  left: -300px
   top: -50px
+  animation: move-cloud-small 18s 0.7s ease-in-out infinite alternate
 
   &--bg
-    max-width: 300px
-    left: 10px
-    top: -30px
+    max-width: 450px
+    left: -120px
+    top: -60px
     opacity: 0.1
+    animation: move-cloud-small--bg 18s 0.7s ease-in-out infinite alternate
 
 .cloud-big
   bottom: -150px
   max-width: 800px
   right: -290px
+  animation: move-cloud-big 15s 0.7s ease-in-out infinite alternate
 
   &--bg
     max-width: 680px
     bottom: -120px
     right: -60px
     opacity: 0.1
+    animation: move-cloud-big--bg 15s 0.7s ease-in-out infinite alternate
+
+@keyframes move-cloud-small
+  from
+    transform: translateX(160px)
+
+@keyframes move-cloud-small--bg
+  from
+    transform: translateX(140px)
+
+@keyframes move-cloud-big
+  from
+    transform: translateX(-60px)
+
+@keyframes move-cloud-big--bg
+  from
+    transform: translateX(-80px)
 </style>
