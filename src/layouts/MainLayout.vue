@@ -40,7 +40,7 @@ export default {
 
 <style lang="sass" scoped>
 .main-layout
-  background: $grey-10
+  background: $grey-1
   position: relative
   height: 100vh
   overflow: hidden
