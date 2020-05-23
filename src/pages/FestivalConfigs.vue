@@ -28,13 +28,17 @@
     div(v-if="step === 1").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Dê um nome ao seu festival
       input(
-        v-model="name"
+        v-model="myName"
         type="text"
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
     div(v-else-if="step === 2").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Escolha a paleta de cores ideal
       div.color-palettes__container.q-mt-xl.color-palette
-        div(v-for="colorPalette of colorPalettes").color-palette.flex.bg-white.q-pa-sm.cursor-pointer
+        div(
+          :class="{ 'bg-grey-9': colorPalette === myColorPalette }"
+          v-for="colorPalette of colorPalettes"
+          @click="myColorPalette = colorPalette"
+        ).color-palette.flex.bg-white.q-pa-sm.cursor-pointer
           div(
             v-for="color of colorPalette"
             :style="{ 'background': color }"
@@ -47,8 +51,9 @@
           :label="theme"
           :key="index"
           no-caps
-          color="blue-5"
+          :color="myTheme === theme ? 'grey-9' : 'blue-5'"
           unelevated
+          @click="myTheme = theme"
         ).q-mr-sm
     q-btn(
       v-if="step < 3"
@@ -62,11 +67,13 @@
     div(v-if="step === 3").q-mb-lg
       bubble-button(
         label="Concluir"
-        @click.native="$router.push('/headliners')"
+        @click.native="setConfigs"
       ).text-prater
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'FestivalConfigs',
   components: {
@@ -74,13 +81,17 @@ export default {
   },
   data () {
     return {
-      name: 'Meu festival',
       step: 1,
+      myName: 'Meu festival',
+      myColorPalette: [],
+      myTheme: [],
       colorPalettes: [
-        ['#81B3A3', '#ABFFE5', '#FFCF9E', '#5D71B3', '#91ABFF'],
-        ['#B36F50', '#FF9566', '#5ABAFF', '#B3972D', '#FFDB4D'],
-        ['#64B386', '#82FFB8', '#FFA875', '#4077B3', '#69B1FF'],
-        ['#ADA85E', '#FAF17A', '#FAB96D', '#AD3B41', '#FA8C92']
+        ['#C2D3CD', '#847E89', '#56494C'],
+        ['#2274A5', '#E7DFC6', '#816C61'],
+        ['#AA767C', '#FFA686', '#FEC196'],
+        ['#1F5673', '#90C3C8', '#B9B8D3'],
+        ['#C1F7DC', '#BDA0BC', '#A2708A'],
+        ['#E9D985', '#749C75', '#6A5D7B']
       ],
       themes: [
         'Galáxia',
@@ -88,6 +99,25 @@ export default {
         'Montanhas',
         'Natureza'
       ]
+    }
+  },
+  computed: {
+    ...mapGetters('festivalConfigs', [
+      'festivalColorPalette',
+      'festivalTheme'
+    ])
+  },
+  methods: {
+    ...mapActions('festivalConfigs', [
+      'setFestivalName',
+      'setFestivalColorPalette',
+      'setFestivalTheme'
+    ]),
+    setConfigs () {
+      this.setFestivalName(this.myName)
+      this.setFestivalColorPalette(this.myColorPalette)
+      this.setFestivalTheme(this.myTheme)
+      this.$router.push('/headliners')
     }
   }
 }
@@ -119,8 +149,8 @@ export default {
 
 .color-palettes__container
   display: grid
-  grid-template-columns: 1fr 1fr
-  grid-column-gap: 45px
+  grid-template-columns: 1fr 1fr 1fr
+  grid-column-gap: 25px
   grid-row-gap: 20px
 
 .color-palette
