@@ -1,5 +1,5 @@
 <template>
-  <div class="buttons column">
+  <div class="buttons column animate-pop">
     <button class="blob-btn">
       {{ label }}
       <slot name="content" />
@@ -36,9 +36,9 @@ export default {
 <style lang="scss" scoped>
 .buttons {
   text-align: center;
-  border-radius:15px;
-  height: 310px;
-  margin-bottom: -300px;
+  border-radius: 15px;
+  height: 300px;
+  margin-bottom: -246px;
 }
 
 $color: rgb(36, 36, 36);
@@ -60,7 +60,7 @@ $borderW: 2px;
   border: none;
   transition: color 0.5s;
   cursor: pointer;
-  border-radius:15px;
+  border-radius:45px;
 
   &:before {
     content: "";
@@ -71,7 +71,7 @@ $borderW: 2px;
     width: 100%;
     height: 100%;
     // border: $borderW solid $color;
-    border-radius:15px;
+    border-radius:45px;
   }
 
   &:after {
@@ -84,18 +84,18 @@ $borderW: 2px;
     height: 100%;
 
     transition: all 0.3s 0.2s;
-    border-radius:15px;
+    border-radius:45px;
   }
 
   &:hover {
     color: $dark;
-    border-radius:15px;
+    border-radius:45px;
 
     &:after {
       transition: all 0.3s;
       left: 0;
       top: 0;
-      border-radius:15px;
+      border-radius:45px;
     }
   }
 
@@ -107,7 +107,7 @@ $borderW: 2px;
     top: 0;
     width: 100%;
     height: 100%;
-    border-radius:15px;
+    border-radius:45px;
     background:#ffffff;
   }
 

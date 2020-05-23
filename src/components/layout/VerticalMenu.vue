@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.vertical-menu.column.q-pa-xl.text-white
+  div.vertical-menu.column.q-pa-xl.text-white.bg-grey-9
     h1.title.text-bold.text-uppercase My festival
     div.menu-items.q-mt-xl
       div.text-uppercase Início

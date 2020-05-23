@@ -3,7 +3,8 @@
     cloud(color="#000").cloud-small--bg.q-ma-md.absolute
     cloud.cloud-small.q-ma-md.absolute
     div.column.flex-1.flex-center.text-prater.flex-1
-      h1.title.text-lolapeluza.text-bold.text-uppercase.text-white My festival
+      h1.title.text-lolapeluza.text-bold.text-uppercase.text-white.text-grey-10
+        | My festival
       bubble-button(
         @click.native="login"
       ).q-mt-xl
@@ -24,7 +25,6 @@ export default {
   },
   methods: {
     login () {
-      console.log('bla')
       this.$router.push('/configs')
     }
   }
@@ -89,13 +89,13 @@ export default {
 
 @keyframes colorchange
   0%
-    background: #3a9fe5
+    background: $blue-7
   25%
     background: #67b5eb
   50%
-    background: #8a93ef
+    background: $pink-3
   75%
-    background: #eca4f3
+    background: $orange-4
   100%
-    background: #eeac7e
+    background: $yellow-4
 </style>
