@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'FestivalConfigs',
@@ -100,12 +100,6 @@ export default {
         'Natureza'
       ]
     }
-  },
-  computed: {
-    ...mapGetters('festivalConfigs', [
-      'festivalColorPalette',
-      'festivalTheme'
-    ])
   },
   methods: {
     ...mapActions('festivalConfigs', [
