@@ -1,5 +1,5 @@
 <template lang="pug">
-  q-page.headliners.column.items-center.justify-between.q-pa-lg.relative
+  q-page.headliners.column.items-center.justify-between.q-pa-lg
     div
     div.column.items-center
       div.title.text-prater.q-mb-xl Os headliners do {{ festivalName || 'festival' }} são...
@@ -11,7 +11,7 @@
     div
       bubble-button(
         label="Ver a lineup completa"
-        @click="$router.push('/lineup')"
+        @click.native="$router.push('/lineup')"
       ).text-prater
 </template>
 
