@@ -20,7 +20,7 @@
 export default {
   name: 'PageIndex',
   components: {
-    Cloud: () => import('../components/common/Cloud'),
+    Cloud: () => import('../components/svgs/common/Cloud'),
     BubbleButton: () => import('../components/common/BubbleButton')
   },
   methods: {

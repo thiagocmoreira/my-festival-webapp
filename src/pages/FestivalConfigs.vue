@@ -10,21 +10,6 @@
       :class="{ 'opacity-none': step <= 1 }"
       @click.native="step = step  - 1"
     )
-    //- div(v-if="step === 1").column.items-center
-    //-   div.label.text-prater.text-bold.text-grey-10 Qual a sua preferência?
-    //-   div.flex.q-mt-md
-    //-     q-btn(
-    //-       unelevated
-    //-       no-caps
-    //-       color="white"
-    //-       text-color="grey-10"
-    //-     ).q-mr-lg.animate-pop Fundo claro
-    //-     q-btn(
-    //-       unelevated
-    //-       no-caps
-    //-       color="grey-10"
-    //-       text-color="white"
-    //-     ).animate-pop Fundo escuro
     div(v-if="step === 1").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Dê um nome ao seu festival
       input(
@@ -94,11 +79,43 @@ export default {
         ['#E9D985', '#749C75', '#6A5D7B']
       ],
       themes: [
-        'Galáxia',
-        'Céu',
-        'Montanhas',
-        'Natureza'
+        'Sem tema'
+        // 'Montanhas',
+        // 'Galáxia',
+        // 'Céu',
+        // 'Flores',
+        // 'Natureza'
       ]
+    }
+  },
+  computed: {
+    errors () {
+      let errors = []
+      if (this.myName.length === 0) {
+        errors.push('Nome do festival')
+      }
+      if (this.myColorPalette.length === 0) {
+        errors.push('Paleta de cores')
+      }
+      if (this.myTheme.length === 0) {
+        errors.push('Tema')
+      }
+      return errors
+    },
+    valid () {
+      return this.errors.length === 0
+    },
+    errorMessage () {
+      let message = 'Não é possível continuar sem escolher '
+      if (this.errors.length === 1) {
+        return message + `o item: ${this.errors[0]}`
+      } else if (this.errors.length === 2) {
+        return message + `os items: ${this.errors[0]} e ${this.errors[1]}`
+      } else if (this.errors.length === 3) {
+        return message + `os items: ${this.errors[0]}, ${this.errors[1]} e ${this.errors[2]}`
+      } else {
+        return ''
+      }
     }
   },
   methods: {
@@ -108,10 +125,19 @@ export default {
       'setFestivalTheme'
     ]),
     setConfigs () {
-      this.setFestivalName(this.myName)
-      this.setFestivalColorPalette(this.myColorPalette)
-      this.setFestivalTheme(this.myTheme)
-      this.$router.push('/headliners')
+      if (this.valid) {
+        this.setFestivalName(this.myName)
+        this.setFestivalColorPalette(this.myColorPalette)
+        this.setFestivalTheme(this.myTheme)
+        this.$router.push('/headliners')
+      } else {
+        this.$q.notify({
+          message: this.errorMessage,
+          position: 'top-right',
+          icon: 'mdi-alert',
+          progress: true
+        })
+      }
     }
   }
 }
@@ -125,7 +151,6 @@ export default {
   font-size: 2em
   line-height: 2em
   margin: 0
-  letter-spacing: 0.01em !important
 
 .input
   font-size: 85px

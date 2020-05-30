@@ -9,9 +9,6 @@
 
 export default {
   name: 'MainLayout',
-  components: {
-    VerticalMenu: () => import('../components/layout/VerticalMenu')
-  },
   data () {
     return {}
   }
