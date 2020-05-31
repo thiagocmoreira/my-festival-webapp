@@ -1,7 +1,7 @@
 export default function () {
   return {
-    name: '',
-    colorPalette: [],
-    theme: ''
+    name: 'Meu festival',
+    colorPalette: ['#AA767C', '#FFA686', '#FEC196'],
+    theme: 'Montanhas'
   }
 }

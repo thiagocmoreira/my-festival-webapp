@@ -79,8 +79,8 @@ export default {
         ['#E9D985', '#749C75', '#6A5D7B']
       ],
       themes: [
-        'Sem tema'
-        // 'Montanhas',
+        'Sem tema',
+        'Montanhas'
         // 'Galáxia',
         // 'Céu',
         // 'Flores',

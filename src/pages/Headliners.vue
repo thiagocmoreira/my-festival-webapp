@@ -7,7 +7,7 @@
         div(v-for="headliner of headliners").headliner.column.items-center.q-mr-xl
           q-img(:src="headliner.images[0].url").headliner__image.animate-pop
           div.headliner__name.text-white.text-prater.q-mt-md {{ headliner.name }}
-      div.q-mt-xl Além disso terá {{ otherArtists }}
+      div.others-artists.q-mt-xl.text-prater Além disso terá {{ otherArtists }} e outros!
     div
       bubble-button(
         label="Ver a lineup completa"
@@ -41,7 +41,6 @@ export default {
     otherArtists () {
       let others = this.topArtists.items.slice(3, 7).map(t => t.name)
       let formatted = others.join(', ')
-      formatted += ' e muito mais'
       return formatted
     }
   }
@@ -66,5 +65,8 @@ export default {
     box-shadow: -20px 0 0 0 rgba(0, 0, 0, 0.05)
 
   &__name
-    font-size: 20px
+    font-size: 24px
+
+.others-artists
+  font-size: 18px
 </style>
