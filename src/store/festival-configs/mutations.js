@@ -9,3 +9,7 @@ export function setFestivalColorPalette (state, colorPalette) {
 export function setFestivalTheme (state, theme) {
   state.theme = theme
 }
+
+export function setFestivalLocation (state, location) {
+  state.location = location
+}

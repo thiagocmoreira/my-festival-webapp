@@ -9,3 +9,7 @@ export function setFestivalColorPalette ({ commit }, colorPalette) {
 export function setFestivalTheme ({ commit }, theme) {
   commit('setFestivalTheme', theme)
 }
+
+export function setFestivalLocation ({ commit }, location) {
+  commit('setFestivalLocation', location)
+}

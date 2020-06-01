@@ -1,9 +1,9 @@
 <template lang="pug">
   div(:style="bgColor").column.full-width.items-center
     div(:class="classes").text-lolapeluza.text-bold.column
-      div.name {{ festivalName || 'Meu festival' }}
-      div.location.text-prater.text-bold.full-width.text-right.text-uppercase
-        | Ceilândia
+      div.name {{ festivalName }}
+      div(v-if="festivalLocation.length").location.text-prater.text-bold.full-width.text-right.text-uppercase
+        | {{ festivalLocation }}
     slot
 </template>
 
@@ -23,7 +23,8 @@ export default {
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
-      'festivalName'
+      'festivalName',
+      'festivalLocation'
     ]),
     bgColor () {
       return {

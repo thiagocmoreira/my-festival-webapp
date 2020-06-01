@@ -28,7 +28,7 @@ export default {
 <style lang="sass">
 .mountain
   &__name
-    padding: 70px 48px 20px 48px
+    padding: 70px 48px 30px 48px
 
   &__headliners
     padding: 0 25px

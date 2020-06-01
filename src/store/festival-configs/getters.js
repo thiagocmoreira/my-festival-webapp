@@ -9,3 +9,7 @@ export function festivalColorPalette (state) {
 export function festivalTheme (state) {
   return state.theme
 }
+
+export function festivalLocation (state) {
+  return state.location
+}

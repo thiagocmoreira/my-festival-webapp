@@ -7,16 +7,26 @@
       title="Voltar"
       unelevated
       :disabled="step <= 1"
-      :class="{ 'opacity-none': step <= 1 }"
+      :class="{ 'opalocation-none': step <= 1 }"
       @click.native="step = step  - 1"
     )
     div(v-if="step === 1").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Dê um nome ao seu festival
       input(
         v-model="myName"
+        placeholder="Ex: Meu festival"
         type="text"
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
-    div(v-else-if="step === 2").column.items-center
+    div(v-if="step === 2").column.items-center
+      div.label.text-prater.text-bold.text-grey-10.flex.items-center
+        | Em qual cidade, estado ou país ocorrerá o seu festival?
+        i &nbsp;(opcional)
+      input(
+        v-model="myLocation"
+        type="text"
+        placeholder="Ex: Ceilândia"
+      ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
+    div(v-else-if="step === 3").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Escolha a paleta de cores ideal
       div.color-palettes__container.q-mt-xl.color-palette
         div(
@@ -28,7 +38,7 @@
             v-for="color of colorPalette"
             :style="{ 'background': color }"
           ).color-palette__item.q-mr-sm.animate-pop
-    div(v-if="step === 3").column.items-center
+    div(v-if="step === 4").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Qual tema mais te agrada?
       div.flex.q-mt-md
         q-btn(
@@ -41,7 +51,7 @@
           @click="myTheme = theme.value"
         ).q-mr-sm
     q-btn(
-      v-if="step < 3"
+      v-if="step < 4"
       round
       size="lg"
       icon="mdi-chevron-down"
@@ -51,7 +61,7 @@
     )
     bubble-button(
       label="Concluir"
-      v-if="step === 3"
+      v-if="step === 4"
       @click.native="setConfigs"
     ).text-prater
 </template>
@@ -67,7 +77,8 @@ export default {
   data () {
     return {
       step: 1,
-      myName: 'Meu festival',
+      myName: '',
+      myLocation: '',
       myColorPalette: [],
       myTheme: [],
       colorPalettes: [
@@ -122,13 +133,17 @@ export default {
     ...mapActions('festivalConfigs', [
       'setFestivalName',
       'setFestivalColorPalette',
-      'setFestivalTheme'
+      'setFestivalTheme',
+      'setFestivalLocation'
     ]),
     setConfigs () {
       if (this.valid) {
         this.setFestivalName(this.myName)
         this.setFestivalColorPalette(this.myColorPalette)
         this.setFestivalTheme(this.myTheme)
+        if (this.myLocation.length > 0) {
+          this.setFestivalLocation(this.myLocation)
+        }
         this.$router.push('/headliners')
       } else {
         this.$q.notify({
@@ -143,6 +158,12 @@ export default {
 }
 </script>
 
+<style lang="sass">
+.festival-configs
+  ::placeholder
+    color: $blue-7
+</style>
+
 <style lang="sass" scoped>
 .festival-configs
   background: $blue-4
@@ -151,6 +172,9 @@ export default {
   font-size: 2em
   line-height: 2em
   margin: 0
+
+  i
+    font-size: 0.7em
 
 .input
   font-size: 85px
@@ -183,6 +207,6 @@ export default {
   &:last-of-type
     margin: 0
 
-.opacity-none
-  opacity: 0 !important
+.opalocation-none
+  opalocation: 0 !important
 </style>
