@@ -1,5 +1,5 @@
 <template>
-  <div class="buttons column animate-pop">
+  <div class="buttons column animate-pop no-wrap">
     <button class="blob-btn">
       {{ label }}
       <slot name="content" />
@@ -37,8 +37,7 @@ export default {
 .buttons {
   text-align: center;
   border-radius: 15px;
-  height: 300px;
-  margin-bottom: -246px;
+  height: 54px;
 }
 
 $color: rgb(36, 36, 36);

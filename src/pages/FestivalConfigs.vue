@@ -33,12 +33,12 @@
       div.flex.q-mt-md
         q-btn(
           v-for="(theme, index) of themes"
-          :label="theme"
-          :key="index"
+          :label="theme.label"
+          :key="index.value"
           no-caps
-          :color="myTheme === theme ? 'grey-9' : 'blue-5'"
+          :color="myTheme === theme.value ? 'grey-9' : 'blue-5'"
           unelevated
-          @click="myTheme = theme"
+          @click="myTheme = theme.value"
         ).q-mr-sm
     q-btn(
       v-if="step < 3"
@@ -49,11 +49,11 @@
       unelevated
       @click.native="step = step + 1"
     )
-    div(v-if="step === 3").q-mb-lg
-      bubble-button(
-        label="Concluir"
-        @click.native="setConfigs"
-      ).text-prater
+    bubble-button(
+      label="Concluir"
+      v-if="step === 3"
+      @click.native="setConfigs"
+    ).text-prater
 </template>
 
 <script>
@@ -71,16 +71,16 @@ export default {
       myColorPalette: [],
       myTheme: [],
       colorPalettes: [
-        ['#C2D3CD', '#847E89', '#56494C'],
+        ['#847E89', '#C2D3CD', '#56494C'],
         ['#2274A5', '#E7DFC6', '#816C61'],
         ['#AA767C', '#FFA686', '#FEC196'],
         ['#1F5673', '#90C3C8', '#B9B8D3'],
         ['#C1F7DC', '#BDA0BC', '#A2708A'],
-        ['#E9D985', '#749C75', '#6A5D7B']
+        ['#749C75', '#E9D985', '#6A5D7B']
       ],
       themes: [
-        'Sem tema',
-        'Montanhas'
+        { label: 'Sem tema', value: 'none' },
+        { label: 'Montanhas', value: 'mountain' }
         // 'Galáxia',
         // 'Céu',
         // 'Flores',
