@@ -1,14 +1,16 @@
 <template>
   <div class="buttons column animate-pop no-wrap">
-    <button class="blob-btn">
+    <button :class="{ 'dark': dark }" class="blob-btn">
       {{ label }}
       <slot name="content" />
-      <span class="blob-btn__inner">
+      <span :class="{ 'dark': dark }" class="blob-btn__inner">
         <span class="blob-btn__blobs">
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
+          <span
+            v-for="n in 4"
+            :key="n"
+            :class="{ 'dark': dark }"
+            class="blob-btn__blob"
+          />
         </span>
       </span>
     </button>
@@ -28,7 +30,11 @@
 export default {
   name: 'BubbleButton',
   props: {
-    label: String
+    label: String,
+    dark: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
@@ -41,7 +47,7 @@ export default {
 }
 
 $color: rgb(36, 36, 36);
-$dark: #FFFFFF;
+$secColor: #FFFFFF;
 $borderW: 2px;
 
 .blob-btn {
@@ -87,7 +93,7 @@ $borderW: 2px;
   }
 
   &:hover {
-    color: $dark;
+    color: $secColor;
     border-radius:45px;
 
     &:after {
@@ -95,6 +101,18 @@ $borderW: 2px;
       left: 0;
       top: 0;
       border-radius:45px;
+    }
+  }
+
+  &.dark {
+    color: $secColor;
+
+    // &:before {
+    //   border: $borderW solid $color;
+    // }
+
+    &:hover {
+      color: $color;
     }
   }
 
@@ -107,7 +125,11 @@ $borderW: 2px;
     width: 100%;
     height: 100%;
     border-radius:45px;
-    background:#ffffff;
+    background:$secColor;
+
+    &.dark {
+      background: $color;
+    }
   }
 
   &__blobs {
@@ -126,6 +148,10 @@ $borderW: 2px;
     border-radius: 100%;
     transform: translate3d(0,150%,0) scale(1.7);
     transition: transform 0.45s;
+
+    &.dark {
+      background: $secColor;
+    }
 
     @supports(filter: url('#goo')) {
       transform: translate3d(0,150%,0) scale(1.4);

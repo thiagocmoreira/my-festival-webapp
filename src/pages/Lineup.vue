@@ -1,12 +1,12 @@
 <template lang="pug">
   q-page.lineup.column.items-center.justify-between.q-pa-xl.no-wrap
     component(:is="componentName")
-    //- div.q-mt-xl
-    //-   bubble-button.text-prater
-    //-     template(#content)
-    //-       div.flex.flex-center
-    //-         q-icon(name="mdi-download" size="28px").q-mr-sm
-    //-         div Baixar imagem
+    div.q-mt-xl
+      bubble-button(dark).text-prater
+        template(#content)
+          div.flex.flex-center
+            q-icon(name="mdi-download" size="28px").q-mr-sm
+            div Baixar imagem
 </template>
 
 <script>
