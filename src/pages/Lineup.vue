@@ -1,8 +1,12 @@
 <template lang="pug">
   q-page.lineup.column.items-center.justify-between.q-pa-xl.no-wrap
-    component(:is="componentName")
+    div(ref="lineup").column
+      component(:is="componentName")
     div.q-mt-xl
-      bubble-button(dark).text-prater
+      bubble-button(
+        dark
+        @click.native="downloadPhoto"
+      ).text-prater
         template(#content)
           div.flex.flex-center
             q-icon(name="mdi-download" size="28px").q-mr-sm
@@ -14,6 +18,9 @@ import { mapGetters } from 'vuex'
 import LineupNone from '../components/lineup/LineupNone'
 import LineupMountain from '../components/lineup/LineupMountain'
 
+import domToImage from 'dom-to-image'
+import { saveAs } from 'file-saver'
+
 export default {
   name: 'Lineup',
   components: {
@@ -22,15 +29,28 @@ export default {
     LineupMountain
   },
   computed: {
-    ...mapGetters('festivalConfigs', ['festivalTheme']),
+    ...mapGetters('festivalConfigs', [
+      'festivalName',
+      'festivalTheme'
+    ]),
     componentName () {
       return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
     }
   },
   methods: {
     capitalize (s) {
-      if (typeof s !== 'string') return ''
-      return s.charAt(0).toUpperCase() + s.slice(1)
+      return typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : ''
+    },
+    async downloadPhoto () {
+      try {
+        let node = this.$refs.lineup
+        let blob = await domToImage.toBlob(node)
+        let imageName = (this.festivalName || 'Meu Festival').toLowerCase().replace(' ', '-')
+        saveAs(blob, `${imageName}.png`)
+      } catch (err) {
+        console.log(err)
+        throw err
+      }
     }
   }
 }

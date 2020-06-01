@@ -34,5 +34,5 @@ export default {
     padding: 0 25px
 
   &__artists
-    padding: 0 100px 70px 100px
+    padding: 0 100px 100px 100px
 </style>
