@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.artists.column.full-width.text-prater.text-white
+  div(:style="styles").artists.column.full-width.text-prater
     div(:class="headlinersClasses").flex.justify-center
       span(v-for="(headliner, index) of headliners").headliner.artist
         span {{ headliner }}
@@ -34,6 +34,10 @@ export default {
       default () {
         return ['q-px-xl', 'q-pb-xl']
       }
+    },
+    dark: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -45,6 +49,12 @@ export default {
     ...mapGetters('festivalConfigs', ['festivalColorPalette']),
     headliners () {
       return this.topArtists.items.map(t => t.name).slice(0, 3)
+    },
+    styles () {
+      return {
+        color: this.dark ? '#fff' : '#272928',
+        background: this.dark ? '#272928' : '#fff'
+      }
     },
     otherArtists () {
       let length = this.topArtists.items.length
@@ -61,7 +71,6 @@ export default {
 
 <style lang="sass" scoped>
 .artists
-  background: #272928
   text-align: center
 
 .artist

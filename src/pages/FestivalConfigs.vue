@@ -16,6 +16,7 @@
         v-model="myName"
         placeholder="Ex: Meu festival"
         type="text"
+        :maxlength="max"
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
     div(v-if="step === 2").column.items-center
       div.label.text-prater.text-bold.text-grey-10.flex.items-center
@@ -25,6 +26,7 @@
         v-model="myLocation"
         type="text"
         placeholder="Ex: Ceilândia"
+        :maxlength="max"
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
     div(v-else-if="step === 3").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Escolha a paleta de cores ideal
@@ -77,6 +79,7 @@ export default {
   data () {
     return {
       step: 1,
+      max: 16,
       myName: '',
       myLocation: '',
       myColorPalette: [],
@@ -91,7 +94,8 @@ export default {
       ],
       themes: [
         { label: 'Sem tema', value: 'none' },
-        { label: 'Montanhas', value: 'mountain' }
+        { label: 'Montanhas', value: 'mountain' },
+        { label: 'Balões', value: 'balloon' }
         // 'Galáxia',
         // 'Céu',
         // 'Flores',

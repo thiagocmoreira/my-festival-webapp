@@ -17,6 +17,7 @@
 import { mapGetters } from 'vuex'
 import LineupNone from '../components/lineup/LineupNone'
 import LineupMountain from '../components/lineup/LineupMountain'
+import LineupBalloon from '../components/lineup/LineupBalloon'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
@@ -26,7 +27,8 @@ export default {
   components: {
     BubbleButton: () => import('../components/common/BubbleButton'),
     LineupNone,
-    LineupMountain
+    LineupMountain,
+    LineupBalloon
   },
   computed: {
     ...mapGetters('festivalConfigs', [

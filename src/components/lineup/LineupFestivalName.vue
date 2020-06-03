@@ -1,8 +1,8 @@
 <template lang="pug">
-  div(:style="bgColor").column.full-width.items-center
+  div(:style="bgColor" :class="alignClass").column.full-width
     div(:class="classes").text-lolapeluza.text-bold.column
       div.name {{ festivalName }}
-      div(v-if="festivalLocation.length").location.text-prater.text-bold.full-width.text-right.text-uppercase
+      div(v-if="festivalLocation.length").location.text-prater.text-bold.text-right.text-uppercase
         | {{ festivalLocation }}
     slot
 </template>
@@ -13,11 +13,20 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'LineupFestivalName',
   props: {
+    colors: Array,
     classes: {
       type: [Array, String],
       default () {
         return ['q-pa-xl']
       }
+    },
+    dark: {
+      type: Boolean,
+      default: true
+    },
+    titlePosition: {
+      type: String,
+      default: 'center'
     }
   },
   computed: {
@@ -28,7 +37,19 @@ export default {
     ]),
     bgColor () {
       return {
-        background: (this.festivalColorPalette || [])[0] || 'blue-4'
+        background: this.colors.length ? this.colors[0] : (this.festivalColorPalette || [])[0],
+        color: this.dark ? '#272928' : '#fff'
+      }
+    },
+    alignClass () {
+      if (this.titlePosition === 'center') {
+        return 'items-center'
+      } else if (this.titlePosition === 'left') {
+        return 'items-start'
+      } else if (this.titlePosition === 'right') {
+        return 'items-end'
+      } else {
+        return ''
       }
     }
   }
@@ -40,11 +61,9 @@ export default {
   font-size: 70px
   line-height: 60px
   letter-spacing: 3px
-  color: #272928
 
 .location
   line-height: 26px
   margin-top: 5px
   font-size: 26px
-  color: #272928
 </style>
