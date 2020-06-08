@@ -2,7 +2,7 @@
   div.balloon.lineup__container.column.animate-fade
     lineup-festival-name(
       :classes="['balloon__name']"
-      title-position="left"
+      title-position="left center"
       :colors="['#67b5eb']"
     )
       cloud-full(color="#52a7e2")
@@ -38,7 +38,7 @@ export default {
   position: relative
 
   &__name
-    padding: 70px 0 0 60px
+    padding-top: 70px
 
   &__headliners
     padding: 0 25px

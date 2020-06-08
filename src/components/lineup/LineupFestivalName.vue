@@ -1,9 +1,10 @@
 <template lang="pug">
-  div(:style="bgColor" :class="alignClass").column.full-width
-    div(:class="classes").text-lolapeluza.text-bold.column
-      div.name {{ festivalName }}
-      div(v-if="festivalLocation.length").location.text-prater.text-bold.text-right.text-uppercase
-        | {{ festivalLocation }}
+  div(:style="bgColor" :class="alignClassDiv").column.full-width
+    div(:class="[classes, alignClassName]").container.text-lolapeluza.text-bold.column.flex
+      div.column
+        div.name {{ festivalName }}
+        div(v-if="festivalLocation.length").location.text-prater.text-bold.text-right.text-uppercase
+          | {{ festivalLocation }}
     slot
 </template>
 
@@ -26,7 +27,7 @@ export default {
     },
     titlePosition: {
       type: String,
-      default: 'center'
+      default: 'center center'
     }
   },
   computed: {
@@ -37,16 +38,26 @@ export default {
     ]),
     bgColor () {
       return {
-        background: this.colors.length ? this.colors[0] : (this.festivalColorPalette || [])[0],
+        background: (this.colors || []).length ? this.colors[0] : (this.festivalColorPalette || [])[0],
         color: this.dark ? '#272928' : '#fff'
       }
     },
-    alignClass () {
-      if (this.titlePosition === 'center') {
+    alignClassDiv () {
+      let position = this.titlePosition.split(' ')[0]
+      return this.getAlignClassName(position)
+    },
+    alignClassName () {
+      let position = this.titlePosition.split(' ')[1]
+      return this.getAlignClassName(position)
+    }
+  },
+  methods: {
+    getAlignClassName (position) {
+      if (position === 'center') {
         return 'items-center'
-      } else if (this.titlePosition === 'left') {
+      } else if (position === 'left') {
         return 'items-start'
-      } else if (this.titlePosition === 'right') {
+      } else if (position === 'right') {
         return 'items-end'
       } else {
         return ''
@@ -57,6 +68,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.container
+  width: 595px
+
 .name
   font-size: 70px
   line-height: 60px

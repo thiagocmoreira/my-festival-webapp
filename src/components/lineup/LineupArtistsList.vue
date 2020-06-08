@@ -23,6 +23,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'LineupArtistsList',
   props: {
+    colors: Array,
     headlinersClasses: {
       type: [Array, String],
       default () {
@@ -60,9 +61,12 @@ export default {
       let length = this.topArtists.items.length
       return this.topArtists.items.map(t => t.name).slice(3, length)
     },
+    selectedColor () {
+      return this.dark ? 1 : 0
+    },
     dotColor () {
       return {
-        color: (this.festivalColorPalette || [])[1] || 'blue-4'
+        color: (this.colors || this.festivalColorPalette || [])[this.selectedColor]
       }
     }
   }

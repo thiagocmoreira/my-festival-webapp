@@ -210,7 +210,4 @@ export default {
 
   &:last-of-type
     margin: 0
-
-.opalocation-none
-  opalocation: 0 !important
 </style>

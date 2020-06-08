@@ -1,16 +1,18 @@
 <template lang="pug">
-  q-page.lineup.column.items-center.justify-between.q-pa-xl.no-wrap
-    div(ref="lineup").column
-      component(:is="componentName")
-    div.q-mt-xl
-      bubble-button(
-        dark
-        @click.native="downloadPhoto"
-      ).text-prater
-        template(#content)
-          div.flex.flex-center
-            q-icon(name="mdi-download" size="28px").q-mr-sm
-            div Baixar imagem
+  q-page.lineup.column.no-wrap
+    q-scroll-area.scroll-area.flex-1
+      div.column.items-center.justify-between.q-pa-xl
+        div(ref="lineup").column
+          component(:is="componentName")
+        div.q-mt-xl
+          bubble-button(
+            dark
+            @click.native="downloadPhoto"
+          ).text-prater
+            template(#content)
+              div.flex.flex-center
+                q-icon(name="mdi-download" size="28px").q-mr-sm
+                div Baixar imagem
 </template>
 
 <script>
@@ -62,5 +64,8 @@ export default {
 .lineup
   background: $grey-1
   max-height: 100vh
-  overflow-y: scroll
+  // overflow-y: scroll
+
+.scroll-area
+  height: 100vh
 </style>
