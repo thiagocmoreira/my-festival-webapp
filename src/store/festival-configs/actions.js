@@ -13,3 +13,7 @@ export function setFestivalTheme ({ commit }, theme) {
 export function setFestivalLocation ({ commit }, location) {
   commit('setFestivalLocation', location)
 }
+
+export function setFestivalDark ({ commit }, dark) {
+  commit('setFestivalDark', dark)
+}

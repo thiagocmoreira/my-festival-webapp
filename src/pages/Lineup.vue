@@ -1,12 +1,22 @@
 <template lang="pug">
-  q-page.lineup.column.no-wrap
+  q-page(:class="background").lineup.column.no-wrap.relative
     q-scroll-area.scroll-area.flex-1
+      q-btn(
+        round
+        :icon="festivalDark ? 'mdi-lightbulb-on' : 'mdi-lightbulb'"
+        :color="festivalDark ? 'grey-4' : 'grey-8'"
+        :text-color="festivalDark ? 'grey-5' : 'grey-6'"
+        size="16px"
+        @click="setFestivalDark(!festivalDark)"
+        :title="festivalDark ? 'Ligar modo escuro' : 'Ligar modo claro'"
+        unelevated
+      ).light-button.absolute.q-mx-lg.q-my-md
       div.column.items-center.justify-between.q-pa-xl
         div(ref="lineup").column
           component(:is="componentName")
         div.q-mt-xl
           bubble-button(
-            dark
+            :dark="festivalDark"
             @click.native="downloadPhoto"
           ).text-prater
             template(#content)
@@ -16,7 +26,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import LineupNone from '../components/lineup/LineupNone'
 import LineupMountain from '../components/lineup/LineupMountain'
 import LineupBalloon from '../components/lineup/LineupBalloon'
@@ -35,13 +45,21 @@ export default {
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalName',
-      'festivalTheme'
+      'festivalTheme',
+      'festivalDark'
     ]),
     componentName () {
       return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
+    },
+    background () {
+      let color = this.festivalDark ? 'grey-1' : 'grey-9'
+      return `bg-${color}`
     }
   },
   methods: {
+    ...mapActions('festivalConfigs', [
+      'setFestivalDark'
+    ]),
     capitalize (s) {
       return typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : ''
     },
@@ -52,8 +70,12 @@ export default {
         let imageName = (this.festivalName || 'Meu Festival').toLowerCase().replace(' ', '-')
         saveAs(blob, `${imageName}.png`)
       } catch (err) {
-        console.log(err)
-        throw err
+        this.$q.notify({
+          message: 'Infelizmente não foi possível baixar a imagem no momento.',
+          position: 'top-right',
+          icon: 'mdi-alert',
+          progress: true
+        })
       }
     }
   }
@@ -62,10 +84,13 @@ export default {
 
 <style lang="sass" scoped>
 .lineup
-  background: $grey-1
   max-height: 100vh
+  transition: background 0.15s ease
   // overflow-y: scroll
 
 .scroll-area
   height: 100vh
+
+.light-button
+  right: 0
 </style>

@@ -3,6 +3,7 @@ export default function () {
     name: 'Meu festival',
     colorPalette: ['#AA767C', '#FFA686', '#FEC196'],
     theme: 'balloon',
-    location: 'Ceilândia'
+    location: 'Ceilândia',
+    dark: false
   }
 }

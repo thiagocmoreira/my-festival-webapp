@@ -13,3 +13,7 @@ export function setFestivalTheme (state, theme) {
 export function setFestivalLocation (state, location) {
   state.location = location
 }
+
+export function setFestivalDark (state, dark) {
+  state.dark = dark
+}

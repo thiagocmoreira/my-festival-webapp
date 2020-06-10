@@ -4,20 +4,21 @@
       :classes="['balloon__name']"
       title-position="left center"
       :colors="['#67b5eb']"
+      :dark="!festivalDark"
     )
-      cloud-full(color="#52a7e2")
+      cloud-full(color="#52a7e2" :dark="festivalDark")
     div.column
       lineup-artists-list(
         headliners-classes="balloon__headliners"
         artists-classes="balloon__artists"
-        :dark="false"
+        :dark="festivalDark"
       )
     div.balloon-svg
       balloon(:colors="festivalColorPalette")
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'LineupBalloon',
@@ -28,7 +29,16 @@ export default {
     Balloon: () => import('../svgs/balloon/Balloon')
   },
   computed: {
-    ...mapGetters('festivalConfigs', ['festivalColorPalette'])
+    ...mapGetters('festivalConfigs', [
+      'festivalColorPalette',
+      'festivalDark'
+    ])
+  },
+  methods: {
+    ...mapActions('festivalConfigs', ['setFestivalDark'])
+  },
+  mounted () {
+    this.setFestivalDark(false)
   }
 }
 </script>

@@ -1,16 +1,20 @@
 <template lang="pug">
   div.mountain.lineup__container.container.column.items-center.animate-fade
     lineup-festival-name(classes="mountain__name")
-      three-mountains(:colors="festivalColorPalette")
+      three-mountains(
+        :colors="festivalColorPalette"
+        :dark="festivalDark"
+      )
     div.column
       lineup-artists-list(
         headliners-classes="mountain__headliners"
         artists-classes="mountain__artists"
+        :dark="festivalDark"
       )
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'LineupMontain',
@@ -20,7 +24,16 @@ export default {
     LineupArtistsList: () => import('../lineup/LineupArtistsList')
   },
   computed: {
-    ...mapGetters('festivalConfigs', ['festivalColorPalette'])
+    ...mapGetters('festivalConfigs', [
+      'festivalColorPalette',
+      'festivalDark'
+    ])
+  },
+  methods: {
+    ...mapActions('festivalConfigs', ['setFestivalDark'])
+  },
+  mounted () {
+    this.setFestivalDark(true)
   }
 }
 </script>
