@@ -1,5 +1,6 @@
 <template lang="pug">
   div(:style="bgColor" :class="alignClassDiv").column.full-width
+    slot(name="top")
     div(:class="[classes, alignClassName]").container.text-lolapeluza.text-bold.column.flex
       div.column
         div.name {{ festivalName }}
@@ -28,6 +29,10 @@ export default {
     titlePosition: {
       type: String,
       default: 'center center'
+    },
+    blackAndWhite: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -37,10 +42,15 @@ export default {
       'festivalLocation'
     ]),
     bgColor () {
-      return {
-        background: (this.colors || []).length ? this.colors[0] : (this.festivalColorPalette || [])[0],
+      let classes = {
         color: this.dark ? '#272928' : '#fff'
       }
+      if (this.blackAndWhite) {
+        classes.background = this.dark ? '#fff' : '#272928'
+      } else {
+        classes.background = (this.colors || []).length ? this.colors[0] : (this.festivalColorPalette || [])[0]
+      }
+      return classes
     },
     alignClassDiv () {
       let position = this.titlePosition.split(' ')[0]

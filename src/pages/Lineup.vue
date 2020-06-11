@@ -12,7 +12,7 @@
         unelevated
       ).light-button.absolute.q-mx-lg.q-my-md
       div.column.items-center.justify-between.q-pa-xl
-        div(ref="lineup").column
+        div(ref="lineup").lineup-container.column
           component(:is="componentName")
         div.q-mt-xl
           bubble-button(
@@ -30,6 +30,7 @@ import { mapGetters, mapActions } from 'vuex'
 import LineupNone from '../components/lineup/LineupNone'
 import LineupMountain from '../components/lineup/LineupMountain'
 import LineupBalloon from '../components/lineup/LineupBalloon'
+import LineupAfrica from '../components/lineup/LineupAfrica'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
@@ -40,7 +41,8 @@ export default {
     BubbleButton: () => import('../components/common/BubbleButton'),
     LineupNone,
     LineupMountain,
-    LineupBalloon
+    LineupBalloon,
+    LineupAfrica
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -90,6 +92,9 @@ export default {
 
 .scroll-area
   height: 100vh
+
+.lineup-container
+  overflow: hidden
 
 .light-button
   right: 0
