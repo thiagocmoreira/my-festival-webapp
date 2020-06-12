@@ -18,28 +18,24 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import artists from '../statics/top_artists.json'
 export default {
   name: 'Headliners',
   components: {
     BubbleButton: () => import('../components/common/BubbleButton')
   },
-  data () {
-    return {
-      topArtists: artists
-    }
-  },
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalName',
       'festivalColorPalette',
-      'festivalTheme'
+      'festivalTheme',
+      'festivalArtists',
+      'festivalArtistsNames'
     ]),
     headliners () {
-      return this.topArtists.items.slice(0, 3)
+      return this.festivalArtists.slice(0, 3)
     },
     otherArtists () {
-      let others = this.topArtists.items.slice(3, 7).map(t => t.name)
+      let others = this.festivalArtistsNames.slice(3, 7)
       let formatted = others.join(', ')
       return formatted
     }

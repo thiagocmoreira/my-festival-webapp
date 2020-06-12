@@ -17,3 +17,15 @@ export function festivalLocation (state) {
 export function festivalDark (state) {
   return state.dark
 }
+
+export function festivalArtists (state) {
+  return state.artists
+}
+
+export function festivalArtistsNames (state) {
+  return state.artistsNames
+}
+
+export function festivalArtistsNamesPerDay (state) {
+  return state.artistsNamesPerDay
+}

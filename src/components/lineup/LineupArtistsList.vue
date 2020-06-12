@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import artists from '../../statics/top_artists.json'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -42,15 +41,13 @@ export default {
       default: true
     }
   },
-  data () {
-    return {
-      topArtists: artists
-    }
-  },
   computed: {
-    ...mapGetters('festivalConfigs', ['festivalColorPalette']),
+    ...mapGetters('festivalConfigs', [
+      'festivalColorPalette',
+      'festivalArtistsNames'
+    ]),
     headliners () {
-      return this.topArtists.items.map(t => t.name).slice(0, 3)
+      return this.festivalArtistsNames.slice(0, 3)
     },
     styles () {
       return {
@@ -59,8 +56,8 @@ export default {
       }
     },
     otherArtists () {
-      let length = this.topArtists.items.length
-      return this.topArtists.items.map(t => t.name).slice(3, length)
+      let length = this.festivalArtistsNames.length
+      return this.festivalArtistsNames.slice(3, length)
     },
     selectedColor () {
       return this.dark ? 1 : 0

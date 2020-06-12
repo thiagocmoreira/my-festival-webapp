@@ -11,25 +11,25 @@
     )
     div.column
       lineup-day-artists-list(
-        :day-artists="artistsPerDay[0]"
+        :day-artists="festivalArtistsNamesPerDay[0]"
         artists-classes="africa__artists--reverse"
         :dark="festivalDark"
         reverse
       )
         vase-round(:color="festivalColorPalette[0]")
       lineup-day-artists-list(
-        :day-artists="artistsPerDay[1]"
+        :day-artists="festivalArtistsNamesPerDay[1]"
         artists-classes="africa__artists"
         :dark="festivalDark"
       )
-        african-symbol(:color="festivalColorPalette[1]")
+        african-symbol(:color="festivalColorPalette[2]")
       lineup-day-artists-list(
-        :day-artists="artistsPerDay[2]"
+        :day-artists="festivalArtistsNamesPerDay[2]"
         :artists-classes="['africa__artists--reverse', 'last']"
         :dark="festivalDark"
         reverse
       )
-        vase(:color="festivalColorPalette[2]")
+        vase(:color="festivalColorPalette[1]")
       african-stripe(
         :colors="festivalColorPalette"
         :dark="festivalDark"
@@ -40,8 +40,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import _chunk from 'lodash-es/chunk'
-import artists from '../../statics/top_artists.json'
 
 export default {
   name: 'LineupAfrica',
@@ -55,32 +53,14 @@ export default {
     AfricanSymbol: () => import('../svgs/africa/AfricanSymbol'),
     Spear: () => import('../svgs/africa/Spear')
   },
-  data () {
-    return {
-      topArtists: artists
-    }
-  },
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
-      'festivalDark'
+      'festivalDark',
+      'festivalArtistsNamesPerDay'
     ]),
     spearColor () {
       return this.festivalDark ? '#333' : '#ececec'
-    },
-    artists () {
-      return this.topArtists.items.map(t => t.name)
-    },
-    artistsPerDay () {
-      let days = { day1: [], day2: [], day3: [] }
-      for (let chunk of _chunk(this.artists, 3)) {
-        days.day1.push(chunk[0])
-        days.day2.push(chunk[1])
-        if (chunk[2]) {
-          days.day3.push(chunk[2])
-        }
-      }
-      return Object.values(days)
     }
   },
   methods: {

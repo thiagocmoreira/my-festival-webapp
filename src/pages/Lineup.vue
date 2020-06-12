@@ -8,7 +8,7 @@
         :text-color="festivalDark ? 'grey-5' : 'grey-6'"
         size="16px"
         @click="setFestivalDark(!festivalDark)"
-        :title="festivalDark ? 'Ligar modo escuro' : 'Ligar modo claro'"
+        :title="festivalDark ? 'Mudar para modo claro' : 'Mudar para o modo escuro'"
         unelevated
       ).light-button.absolute.q-mx-lg.q-my-md
       div.column.items-center.justify-between.q-pa-xl

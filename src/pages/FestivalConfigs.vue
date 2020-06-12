@@ -123,7 +123,7 @@ export default {
       return this.errors.length === 0
     },
     errorMessage () {
-      let message = 'Não é possível continuar sem escolher '
+      let message = 'Não é possível continuar sem preencher '
       if (this.errors.length === 1) {
         return message + `o item: ${this.errors[0]}`
       } else if (this.errors.length === 2) {
