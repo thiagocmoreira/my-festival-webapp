@@ -5,16 +5,17 @@
     //- div(:class="{ 'justify-end': !reverse }").flex.flex-1.text-prater
     div.flex.flex-1.text-prater
       span.headliner.q-mb-12
-        span {{ headliner }}
-        span(
-          :style="dotColor"
-        ).q-px-sm .
+          | {{ headliner }}
+          span(
+            :style="dotColor"
+          ).q-px-sm .
       span(v-for="(artist, index) of artists").artist.flex.items-end.q-mb-12
-        span {{ artist }}
-        span(
-          v-if="index !== artists.length - 1"
-          :style="dotColor"
-        ).q-px-sm .
+        span
+          | {{ artist }}
+          span(
+            v-if="index !== artists.length - 1"
+            :style="dotColor"
+          ).q-px-sm .
 </template>
 
 <script>
@@ -52,7 +53,7 @@ export default {
     },
     hasImage: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   computed: {
@@ -95,10 +96,12 @@ export default {
 .headliner
   font-size: 36px
   line-height: 32px
+  white-space: nowrap
 
 .artist
   font-size: 24px
   line-height: 24px
+  white-space: nowrap
 
 .image
   width: 110px

@@ -2,14 +2,14 @@
   div(:style="styles").artists.column.full-width.text-prater
     div(:class="headlinersClasses").flex.justify-center
       span(v-for="(headliner, index) of headliners").headliner.artist
-        span {{ headliner }}
+        | {{ headliner }}
         span(
           v-if="index !== 2"
           :style="dotColor"
         ).q-px-sm .
     div(:class="artistsClasses").flex.justify-center
       span(v-for="(artist, index) of otherArtists").artist
-        span {{ artist }}
+        | {{ artist }}
         span(
           v-if="index !== otherArtists.length - 1"
           :style="dotColor"
@@ -77,7 +77,9 @@ export default {
 
 .artist
   font-size: 24px
+  white-space: nowrap
 
 .headliner
   font-size: 36px
+  white-space: nowrap
 </style>

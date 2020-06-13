@@ -14,6 +14,7 @@
         :day-artists="festivalArtistsNamesPerDay[0]"
         artists-classes="africa__artists--reverse"
         :dark="festivalDark"
+        has-image
         reverse
       )
         vase-round(:color="festivalColorPalette[0]")
@@ -21,12 +22,14 @@
         :day-artists="festivalArtistsNamesPerDay[1]"
         artists-classes="africa__artists"
         :dark="festivalDark"
+        has-image
       )
         african-symbol(:color="festivalColorPalette[2]")
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
         :artists-classes="['africa__artists--reverse', 'last']"
         :dark="festivalDark"
+        has-image
         reverse
       )
         vase(:color="festivalColorPalette[1]")
