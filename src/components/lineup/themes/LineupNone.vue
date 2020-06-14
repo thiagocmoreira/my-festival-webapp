@@ -14,8 +14,8 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'LineupNone',
   components: {
-    LineupFestivalName: () => import('../lineup/LineupFestivalName'),
-    LineupArtistsList: () => import('../lineup/LineupArtistsList')
+    LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupArtistsList: () => import('../common/LineupArtistsList')
   },
   computed: {
     ...mapGetters('festivalConfigs', [

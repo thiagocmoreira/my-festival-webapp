@@ -23,10 +23,10 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupBalloon',
   components: {
-    CloudFull: () => import('../svgs/balloon/CloudFull'),
-    LineupFestivalName: () => import('../lineup/LineupFestivalName'),
-    LineupArtistsList: () => import('../lineup/LineupArtistsList'),
-    Balloon: () => import('../svgs/balloon/Balloon')
+    CloudFull: () => import('../../svgs/balloon/CloudFull'),
+    LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupArtistsList: () => import('../common/LineupArtistsList'),
+    Balloon: () => import('../../svgs/balloon/Balloon')
   },
   computed: {
     ...mapGetters('festivalConfigs', [

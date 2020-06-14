@@ -36,7 +36,7 @@
       african-stripe(
         :colors="festivalColorPalette"
         :dark="festivalDark"
-      ).african-stripe-bottom
+      ).african-stripe--bottom
     //- div.spear-svg
     //-   spear(:color="spearColor")
 </template>
@@ -47,24 +47,24 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupAfrica',
   components: {
-    AfricanStripe: () => import('../svgs/africa/AfricanStripe'),
-    LineupFestivalName: () => import('../lineup/LineupFestivalName'),
-    LineupDayArtistsList: () => import('../lineup/LineupDayArtistsList'),
-    Vase: () => import('../svgs/africa/Vase'),
-    // Elephant: () => import('../svgs/africa/Elephant'),
-    VaseRound: () => import('../svgs/africa/VaseRound'),
-    AfricanSymbol: () => import('../svgs/africa/AfricanSymbol'),
-    Spear: () => import('../svgs/africa/Spear')
+    AfricanStripe: () => import('../../svgs/africa/AfricanStripe'),
+    LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
+    Vase: () => import('../../svgs/africa/Vase'),
+    VaseRound: () => import('../../svgs/africa/VaseRound'),
+    AfricanSymbol: () => import('../../svgs/africa/AfricanSymbol')
+    // Spear: () => import('../../svgs/africa/Spear')
+    // Elephant: () => import('../../svgs/africa/Elephant'),
   },
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
       'festivalDark',
       'festivalArtistsNamesPerDay'
-    ]),
-    spearColor () {
-      return this.festivalDark ? '#333' : '#ececec'
-    }
+    ])
+    // spearColor () {
+    //   return this.festivalDark ? '#333' : '#ececec'
+    // }
   },
   methods: {
     ...mapActions('festivalConfigs', ['setFestivalDark'])
@@ -96,7 +96,7 @@ export default {
   position: absolute
   top: 0
 
-.african-stripe-bottom
+.african-stripe--bottom
   margin-bottom: -2px
   position: absolute
   bottom: 0

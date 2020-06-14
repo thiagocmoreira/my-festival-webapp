@@ -27,10 +27,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import LineupNone from '../components/lineup/LineupNone'
-import LineupMountain from '../components/lineup/LineupMountain'
-import LineupBalloon from '../components/lineup/LineupBalloon'
-import LineupAfrica from '../components/lineup/LineupAfrica'
+import LineupNone from '../components/lineup/themes/LineupNone'
+import LineupMountain from '../components/lineup/themes/LineupMountain'
+import LineupBalloon from '../components/lineup/themes/LineupBalloon'
+import LineupAfrica from '../components/lineup/themes/LineupAfrica'
+import LineupRock from '../components/lineup/themes/LineupRock'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
@@ -42,7 +43,8 @@ export default {
     LineupNone,
     LineupMountain,
     LineupBalloon,
-    LineupAfrica
+    LineupAfrica,
+    LineupRock
   },
   computed: {
     ...mapGetters('festivalConfigs', [

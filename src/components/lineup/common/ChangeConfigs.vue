@@ -54,7 +54,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'ChangeConfigs',
   components: {
-    BubbleButton: () => import('../common/BubbleButton')
+    BubbleButton: () => import('../../common/BubbleButton')
   },
   data () {
     return {
@@ -77,7 +77,8 @@ export default {
         { label: 'Sem tema', value: 'none' },
         { label: 'Montanhas', value: 'mountain' },
         { label: 'Balões', value: 'balloon' },
-        { label: 'África', value: 'africa' }
+        { label: 'África', value: 'africa' },
+        { label: 'Rock', value: 'rock' }
         // 'Galáxia',
         // 'Céu',
         // 'Flores',

@@ -19,9 +19,9 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupMontain',
   components: {
-    ThreeMountains: () => import('../svgs/mountains/ThreeMountains'),
-    LineupFestivalName: () => import('../lineup/LineupFestivalName'),
-    LineupArtistsList: () => import('../lineup/LineupArtistsList')
+    ThreeMountains: () => import('../../svgs/mountains/ThreeMountains'),
+    LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupArtistsList: () => import('../common/LineupArtistsList')
   },
   computed: {
     ...mapGetters('festivalConfigs', [

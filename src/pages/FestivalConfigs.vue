@@ -97,7 +97,8 @@ export default {
         { label: 'Sem tema', value: 'none' },
         { label: 'Montanhas', value: 'mountain' },
         { label: 'Balões', value: 'balloon' },
-        { label: 'África', value: 'africa' }
+        { label: 'África', value: 'africa' },
+        { label: 'Rock', value: 'rock' }
         // 'Galáxia',
         // 'Céu',
         // 'Flores',
