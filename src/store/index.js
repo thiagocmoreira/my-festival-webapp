@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import festivalConfigs from './festival-configs'
+import festivalSetup from './festival-setup'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      festivalConfigs
+      festivalConfigs,
+      festivalSetup
     },
 
     // enable strict mode (adds overhead!)
