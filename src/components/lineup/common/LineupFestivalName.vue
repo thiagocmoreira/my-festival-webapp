@@ -1,8 +1,8 @@
 <template lang="pug">
   div(:style="bgColor" :class="alignClassDiv").column.full-width
-    slot(name="top")
     div(:class="[classes, alignClassName]").container.text-lolapeluza.text-bold.column.flex
       div.column
+        slot(name="top")
         div.name {{ festivalName }}
         div(v-if="festivalLocation.length").location.text-prater.text-bold.text-right.text-uppercase
           | {{ festivalLocation }}

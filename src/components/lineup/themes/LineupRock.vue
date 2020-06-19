@@ -1,15 +1,17 @@
 <template lang="pug">
-  div.rock.lineup__container.column.animate-fade
-    //- fire-stripe(rotated size="0").fire-stripe
+  div.rock.lineup__container.column.animate-fade.relative
+    guitar(
+      :colors="festivalColorPalette"
+      :dark="festivalDark"
+    ).guitar.q-ma-lg
     lineup-festival-name(
-      :classes="['rock__name']"
+      classes="rock__name"
       :dark="!festivalDark"
+      title-position="left center"
       black-and-white
     )
-      //- fire-stripe(
-      //-   :colors="flamesColor"
-      //-   size="60px"
-      //- )
+      template(#top)
+        lightning.lightning.q-mb-xs
     div.column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
@@ -37,9 +39,11 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupRock',
   components: {
-    FireStripe: () => import('../../svgs/rock/FireStripe'),
+    Guitar: () => import('../../svgs/rock/Guitar'),
+    Lightning: () => import('../../svgs/rock/Lightning'),
     LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList')
+    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
+    FireStripe: () => import('../../svgs/rock/FireStripe')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -65,7 +69,7 @@ export default {
   position: relative
 
   &__name
-    padding: 130px 20px 80px 20px
+    padding: 80px 20px 90px 20px
 
   &__artists
     padding: 0 70px 60px 90px
@@ -73,19 +77,17 @@ export default {
     &.last
       padding: 0 70px 140px 90px
 
-// .fire-stripe
-//   position: absolute
-//   top: -1px
+.lightning
+  width: 100px
+  margin-left: -30px
 
 .fire-stripe--bottom
   position: absolute
   bottom: 0
 
-// .spear-svg
-//   width: 65px
-//   position: absolute
-//   bottom: 0
-//   right: 0
-//   margin-bottom: 75px
-//   margin-right: 15px
+.guitar
+  width: 190px
+  position: absolute
+  top: 0
+  right: 0
 </style>
