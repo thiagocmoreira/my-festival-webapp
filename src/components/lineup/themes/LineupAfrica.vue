@@ -123,7 +123,7 @@ export default {
   bottom: 0
 
 .spear-svg
-  width: 75px
+  width: 60px
   position: absolute
   bottom: 0
   right: 0

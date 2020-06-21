@@ -1,7 +1,7 @@
 <template lang="pug">
-  q-page.headliners.column.items-center.justify-between.q-pa-lg
+  q-page(:style="backgroundColor").headliners.column.items-center.justify-between.q-pa-lg
     div
-    div.column.items-center
+    div.column.items-center.text-grey-10
       div.title.text-prater.q-mb-xl Os headliners do {{ festivalName || 'festival' }} são...
       div.flex
         div(v-for="headliner of headliners").headliner.column.items-center.q-mr-xl
@@ -31,6 +31,9 @@ export default {
       'festivalArtists',
       'festivalArtistsNames'
     ]),
+    backgroundColor () {
+      return { background: ((this.festivalColorPalette || [])[1] || '#64B5F6') }
+    },
     headliners () {
       return this.festivalArtists.slice(0, 3)
     },

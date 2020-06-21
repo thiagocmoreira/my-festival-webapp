@@ -86,7 +86,9 @@ export default {
 
   &__artists
     padding: 0 100px 100px 100px
+</style>
 
+<style lang="sass" scoped>
 .balloon-svg
   width: 165px
   position: absolute

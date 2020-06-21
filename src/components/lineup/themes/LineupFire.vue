@@ -1,57 +1,64 @@
 <template lang="pug">
   div.rock.lineup__container.column.animate-fade.relative
-    guitar(
-      :colors="festivalColorPalette"
-      :dark="festivalDark"
-    ).guitar.q-ma-lg
+    //- guitar(
+    //-   :colors="festivalColorPalette"
+    //-   :dark="festivalDark"
+    //- ).guitar.q-ma-lg
+    fire-stripe(
+      rotated
+      size="0"
+    ).fire-stripe
     lineup-festival-name(
       classes="rock__name"
       :dark="!festivalDark"
-      title-position="left center"
+      title-position="center center"
       black-and-white
     )
       template(#top)
-        lightning.lightning.q-mb-xs
+        lightning(:color="lightningColor").lightning.q-mb-xs
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
         artists-classes="rock__artists--day"
         :dark="festivalDark"
+        align="center"
         reverse
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
         artists-classes="rock__artists--day"
         :dark="festivalDark"
+        align="center"
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
         :artists-classes="['rock__artists--day', 'last']"
         :dark="festivalDark"
+        align="center"
         reverse
       )
-      fire-stripe.fire-stripe--bottom
     div(v-else).column
       lineup-artists-list(
         headliners-classes="rock__headliners"
         artists-classes="rock__artists"
         :dark="festivalDark"
+        align="center"
       )
-      fire-stripe.fire-stripe--bottom
+    fire-stripe.fire-stripe--bottom
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'LineupRock',
+  name: 'LineupFire',
   components: {
-    Guitar: () => import('../../svgs/rock/Guitar'),
-    Lightning: () => import('../../svgs/rock/Lightning'),
+    Guitar: () => import('../../svgs/fire/Guitar'),
+    Lightning: () => import('../../svgs/fire/Lightning'),
     LineupFestivalName: () => import('../common/LineupFestivalName'),
     LineupArtistsList: () => import('../common/LineupArtistsList'),
     LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    FireStripe: () => import('../../svgs/rock/FireStripe')
+    FireStripe: () => import('../../svgs/fire/FireStripe')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -59,10 +66,10 @@ export default {
       'festivalDark',
       'festivalLineupDays',
       'festivalArtistsNamesPerDay'
-    ])
-    // flamesColor () {
-    //   return this.festivalDark ? ['#ff673e', '#ff9b50', '#272928'] : ['#ff673e', '#ff9b50', '#fff']
-    // }
+    ]),
+    lightningColor () {
+      return this.festivalDark ? this.festivalColorPalette[2] : this.festivalColorPalette[1]
+    }
   },
   methods: {
     ...mapActions('festivalConfigs', [
@@ -82,16 +89,16 @@ export default {
   position: relative
 
   &__name
-    padding: 80px 20px 90px 20px
+    padding: 110px 20px 80px 20px
 
   &__headliners
     padding: 0 45px
 
   &__artists--day
-    padding: 0 65px 60px 90px
+    padding: 0 90px 60px 90px
 
     &.last
-      padding-bottom: 140px
+      padding-bottom: 160px
 
   &__artists
     padding: 0 100px 160px 100px
@@ -99,6 +106,10 @@ export default {
 .lightning
   width: 100px
   margin-left: -30px
+
+.fire-stripe
+  position: absolute
+  top: 0
 
 .fire-stripe--bottom
   position: absolute

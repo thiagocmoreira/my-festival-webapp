@@ -2,8 +2,7 @@
   div(:style="styles" :class="[artistsClasses, { 'reverse': reverse }]").artists.row.items-center.animate-fade
     div(v-if="hasImage" :class="imageClass").image
       slot
-    //- div(:class="{ 'justify-end': !reverse }").flex.flex-1.text-prater
-    div.flex.flex-1.text-prater
+    div(:class="alignText").flex.flex-1.text-prater
       span.headliner.q-mb-12
           | {{ headliner }}
           span(
@@ -54,6 +53,10 @@ export default {
     hasImage: {
       type: Boolean,
       default: false
+    },
+    align: {
+      type: String,
+      default: 'left'
     }
   },
   computed: {
@@ -84,6 +87,15 @@ export default {
     },
     imageClass () {
       return this.reverse ? 'q-ml-md' : 'q-mr-lg'
+    },
+    alignText () {
+      if (this.align === 'center') {
+        return 'justify-center'
+      } else if (this.align === 'right') {
+        return 'justify-end'
+      } else {
+        return ''
+      }
     }
   }
 }
