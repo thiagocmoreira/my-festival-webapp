@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:style="styles").artists.column.full-width.text-prater
+  div(:style="styles").artists.column.full-width.text-prater.animate-fade
     div(:class="headlinersClasses").flex.justify-center
       span(v-for="(headliner, index) of headliners").headliner.artist
         | {{ headliner }}

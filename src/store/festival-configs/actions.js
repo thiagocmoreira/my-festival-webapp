@@ -17,3 +17,7 @@ export function setFestivalLocation ({ commit }, location) {
 export function setFestivalDark ({ commit }, dark) {
   commit('setFestivalDark', dark)
 }
+
+export function setFestivalLineupDays ({ commit }, lineupDays) {
+  commit('setFestivalLineupDays', lineupDays)
+}

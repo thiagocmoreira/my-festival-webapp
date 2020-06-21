@@ -7,7 +7,7 @@
       title="Voltar"
       unelevated
       :disabled="step <= 1"
-      :class="{ 'opalocation-none': step <= 1 }"
+      :class="{ 'opacity-0': step <= 1 }"
       @click.native="step = step  - 1"
     )
     div(v-if="step === 1").column.items-center
@@ -42,7 +42,7 @@
           ).color-palette__item.q-mr-sm.animate-pop
     div(v-if="step === 4").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Qual tema mais te agrada?
-      div.flex.q-mt-md
+      div.flex.q-mt-xl
         q-btn(
           v-for="(theme, index) of themes"
           :label="theme.label"

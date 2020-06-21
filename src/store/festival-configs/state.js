@@ -19,6 +19,7 @@ export default function () {
     theme: 'rock',
     location: 'Brasília',
     dark: true,
+    lineupDays: true,
     artists: topArtists,
     artistsNames: topArtistsNames,
     artistsNamesPerDay: Object.values(days)

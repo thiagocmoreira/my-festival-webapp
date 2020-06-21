@@ -1,16 +1,27 @@
 <template lang="pug">
   q-page(:class="background").lineup.column.no-wrap.relative
     q-scroll-area.scroll-area.flex-1
-      q-btn(
-        round
-        :icon="festivalDark ? 'mdi-lightbulb-on' : 'mdi-lightbulb'"
-        :color="festivalDark ? 'grey-4' : 'grey-8'"
-        :text-color="festivalDark ? 'grey-5' : 'grey-6'"
-        size="16px"
-        @click="setFestivalDark(!festivalDark)"
-        :title="festivalDark ? 'Mudar para modo claro' : 'Mudar para o modo escuro'"
-        unelevated
-      ).light-button.absolute.q-mx-lg.q-my-md
+      div.buttons.fixed.column.q-mx-lg.q-my-md
+        q-btn(
+          round
+          :icon="festivalDark ? 'mdi-lightbulb-on' : 'mdi-lightbulb'"
+          :color="festivalDark ? 'grey-4' : 'grey-8'"
+          :text-color="festivalDark ? 'grey-5' : 'grey-6'"
+          size="16px"
+          @click="setFestivalDark(!festivalDark)"
+          :title="festivalDark ? 'Mudar para o modo escuro' : 'Mudar para modo claro'"
+          unelevated
+        ).q-mb-sm
+        q-btn(
+          round
+          :icon="festivalLineupDays ? 'mdi-format-list-bulleted' : 'mdi-format-list-text'"
+          :color="festivalDark ? 'grey-4' : 'grey-8'"
+          :text-color="festivalDark ? 'grey-5' : 'grey-6'"
+          size="16px"
+          @click="setFestivalLineupDays(!festivalLineupDays)"
+          :title="festivalLineupDays ? 'Mudar para lineup completa' : 'Mudar para lineup dividida em 3 dias'"
+          unelevated
+        )
       div.column.items-center.justify-between.q-pa-xl
         div(ref="lineup").lineup-container.column
           component(:is="componentName")
@@ -50,7 +61,8 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalName',
       'festivalTheme',
-      'festivalDark'
+      'festivalDark',
+      'festivalLineupDays'
     ]),
     componentName () {
       return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
@@ -62,7 +74,8 @@ export default {
   },
   methods: {
     ...mapActions('festivalConfigs', [
-      'setFestivalDark'
+      'setFestivalDark',
+      'setFestivalLineupDays'
     ]),
     capitalize (s) {
       return typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : ''
@@ -98,6 +111,7 @@ export default {
 .lineup-container
   overflow: hidden
 
-.light-button
+.buttons
   right: 0
+  top: 0
 </style>

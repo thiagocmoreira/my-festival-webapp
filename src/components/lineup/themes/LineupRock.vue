@@ -12,23 +12,30 @@
     )
       template(#top)
         lightning.lightning.q-mb-xs
-    div.column
+    div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        artists-classes="rock__artists"
+        artists-classes="rock__artists--day"
         :dark="festivalDark"
         reverse
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="rock__artists"
+        artists-classes="rock__artists--day"
         :dark="festivalDark"
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['rock__artists', 'last']"
+        :artists-classes="['rock__artists--day', 'last']"
         :dark="festivalDark"
         reverse
+      )
+      fire-stripe.fire-stripe--bottom
+    div(v-else).column
+      lineup-artists-list(
+        headliners-classes="rock__headliners"
+        artists-classes="rock__artists"
+        :dark="festivalDark"
       )
       fire-stripe.fire-stripe--bottom
 </template>
@@ -42,6 +49,7 @@ export default {
     Guitar: () => import('../../svgs/rock/Guitar'),
     Lightning: () => import('../../svgs/rock/Lightning'),
     LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupArtistsList: () => import('../common/LineupArtistsList'),
     LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
     FireStripe: () => import('../../svgs/rock/FireStripe')
   },
@@ -49,6 +57,7 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
       'festivalDark',
+      'festivalLineupDays',
       'festivalArtistsNamesPerDay'
     ])
     // flamesColor () {
@@ -56,10 +65,14 @@ export default {
     // }
   },
   methods: {
-    ...mapActions('festivalConfigs', ['setFestivalDark'])
+    ...mapActions('festivalConfigs', [
+      'setFestivalDark',
+      'setFestivalLineupDays'
+    ])
   },
   mounted () {
     this.setFestivalDark(true)
+    this.setFestivalLineupDays(true)
   }
 }
 </script>
@@ -71,11 +84,17 @@ export default {
   &__name
     padding: 80px 20px 90px 20px
 
-  &__artists
-    padding: 0 70px 60px 90px
+  &__headliners
+    padding: 0 45px
+
+  &__artists--day
+    padding: 0 65px 60px 90px
 
     &.last
-      padding: 0 70px 140px 90px
+      padding-bottom: 140px
+
+  &__artists
+    padding: 0 100px 160px 100px
 
 .lightning
   width: 100px

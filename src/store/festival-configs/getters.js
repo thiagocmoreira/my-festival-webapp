@@ -18,6 +18,10 @@ export function festivalDark (state) {
   return state.dark
 }
 
+export function festivalLineupDays (state) {
+  return state.lineupDays
+}
+
 export function festivalArtists (state) {
   return state.artists
 }

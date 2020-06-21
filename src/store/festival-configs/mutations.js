@@ -17,3 +17,7 @@ export function setFestivalLocation (state, location) {
 export function setFestivalDark (state, dark) {
   state.dark = dark
 }
+
+export function setFestivalLineupDays (state, lineupDays) {
+  state.lineupDays = lineupDays
+}

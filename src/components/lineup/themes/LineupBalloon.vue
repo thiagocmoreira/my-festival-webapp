@@ -7,14 +7,29 @@
       :dark="!festivalDark"
     )
       cloud-full(color="#52a7e2" :dark="festivalDark")
-    div.column
+      balloon(:colors="festivalColorPalette").balloon-svg
+    div(v-if="festivalLineupDays").column
+      lineup-day-artists-list(
+        :day-artists="festivalArtistsNamesPerDay[0]"
+        :artists-classes="['balloon__artists--day', 'first']"
+        :dark="festivalDark"
+      )
+      lineup-day-artists-list(
+        :day-artists="festivalArtistsNamesPerDay[1]"
+        artists-classes="balloon__artists--day"
+        :dark="festivalDark"
+      )
+      lineup-day-artists-list(
+        :day-artists="festivalArtistsNamesPerDay[2]"
+        :artists-classes="['balloon__artists--day', 'last']"
+        :dark="festivalDark"
+      )
+    div(v-else).column
       lineup-artists-list(
         headliners-classes="balloon__headliners"
         artists-classes="balloon__artists"
         :dark="festivalDark"
       )
-    div.balloon-svg
-      balloon(:colors="festivalColorPalette")
 </template>
 
 <script>
@@ -25,20 +40,27 @@ export default {
   components: {
     CloudFull: () => import('../../svgs/balloon/CloudFull'),
     LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
     LineupArtistsList: () => import('../common/LineupArtistsList'),
     Balloon: () => import('../../svgs/balloon/Balloon')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
-      'festivalDark'
+      'festivalLineupDays',
+      'festivalDark',
+      'festivalArtistsNamesPerDay'
     ])
   },
   methods: {
-    ...mapActions('festivalConfigs', ['setFestivalDark'])
+    ...mapActions('festivalConfigs', [
+      'setFestivalDark',
+      'setFestivalLineupDays'
+    ])
   },
   mounted () {
     this.setFestivalDark(false)
+    this.setFestivalLineupDays(false)
   }
 }
 </script>
@@ -52,6 +74,15 @@ export default {
 
   &__headliners
     padding: 0 25px
+
+  &__artists--day
+    padding: 0 65px 50px 90px
+
+    &.first
+      padding-top: 30px
+
+    &.last
+      padding-bottom: 140px
 
   &__artists
     padding: 0 100px 100px 100px

@@ -9,7 +9,7 @@
       :dark="!festivalDark"
       black-and-white
     )
-    div.column
+    div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
         artists-classes="africa__artists--reverse"
@@ -37,8 +37,17 @@
         :colors="festivalColorPalette"
         :dark="festivalDark"
       ).african-stripe--bottom
-    //- div.spear-svg
-    //-   spear(:color="spearColor")
+    div(v-else).column
+      lineup-artists-list(
+        headliners-classes="africa__headliners"
+        artists-classes="africa__artists--list"
+        :dark="festivalDark"
+      )
+      african-stripe(
+        :colors="festivalColorPalette"
+        :dark="festivalDark"
+      ).african-stripe--bottom
+      spear(:color="spearColor").spear-svg
 </template>
 
 <script>
@@ -50,27 +59,33 @@ export default {
     AfricanStripe: () => import('../../svgs/africa/AfricanStripe'),
     LineupFestivalName: () => import('../common/LineupFestivalName'),
     LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
+    LineupArtistsList: () => import('../common/LineupArtistsList'),
     Vase: () => import('../../svgs/africa/Vase'),
     VaseRound: () => import('../../svgs/africa/VaseRound'),
-    AfricanSymbol: () => import('../../svgs/africa/AfricanSymbol')
-    // Spear: () => import('../../svgs/africa/Spear')
+    AfricanSymbol: () => import('../../svgs/africa/AfricanSymbol'),
     // Elephant: () => import('../../svgs/africa/Elephant'),
+    Spear: () => import('../../svgs/africa/Spear')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
       'festivalDark',
-      'festivalArtistsNamesPerDay'
-    ])
-    // spearColor () {
-    //   return this.festivalDark ? '#333' : '#ececec'
-    // }
+      'festivalArtistsNamesPerDay',
+      'festivalLineupDays'
+    ]),
+    spearColor () {
+      return this.festivalDark ? '#333' : '#ececec'
+    }
   },
   methods: {
-    ...mapActions('festivalConfigs', ['setFestivalDark'])
+    ...mapActions('festivalConfigs', [
+      'setFestivalDark',
+      'setFestivalLineupDays'
+    ])
   },
   mounted () {
     this.setFestivalDark(true)
+    this.setFestivalLineupDays(true)
   }
 }
 </script>
@@ -82,14 +97,20 @@ export default {
   &__name
     padding: 130px 20px 80px 20px
 
+  &__headliners
+    padding: 0 45px
+
   &__artists
-    padding: 0 70px 60px 50px
+    padding: 0 65px 60px 50px
 
     &--reverse
       padding: 0 50px 60px 70px
 
       &.last
-        padding: 0 60px 140px 60px
+        padding-bottom: 140px
+
+    &--list
+      padding: 0 100px 150px 100px
 
 .african-stripe
   margin-top: -2px
@@ -101,11 +122,11 @@ export default {
   position: absolute
   bottom: 0
 
-// .spear-svg
-//   width: 65px
-//   position: absolute
-//   bottom: 0
-//   right: 0
-//   margin-bottom: 75px
-//   margin-right: 15px
+.spear-svg
+  width: 75px
+  position: absolute
+  bottom: 0
+  right: 0
+  margin-bottom: 75px
+  margin-right: 20px
 </style>

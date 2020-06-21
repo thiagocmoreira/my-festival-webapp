@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:style="styles" :class="[artistsClasses, { 'reverse': reverse }]").artists.row.items-center
+  div(:style="styles" :class="[artistsClasses, { 'reverse': reverse }]").artists.row.items-center.animate-fade
     div(v-if="hasImage" :class="imageClass").image
       slot
     //- div(:class="{ 'justify-end': !reverse }").flex.flex-1.text-prater
