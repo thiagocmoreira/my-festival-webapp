@@ -110,6 +110,7 @@ export default {
 
 .lineup-container
   overflow: hidden
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24)
 
 .buttons
   right: 0

@@ -6,7 +6,7 @@
     q-scroll-area.scroll-area
       div.column.text-white.text-white
 
-        div.q-pt-md.q-px-lg.q-pb-lg
+        div.q-pt-lg.q-px-lg.q-pb-lg
           div.label.text-prater.text-bold.text-center Nome do festival
           input(
             v-model="myName"
@@ -45,7 +45,7 @@
             div.color-palettes__container
               div(
                 :class="{ 'selected': arrayIsEqual(colorPalette, myColorPalette) }"
-                v-for="colorPalette of festivalColorPaletteChunks[colorPalettePosition]"
+                v-for="colorPalette of colorPalettesChunks[colorPalettePosition]"
                 @click="myColorPalette = colorPalette"
               ).color-palette.flex.bg-grey-9.cursor-pointer.no-wrap
                 div(
@@ -58,8 +58,8 @@
                 unelevated
                 size="9px"
                 title="Ver mais cores"
-                :class="{ 'opacity-0': colorPalettePosition === festivalColorPaletteChunks.length - 1 }"
-                :disabled="colorPalettePosition === festivalColorPaletteChunks.length - 1"
+                :class="{ 'opacity-0': colorPalettePosition === colorPalettesChunks.length - 1 }"
+                :disabled="colorPalettePosition === colorPalettesChunks.length - 1"
                 @click="colorPalettePosition = colorPalettePosition + 1"
               )
                 q-icon(
@@ -68,19 +68,25 @@
                   color="white"
                 )
 
-        div.q-px-md.q-pb-lg
+        div.q-px-lg.q-pb-lg
           div.label.text-prater.text-bold.text-center Tema
-          div.color-palettes__themes.q-mt-sm
-            q-btn(
-              v-for="(theme, index) of themes"
-              :label="theme.label"
-              :key="index.value"
-              no-caps
-              :color="myTheme === theme.value ? 'grey-1' : 'grey-9'"
-              :text-color="myTheme === theme.value ? 'grey-9' : 'grey-1'"
-              unelevated
-              @click="myTheme = theme.value"
-            ).animate-pop
+          div.flex.flex-center.q-mt-sm
+            div.themes__container
+              div(v-for="(theme, index) of themes").flex.flex-center
+                q-btn(
+                  no-caps
+                  :color="myTheme === theme.value ? 'grey-1' : 'grey-9'"
+                  unelevated
+                  round
+                  :title="theme.label"
+                  @click="myTheme = theme.value"
+                ).animate-pop
+                  q-icon(
+                    :name="theme.icon"
+                    size="26px"
+                    color="white"
+                    :color="myTheme === theme.value ? 'grey-9' : 'grey-1'"
+                  )
 </template>
 
 <script>
@@ -115,7 +121,7 @@ export default {
       'colorPalettes',
       'themes'
     ]),
-    festivalColorPaletteChunks () {
+    colorPalettesChunks () {
       return _chunk(this.modifiedColorPalettes, 6)
     }
   },
@@ -220,9 +226,9 @@ export default {
   &:last-of-type
     margin: 0
 
-.color-palettes__themes
+.themes__container
   display: grid
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: repeat(4, 43px)
   grid-column-gap: 10px
   grid-row-gap: 10px
 </style>

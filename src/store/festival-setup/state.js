@@ -21,11 +21,11 @@ export default function () {
       ['#749C75', '#E9D985', '#6A5D7B']
     ],
     themes: [
-      { label: 'Sem tema', value: 'none' },
-      { label: 'Montanhas', value: 'mountain' },
-      { label: 'Balão', value: 'balloon' },
-      { label: 'África', value: 'africa' },
-      { label: 'Fogo', value: 'fire' }
+      { label: 'Sem tema', value: 'none', icon: 'mdi-close-thick' },
+      { label: 'Montanhas', value: 'mountain', icon: 'mdi-image-filter-hdr' },
+      { label: 'Balão', value: 'balloon', icon: 'mdi-airballoon' },
+      { label: 'África', value: 'africa', icon: 'mdi-elephant' },
+      { label: 'Fogo', value: 'fire', icon: 'mdi-fire' }
       // 'Galáxia',
       // 'Céu',
       // 'Flores',
