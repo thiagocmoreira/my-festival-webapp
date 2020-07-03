@@ -1,5 +1,5 @@
 <template>
-  <div class="buttons column animate-pop no-wrap">
+  <a class="buttons column animate-pop no-wrap">
     <button :class="{ 'dark': dark }" class="blob-btn">
       {{ label }}
       <slot name="content" />
@@ -23,7 +23,7 @@
         </filter>
       </defs>
     </svg>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -44,6 +44,7 @@ export default {
   text-align: center;
   border-radius: 15px;
   height: 54px;
+  text-decoration: none;
 }
 
 $color: rgb(36, 36, 36);

@@ -69,6 +69,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -146,6 +147,14 @@ export default {
       }
     }
   }
+  // async mounted () {
+  //   try {
+  //     let response = await axios.get('http://localhost:3000/api/top-artists')
+  //     this.artists = response
+  //   } catch (e) {
+  //     console.error(e)
+  //   }
+  // }
 }
 </script>
 

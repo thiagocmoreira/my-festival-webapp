@@ -15,8 +15,8 @@ for (let chunk of _chunk(topArtistsNames, 3)) {
 export default function () {
   return {
     name: 'Meu festival',
-    colorPalette: ['#AA767C', '#FFA686', '#FEC196'],
-    theme: 'fire',
+    colorPalette: ['#6886C5', '#FFACB7', '#FFE0AC'],
+    theme: 'mountain',
     location: 'Brasília',
     dark: true,
     lineupDays: true,

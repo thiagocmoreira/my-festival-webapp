@@ -5,9 +5,7 @@
     div.column.flex-1.flex-center.text-prater.flex-1
       h1.title.text-lolapeluza.text-bold.text-uppercase.text-white.text-grey-10
         | My festival
-      bubble-button(
-        @click.native="login"
-      ).q-mt-xl
+      bubble-button(href="http://localhost:3000/login").q-mt-xl
         template(#content)
           div.flex.items-center
             q-icon(name="mdi-spotify" size="28px").q-mr-sm
