@@ -47,6 +47,7 @@ import LineupSaxophone from '../components/lineup/themes/LineupSaxophone'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
+import artists from '../statics/top_artists.json'
 
 export default {
   name: 'Lineup',
@@ -64,7 +65,8 @@ export default {
       'festivalName',
       'festivalTheme',
       'festivalDark',
-      'festivalLineupDays'
+      'festivalLineupDays',
+      'festivalArtists'
     ]),
     componentName () {
       return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
@@ -77,7 +79,8 @@ export default {
   methods: {
     ...mapActions('festivalConfigs', [
       'setFestivalDark',
-      'setFestivalLineupDays'
+      'setFestivalLineupDays',
+      'setTopArtists'
     ]),
     capitalize (s) {
       return typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : ''
@@ -96,6 +99,11 @@ export default {
           progress: true
         })
       }
+    }
+  },
+  mounted () {
+    if (!this.festivalArtists.length) {
+      this.setTopArtists(artists.items)
     }
   }
 }
