@@ -21,3 +21,9 @@ export function setFestivalDark (state, dark) {
 export function setFestivalLineupDays (state, lineupDays) {
   state.lineupDays = lineupDays
 }
+
+export function setTopArtists (state, data) {
+  for (let key of Object.keys(data)) {
+    state[key] = data[key]
+  }
+}
