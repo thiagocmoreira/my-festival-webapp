@@ -1,64 +1,57 @@
 <template lang="pug">
-  div.fire.lineup__container.column.animate-fade.relative
-    //- guitar(
-    //-   :colors="festivalColorPalette"
-    //-   :dark="festivalDark"
-    //- ).guitar.q-ma-lg
-    fire-stripe(
-      rotated
-      size="0"
-    ).fire-stripe
+  div.saxophone.lineup__container.column.animate-fade.relative
     lineup-festival-name(
-      classes="fire__name"
+      classes="saxophone__name"
       :dark="!festivalDark"
       title-position="center center"
       black-and-white
     )
-      template(#top)
-        lightning(:color="lightningColor").lightning.q-mb-xs
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        artists-classes="fire__artists--day"
+        artists-classes="saxophone__artists--day"
         :dark="festivalDark"
         align="center"
         reverse
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="fire__artists--day"
+        artists-classes="saxophone__artists--day"
         :dark="festivalDark"
         align="center"
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['fire__artists--day', 'last']"
+        artists-classes="saxophone__artists--day"
         :dark="festivalDark"
         align="center"
         reverse
       )
     div(v-else).column
       lineup-artists-list(
-        headliners-classes="fire__headliners"
-        artists-classes="fire__artists"
+        headliners-classes="saxophone__headliners"
+        artists-classes="saxophone__artists"
         :dark="festivalDark"
         align="center"
       )
-    fire-stripe.fire-stripe--bottom
+    saxophone-tint(
+      :style="saxBackgroundColor"
+      :colors="festivalColorPalette"
+      :dark="festivalDark"
+    )
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'LineupFire',
+  name: 'LineupSaxophone',
   components: {
-    Guitar: () => import('../../svgs/fire/Guitar'),
     Lightning: () => import('../../svgs/fire/Lightning'),
     LineupFestivalName: () => import('../common/LineupFestivalName'),
     LineupArtistsList: () => import('../common/LineupArtistsList'),
     LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    FireStripe: () => import('../../svgs/fire/FireStripe')
+    SaxophoneTint: () => import('../../svgs/saxophone/SaxophoneTint')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -67,8 +60,8 @@ export default {
       'festivalLineupDays',
       'festivalArtistsNamesPerDay'
     ]),
-    lightningColor () {
-      return this.festivalDark ? this.festivalColorPalette[2] : this.festivalColorPalette[1]
+    saxBackgroundColor () {
+      return { background: this.festivalColorPalette[0] }
     }
   },
   methods: {
@@ -78,14 +71,14 @@ export default {
     ])
   },
   mounted () {
-    this.setFestivalDark(true)
+    this.setFestivalDark(false)
     this.setFestivalLineupDays(true)
   }
 }
 </script>
 
 <style lang="sass">
-.fire
+.saxophone
   position: relative
 
   &__name
@@ -97,27 +90,6 @@ export default {
   &__artists--day
     padding: 0 90px 60px 90px
 
-    &.last
-      padding-bottom: 160px
-
   &__artists
-    padding: 0 100px 160px 100px
-
-.lightning
-  width: 100px
-  margin-left: -30px
-
-.fire-stripe
-  position: absolute
-  top: 0
-
-.fire-stripe--bottom
-  position: absolute
-  bottom: 0
-
-.guitar
-  width: 190px
-  position: absolute
-  top: 0
-  right: 0
+    padding: 0 100px 80px 100px
 </style>

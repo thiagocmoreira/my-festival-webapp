@@ -25,7 +25,8 @@ export default function () {
       { label: 'Montanhas', value: 'mountain', icon: 'mdi-image-filter-hdr' },
       { label: 'Balão', value: 'balloon', icon: 'mdi-airballoon' },
       { label: 'África', value: 'africa', icon: 'mdi-elephant' },
-      { label: 'Fogo', value: 'fire', icon: 'mdi-fire' }
+      { label: 'Fogo', value: 'fire', icon: 'mdi-fire' },
+      { label: 'Sax', value: 'saxophone', icon: 'mdi-saxophone' }
       // 'Galáxia',
       // 'Céu',
       // 'Flores',

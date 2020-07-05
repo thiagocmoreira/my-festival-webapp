@@ -43,6 +43,7 @@ import LineupMountain from '../components/lineup/themes/LineupMountain'
 import LineupBalloon from '../components/lineup/themes/LineupBalloon'
 import LineupAfrica from '../components/lineup/themes/LineupAfrica'
 import LineupFire from '../components/lineup/themes/LineupFire'
+import LineupSaxophone from '../components/lineup/themes/LineupSaxophone'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
@@ -55,7 +56,8 @@ export default {
     LineupMountain,
     LineupBalloon,
     LineupAfrica,
-    LineupFire
+    LineupFire,
+    LineupSaxophone
   },
   computed: {
     ...mapGetters('festivalConfigs', [
