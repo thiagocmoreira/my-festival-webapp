@@ -12,7 +12,6 @@
         artists-classes="saxophone__artists--day"
         :dark="festivalDark"
         align="center"
-        reverse
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
@@ -22,10 +21,9 @@
       )
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        artists-classes="saxophone__artists--day"
+        :artists-classes="['saxophone__artists--day', 'last']"
         :dark="festivalDark"
         align="center"
-        reverse
       )
     div(v-else).column
       lineup-artists-list(
@@ -38,7 +36,7 @@
       :style="saxBackgroundColor"
       :colors="festivalColorPalette"
       :dark="festivalDark"
-    )
+    ).saxophone-tint
 </template>
 
 <script>
@@ -80,9 +78,10 @@ export default {
 <style lang="sass">
 .saxophone
   position: relative
+  padding-bottom: 320px
 
   &__name
-    padding: 110px 20px 80px 20px
+    padding: 90px 20px 80px 20px
 
   &__headliners
     padding: 0 45px
@@ -90,6 +89,13 @@ export default {
   &__artists--day
     padding: 0 90px 60px 90px
 
+    &.last
+      padding-bottom: 90px
+
   &__artists
-    padding: 0 100px 80px 100px
+    padding: 0 100px 70px 100px
+
+.saxophone-tint
+  position: absolute
+  bottom: 0
 </style>
