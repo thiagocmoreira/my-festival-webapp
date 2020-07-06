@@ -22,9 +22,12 @@
           :title="festivalLineupDays ? 'Mudar para lineup completa' : 'Mudar para lineup dividida em 3 dias'"
           unelevated
         )
-      div.column.items-center.justify-between.q-pa-xl
-        div(ref="lineup").lineup-container.column
-          component(:is="componentName")
+      div.column.items-center.justify-between.lineup-container
+        div.position-relative.column.items-center
+          div(ref="lineup").lineup-content.column
+            component(:is="componentName")
+          img(src="~assets/img/tape.png").tape.tape--top-left
+          img(src="~assets/img/tape.png").tape.tape--bottom-right
         div.q-mt-xl
           bubble-button(
             :dark="festivalDark"
@@ -113,16 +116,37 @@ export default {
 .lineup
   max-height: 100vh
   transition: background 0.15s ease
+  // background-image: url("~assets/img/old-wall.png") !important
   // overflow-y: scroll
 
 .scroll-area
   height: 100vh
 
 .lineup-container
+  padding: 70px 48px
+
+.lineup-content
   overflow: hidden
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24)
+
+.tape
+  max-width: 50px
+  position: absolute
+  opacity: 0.9
+  transform: rotate(45deg)
+
+  &--top-left
+    top: -65px
+    left: 0px
+
+  &--bottom-right
+    bottom: -65px
+    right: 0
 
 .buttons
   right: 0
   top: 0
+
+.position-relative
+  position: relative
 </style>
