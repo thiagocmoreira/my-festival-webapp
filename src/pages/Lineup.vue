@@ -11,7 +11,7 @@
           @click="setFestivalDark(!festivalDark)"
           :title="festivalDark ? 'Mudar para o modo escuro' : 'Mudar para modo claro'"
           unelevated
-        ).action-btn.q-mb-sm
+        ).q-mb-sm
         q-btn(
           round
           :icon="festivalLineupDays ? 'mdi-format-list-bulleted' : 'mdi-format-list-text'"
@@ -21,7 +21,7 @@
           @click="setFestivalLineupDays(!festivalLineupDays)"
           :title="festivalLineupDays ? 'Mudar para lineup completa' : 'Mudar para lineup dividida em 3 dias'"
           unelevated
-        ).action-btn
+        )
       div.column.items-center.justify-between.lineup-container
         div.position-relative.column.items-center
           div(ref="lineup").lineup-content.column
@@ -146,7 +146,5 @@ export default {
 .buttons
   right: 0
   top: 0
-
-.action-btn
-  z-index 100
+  z-index: 2000
 </style>

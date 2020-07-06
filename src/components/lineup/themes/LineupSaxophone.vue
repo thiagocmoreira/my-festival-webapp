@@ -6,7 +6,7 @@
       title-position="center center"
       black-and-white
     )
-    div(v-if="festivalLineupDays").column
+    div(v-if="festivalLineupDays").column.relative
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
         artists-classes="saxophone__artists--day"
@@ -36,7 +36,10 @@
       :style="saxBackgroundColor"
       :colors="festivalColorPalette"
       :dark="festivalDark"
-    ).saxophone-tint
+    ).saxophone-tint-svg
+    curve(:color="festivalColorPalette[0]").curve-svg--top
+    curve(:color="festivalColorPalette[0]").curve-svg
+    curve(:color="festivalColorPalette[0]").curve-svg--right
 </template>
 
 <script>
@@ -49,7 +52,8 @@ export default {
     LineupFestivalName: () => import('../common/LineupFestivalName'),
     LineupArtistsList: () => import('../common/LineupArtistsList'),
     LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    SaxophoneTint: () => import('../../svgs/saxophone/SaxophoneTint')
+    SaxophoneTint: () => import('../../svgs/saxophone/SaxophoneTint'),
+    Curve: () => import('../../svgs/saxophone/Curve')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -95,7 +99,26 @@ export default {
   &__artists
     padding: 0 100px 70px 100px
 
-.saxophone-tint
+.saxophone-tint-svg
   position: absolute
   bottom: 0
+
+.curve-svg
+  width: 40px
+  position: absolute
+  top: 33%
+  left: 0
+
+  &--top
+    width: 40px
+    position: absolute
+    top: -120px
+    left: 0
+
+  &--right
+    width: 40px
+    position: absolute
+    top: 7%
+    right: 0
+    transform: scaleX(-1)
 </style>
