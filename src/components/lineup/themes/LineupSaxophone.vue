@@ -9,22 +9,19 @@
     div(v-if="festivalLineupDays").column.relative
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        artists-classes="saxophone__artists--day"
         :dark="festivalDark"
         align="center"
-      )
+      ).saxophone__artists--day
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="saxophone__artists--day"
         :dark="festivalDark"
         align="center"
-      )
+      ).saxophone__artists--day
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['saxophone__artists--day', 'last']"
         :dark="festivalDark"
         align="center"
-      )
+      ).saxophone__artists--day.last
     div(v-else).column
       lineup-artists-list(
         headliners-classes="saxophone__headliners"

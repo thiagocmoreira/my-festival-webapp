@@ -27,6 +27,8 @@
           div(ref="lineup").lineup-content.column
             component(:is="componentName")
           img(src="~assets/img/tape.png").tape.tape--top-left
+          img(src="~assets/img/tape.png").tape.tape--top-right
+          img(src="~assets/img/tape.png").tape.tape--bottom-left
           img(src="~assets/img/tape.png").tape.tape--bottom-right
         div.q-mt-xl
           bubble-button(
@@ -137,7 +139,17 @@ export default {
 
   &--top-left
     top: -65px
-    left: 0px
+    left: 0
+
+  &--top-right
+    top: -65px
+    right: 0
+    transform: rotate(315deg)
+
+  &--bottom-left
+    bottom: -65px
+    left: 0
+    transform: rotate(315deg)
 
   &--bottom-right
     bottom: -65px

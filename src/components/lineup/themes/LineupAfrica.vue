@@ -3,7 +3,7 @@
     african-stripe(
       :colors="festivalColorPalette"
       :dark="festivalDark"
-    ).african-stripe
+    ).african-stripe-svg
     lineup-festival-name(
       :classes="['africa__name']"
       :dark="!festivalDark"
@@ -12,31 +12,28 @@
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        artists-classes="africa__artists--reverse"
         :dark="festivalDark"
         has-image
         reverse
-      )
+      ).africa__artists--reverse.first
         vase-round(:color="festivalColorPalette[0]")
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="africa__artists"
         :dark="festivalDark"
         has-image
-      )
+      ).africa__artists
         african-symbol(:color="festivalColorPalette[2]")
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['africa__artists--reverse', 'last']"
         :dark="festivalDark"
         has-image
         reverse
-      )
+      ).africa__artists--reverse.last
         vase(:color="festivalColorPalette[1]")
       african-stripe(
         :colors="festivalColorPalette"
         :dark="festivalDark"
-      ).african-stripe--bottom
+      ).african-stripe-svg--bottom
     div(v-else).column
       lineup-artists-list(
         headliners-classes="africa__headliners"
@@ -46,7 +43,7 @@
       african-stripe(
         :colors="festivalColorPalette"
         :dark="festivalDark"
-      ).african-stripe--bottom
+      ).african-stripe-svg--bottom
       spear(:color="spearColor").spear-svg
 </template>
 
@@ -95,7 +92,7 @@ export default {
   position: relative
 
   &__name
-    padding: 130px 20px 80px 20px
+    padding: 130px 20px 60px 20px
 
   &__headliners
     padding: 0 45px
@@ -106,18 +103,21 @@ export default {
     &--reverse
       padding: 0 50px 60px 70px
 
+      &.first
+        padding-top: 20px
+
       &.last
-        padding-bottom: 140px
+        padding-bottom: 150px
 
     &--list
-      padding: 0 100px 150px 100px
+      padding: 0 100px 170px 100px
 
-.african-stripe
+.african-stripe-svg
   margin-top: -2px
   position: absolute
   top: 0
 
-.african-stripe--bottom
+.african-stripe-svg--bottom
   margin-bottom: -2px
   position: absolute
   bottom: 0

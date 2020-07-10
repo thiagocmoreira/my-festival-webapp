@@ -8,19 +8,16 @@
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        :artists-classes="['mountain__artists--day', 'first']"
         :dark="festivalDark"
-      )
+      ).mountain__artists--day.first
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="mountain__artists--day"
         :dark="festivalDark"
-      )
+      ).mountain__artists--day
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['mountain__artists--day', 'last']"
         :dark="festivalDark"
-      )
+      ).mountain__artists--day.last
     div(v-else).column
       lineup-artists-list(
         headliners-classes="mountain__headliners"
@@ -67,17 +64,17 @@ export default {
     padding: 70px 48px 30px 48px
 
   &__headliners
-    padding: 0 25px
+    padding: 30px 25px 0 25px
 
   &__artists--day
-    padding: 0 65px 50px 90px
+    padding: 0 65px 40px 90px
 
     &.first
-      padding-top: 30px
+      padding-top: 40px
 
     &.last
       padding-bottom: 140px
 
   &__artists
-    padding: 0 100px 100px 100px
+    padding: 0 100px 140px 100px
 </style>

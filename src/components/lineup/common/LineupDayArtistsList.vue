@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:style="styles" :class="[artistsClasses, { 'reverse': reverse }]").artists.row.items-center.animate-fade
+  div(:style="styles" :class="{ 'reverse': reverse }").artists.row.items-center.animate-fade
     div(v-if="hasImage" :class="imageClass").image
       slot
     div(:class="alignText").flex.flex-1.text-prater
@@ -116,7 +116,7 @@ export default {
   white-space: nowrap
 
 .image
-  width: 110px
+  width: 120px
 
 .q-mb-12
   margin-bottom: 12px

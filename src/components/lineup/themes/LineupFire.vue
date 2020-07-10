@@ -19,24 +19,19 @@
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        artists-classes="fire__artists--day"
         :dark="festivalDark"
         align="center"
-        reverse
-      )
+      ).fire__artists--day.first
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="fire__artists--day"
         :dark="festivalDark"
         align="center"
-      )
+      ).fire__artists--day
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['fire__artists--day', 'last']"
         :dark="festivalDark"
         align="center"
-        reverse
-      )
+      ).fire__artists--day.last
     div(v-else).column
       lineup-artists-list(
         headliners-classes="fire__headliners"
@@ -89,13 +84,16 @@ export default {
   position: relative
 
   &__name
-    padding: 110px 20px 80px 20px
+    padding: 110px 20px 60px 20px
 
   &__headliners
     padding: 0 45px
 
   &__artists--day
-    padding: 0 90px 60px 90px
+    padding: 0 90px 50px 90px
+
+    &.first
+      padding-top: 10px
 
     &.last
       padding-bottom: 160px

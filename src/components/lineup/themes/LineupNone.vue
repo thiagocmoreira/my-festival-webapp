@@ -1,22 +1,19 @@
 <template lang="pug">
   div.lineup__container.column.items-center.animate-fade
-    lineup-festival-name
+    lineup-festival-name.lineup-none__name
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        :artists-classes="['lineup-none__artists--day', 'first']"
         :dark="festivalDark"
-      )
+      ).lineup-none__artists--day.first
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="lineup-none__artists--day"
         :dark="festivalDark"
-      )
+      ).lineup-none__artists--day
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['lineup-none__artists--day', 'last']"
         :dark="festivalDark"
-      )
+      ).lineup-none__artists--day.last
     div(v-else).column
       lineup-artists-list(
         :colors="colors"
@@ -60,6 +57,9 @@ export default {
 
 <style lang="sass">
 .lineup-none
+  &__name
+    max-width: none
+
   &__artists--day
     padding: 0 65px 40px 90px
 

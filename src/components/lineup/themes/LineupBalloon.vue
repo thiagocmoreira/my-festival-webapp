@@ -11,19 +11,16 @@
     div(v-if="festivalLineupDays").column
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[0]"
-        :artists-classes="['balloon__artists--day', 'first']"
         :dark="festivalDark"
-      )
+      ).balloon__artists--day.first
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[1]"
-        artists-classes="balloon__artists--day"
         :dark="festivalDark"
-      )
+      ).balloon__artists--day
       lineup-day-artists-list(
         :day-artists="festivalArtistsNamesPerDay[2]"
-        :artists-classes="['balloon__artists--day', 'last']"
         :dark="festivalDark"
-      )
+      ).balloon__artists--day.last
     div(v-else).column
       lineup-artists-list(
         headliners-classes="balloon__headliners"
@@ -73,7 +70,7 @@ export default {
     padding-top: 70px
 
   &__headliners
-    padding: 0 25px
+    padding: 20px 25px 0 25px
 
   &__artists--day
     padding: 0 65px 50px 90px
@@ -85,7 +82,7 @@ export default {
       padding-bottom: 140px
 
   &__artists
-    padding: 0 100px 100px 100px
+    padding: 0 100px 120px 100px
 </style>
 
 <style lang="sass" scoped>

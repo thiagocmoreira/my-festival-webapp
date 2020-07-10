@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:style="bgColor" :class="alignClassDiv").column.full-width
-    div(:class="[classes, alignClassName]").container.text-lolapeluza.text-bold.column.flex
+    div(:class="[classes, alignClassName]" :style="containerWidth").text-lolapeluza.text-bold.column.flex
       div.column
         slot(name="top")
         div.name {{ festivalName }}
@@ -59,6 +59,13 @@ export default {
     alignClassName () {
       let position = this.titlePosition.split(' ')[1]
       return this.getAlignClassName(position)
+    },
+    containerWidth () {
+      return {
+        width: this.titlePosition === 'center center'
+          ? '750px'
+          : '595px'
+      }
     }
   },
   methods: {
@@ -78,9 +85,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.container
-  width: 595px
-
 .name
   font-size: 70px
   line-height: 60px
