@@ -2,14 +2,15 @@ export default function () {
   return {
     colorPalettes: [
       ['#6886C5', '#FFACB7', '#FFE0AC'],
-      ['#99b898', '#ff847c', '#e84a5f'],
+      ['#99B898', '#FF847C', '#E84A5F'],
       ['#A6DCEF', '#F2AAAA', '#E36387'],
       ['#654062', '#FF9C71', '#FBD46D'],
       ['#71596C', '#AF8BAF', '#F6ACC8'],
       ['#C1F7DC', '#BDA0BC', '#A2708A'],
       ['#649d66', '#f6d743', '#f6f578'],
-      ['#FF673E', '#FF9B50', '#FFCC4D'],
+      ['#005D99', '#EB6A47', '#EF8C95'],
       ['#847E89', '#C2D3CD', '#56494C'],
+      ['#FF673E', '#FF9B50', '#FFCC4D'],
       ['#6C1EA5', '#F0D64B', '#347EBD'],
       ['#383E56', '#D4B5B0', '#F69E7B'],
       ['#FAF0AF', '#F1C5C5', '#8BCDCD'],
@@ -26,7 +27,8 @@ export default function () {
       { label: 'Balão', value: 'balloon', icon: 'mdi-airballoon' },
       { label: 'África', value: 'africa', icon: 'mdi-elephant' },
       { label: 'Fogo', value: 'fire', icon: 'mdi-fire' },
-      { label: 'Sax', value: 'saxophone', icon: 'mdi-saxophone' }
+      { label: 'Sax', value: 'saxophone', icon: 'mdi-saxophone' },
+      { label: 'Folhas', value: 'leaf', icon: 'mdi-leaf' }
       // 'Galáxia',
       // 'Céu',
       // 'Flores',

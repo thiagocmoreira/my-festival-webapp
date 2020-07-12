@@ -1,8 +1,12 @@
 <template lang="pug">
   q-drawer(show-if-above v-model="left")
     div.change-configs.column.text-white.absolute-top.bg-grey-10
-      h1.title.text-prater.text-bold.text-uppercase.q-pa-xl.text-center
-        | My festival
+      h1.title.text-prater.text-bold.text-uppercase.q-pa-xl.text-center.flex.flex-center
+        q-icon(
+          name="mdi-music-circle"
+          size="30px"
+        ).q-mr-sm
+        span My festival
     q-scroll-area.scroll-area
       div.column.text-white.text-white
 
