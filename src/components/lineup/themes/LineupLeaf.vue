@@ -98,7 +98,7 @@ export default {
   position: relative
 
   &__name
-    padding: 120px 20px 70px 20px
+    padding: 125px 20px 70px 20px
 
   &__headliners
     padding: 0 45px
@@ -107,10 +107,10 @@ export default {
     padding: 0 120px 60px 120px
 
     &.second
-      padding: 0 140px 60px 140px
+      padding: 0 130px 60px 130px
 
     &.last
-      padding: 0 140px 170px 140px
+      padding: 0 130px 180px 130px
 
   &__artists
     padding: 0 130px 180px 130px
@@ -135,7 +135,7 @@ export default {
   &-svg--bottom-left
     position: absolute
     bottom: 15%
-    max-width: 120px
+    max-width: 125px
 
   &-svg--bottom-right
     position: absolute
