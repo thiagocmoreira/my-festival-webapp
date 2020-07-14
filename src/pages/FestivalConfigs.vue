@@ -8,6 +8,7 @@
       unelevated
       :disabled="step <= 1"
       :class="{ 'opacity-0': step <= 1 }"
+      text-color="grey-10"
       @click.native="step = step  - 1"
     )
     div(v-if="step === 1").column.items-center
@@ -30,28 +31,68 @@
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
     div(v-else-if="step === 3").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Escolha a paleta de cores ideal
-      div.color-palettes__container.q-mt-xl.color-palette
-        div(
-          :class="{ 'bg-grey-9': colorPalette === myColorPalette }"
-          v-for="colorPalette of colorPalettes"
-          @click="myColorPalette = colorPalette"
-        ).color-palette.flex.bg-white.q-pa-sm.cursor-pointer
+      div.flex.justify-center.no-wrap.q-mt-xl
+        div.flex.flex-center.q-mr-sm
+          q-btn(
+            round
+            unelevated
+            size="16px"
+            :class="{ 'opacity-0': colorPalettePosition === 0 }"
+            :disabled="colorPalettePosition === 0"
+            title="Ver cores anteriores"
+            text-color="grey-10"
+            @click="colorPalettePosition = colorPalettePosition - 1"
+          )
+            q-icon(
+              name="mdi-chevron-left"
+              size="24px"
+              color="white"
+            )
+        div.color-palettes__container.color-palette
           div(
-            v-for="color of colorPalette"
-            :style="{ 'background': color }"
-          ).color-palette__item.q-mr-sm.animate-pop
+            :class="{ 'bg-grey-9': colorPalette === myColorPalette }"
+            v-for="colorPalette of colorPalettesChunks[colorPalettePosition]"
+            @click="myColorPalette = colorPalette"
+          ).color-palette.flex.bg-white.q-pa-sm.cursor-pointer
+            div(
+              v-for="color of colorPalette"
+              :style="{ 'background': color }"
+            ).color-palette__item.q-mr-sm.animate-pop
+        div.flex.flex-center.q-ml-sm
+          q-btn(
+            round
+            unelevated
+            size="16px"
+            :class="{ 'opacity-0': colorPalettePosition === colorPalettesChunks.length - 1 }"
+            :disabled="colorPalettePosition === colorPalettesChunks.length - 1"
+            title="Ver mais cores"
+            text-color="grey-10"
+            @click="colorPalettePosition = colorPalettePosition + 1"
+          )
+            q-icon(
+              name="mdi-chevron-right"
+              size="24px"
+              color="white"
+            )
     div(v-if="step === 4").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Qual tema mais te agrada?
       div.flex.q-mt-xl
         q-btn(
           v-for="(theme, index) of themes"
-          :label="theme.label"
           :key="index.value"
           no-caps
           :color="myTheme === theme.value ? 'grey-9' : 'blue-5'"
           unelevated
+          round
+          :title="theme.label"
+          size="18px"
           @click="myTheme = theme.value"
-        ).q-mr-sm
+        ).theme-btn.animate-pop
+          q-icon(
+            :name="theme.icon"
+            size="30px"
+            color="white"
+          )
     q-btn(
       v-if="step < 4"
       round
@@ -59,6 +100,7 @@
       icon="mdi-chevron-down"
       title="Prosseguir"
       unelevated
+      text-color="grey-10"
       @click.native="step = step + 1"
     )
     bubble-button(
@@ -69,6 +111,7 @@
 </template>
 
 <script>
+import _chunk from 'lodash-es/chunk'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -83,7 +126,8 @@ export default {
       myName: '',
       myLocation: '',
       myColorPalette: [],
-      myTheme: []
+      myTheme: [],
+      colorPalettePosition: 0
     }
   },
   computed: {
@@ -103,6 +147,9 @@ export default {
         errors.push('Tema')
       }
       return errors
+    },
+    colorPalettesChunks () {
+      return _chunk(this.colorPalettes, 12)
     },
     valid () {
       return this.errors.length === 0
@@ -194,9 +241,10 @@ export default {
 
 .color-palettes__container
   display: grid
-  grid-template-columns: 1fr 1fr 1fr
-  grid-column-gap: 25px
-  grid-row-gap: 20px
+  grid-template-columns: repeat(4, 1fr)
+  grid-template-rows: repeat(3, 1fr)
+  grid-column-gap: 15px
+  grid-row-gap: 15px
 
 .color-palette
   border-radius: 50px
@@ -205,6 +253,12 @@ export default {
   width: 40px
   height: 40px
   border-radius: 30px
+
+  &:last-of-type
+    margin: 0
+
+.theme-btn
+  margin-right: 15px
 
   &:last-of-type
     margin: 0

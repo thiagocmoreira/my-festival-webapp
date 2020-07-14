@@ -14,7 +14,7 @@
         ).q-mb-sm
         q-btn(
           round
-          :icon="festivalLineupDays ? 'mdi-format-list-bulleted' : 'mdi-format-list-text'"
+          :icon="festivalLineupDays ? 'mdi-format-align-center' : 'mdi-format-list-text'"
           :color="festivalDark ? 'grey-4' : 'grey-8'"
           :text-color="festivalDark ? 'grey-5' : 'grey-6'"
           size="16px"

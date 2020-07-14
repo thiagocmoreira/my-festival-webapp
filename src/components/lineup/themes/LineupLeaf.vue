@@ -49,9 +49,6 @@
       :colors="festivalColorPalette"
       :dark="festivalDark"
     ).leaf-svg--bottom-right
-    //- curve(:color="festivalColorPalette[0]").curve-svg--top
-    //- curve(:color="festivalColorPalette[0]").curve-svg
-    //- curve(:color="festivalColorPalette[0]").curve-svg--right
 </template>
 
 <script>
