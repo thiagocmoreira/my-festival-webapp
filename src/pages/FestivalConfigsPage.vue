@@ -193,16 +193,6 @@ export default {
         })
       }
     }
-  },
-  async mounted () {
-    try {
-      let response = await this.$axios.get('http://localhost:3000/api/top-artists', { withCredentials: true })
-      let data = response && response.data
-      this.artists = data && data.items
-      this.setTopArtists(this.artists)
-    } catch (e) {
-      console.error(e)
-    }
   }
 }
 </script>

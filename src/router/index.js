@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import routes from './routes'
+import axios from 'axios'
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,7 @@ Vue.use(VueRouter)
  * with the Router instance.
  */
 
-export default function (/* { store, ssrContext } */) {
+export default async function ({ store, ssrContext }) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
@@ -26,5 +27,28 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
 
+  Router.beforeEach(async (to, from, next) => {
+    let toPath = to.path
+    if (toPath !== '/') {
+      let fetchedArtirts = store.getters['festivalConfigs/festivalArtists']
+      if (!fetchedArtirts.length) {
+        try {
+          let response = await axios.get('http://localhost:3000/api/top-artists', { withCredentials: true })
+          let data = response && response.data
+          let artists = data && data.items
+          store.dispatch('festivalConfigs/setTopArtists', artists)
+        } catch (err) {
+          let message = err.message
+          if (/status code 403/.test(message)) {
+            let a = document.createElement('a')
+            a.href = 'http://localhost:3000/login'
+            a.click()
+            return
+          }
+        }
+      }
+    }
+    next()
+  })
   return Router
 }

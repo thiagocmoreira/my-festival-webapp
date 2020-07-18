@@ -53,7 +53,6 @@ import LineupLeaf from '../components/lineup/themes/LineupLeaf'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
-import artists from '../statics/top_artists.json'
 
 export default {
   name: 'LineupPage',
@@ -106,11 +105,6 @@ export default {
           progress: true
         })
       }
-    }
-  },
-  mounted () {
-    if (!this.festivalArtists.length) {
-      this.setTopArtists(artists.items)
     }
   }
 }

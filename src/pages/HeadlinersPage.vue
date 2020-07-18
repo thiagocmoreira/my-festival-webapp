@@ -26,7 +26,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import artists from '../statics/top_artists.json'
 
 export default {
   name: 'HeadlinersPage',
@@ -63,11 +62,6 @@ export default {
     ...mapActions('festivalConfigs', [
       'setTopArtists'
     ])
-  },
-  mounted () {
-    if (!this.festivalArtists.length) {
-      this.setTopArtists(artists.items)
-    }
   }
 }
 </script>
