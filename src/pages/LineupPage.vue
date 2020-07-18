@@ -56,7 +56,7 @@ import { saveAs } from 'file-saver'
 import artists from '../statics/top_artists.json'
 
 export default {
-  name: 'Lineup',
+  name: 'LineupPage',
   components: {
     BubbleButton: () => import('../components/common/BubbleButton'),
     LineupNone,

@@ -115,7 +115,7 @@ import _chunk from 'lodash-es/chunk'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'FestivalConfigs',
+  name: 'FestivalConfigsPage',
   components: {
     BubbleButton: () => import('../components/common/BubbleButton')
   },

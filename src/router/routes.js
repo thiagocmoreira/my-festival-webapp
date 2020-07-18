@@ -4,16 +4,16 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: 'configs', component: () => import('pages/FestivalConfigs.vue') },
-      { path: 'headliners', component: () => import('pages/Headliners.vue') }
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: 'configs', component: () => import('pages/FestivalConfigsPage.vue') },
+      { path: 'headliners', component: () => import('pages/HeadlinersPage.vue') }
     ]
   },
   {
     path: '/lineup',
     component: () => import('layouts/LineupLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Lineup.vue') }
+      { path: '', component: () => import('pages/LineupPage.vue') }
     ]
   }
 ]
@@ -22,7 +22,7 @@ const routes = [
 if (process.env.MODE !== 'ssr') {
   routes.push({
     path: '*',
-    component: () => import('pages/Error404.vue')
+    component: () => import('pages/Error404Page.vue')
   })
 }
 

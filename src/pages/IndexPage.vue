@@ -10,13 +10,14 @@
           div.flex.items-center
             q-icon(name="mdi-spotify" size="28px").q-mr-sm
             div Conecte com o Spotify
+    img(src="../statics/img/musical-notes.svg").musical-notes-svg.absolute
     cloud(color="#000").cloud-big--bg.q-ma-md.absolute
     cloud.cloud-big.q-ma-md.absolute
 </template>
 
 <script>
 export default {
-  name: 'PageIndex',
+  name: 'IndexPage',
   components: {
     Cloud: () => import('../components/svgs/common/Cloud'),
     BubbleButton: () => import('../components/common/BubbleButton')
@@ -42,6 +43,10 @@ export default {
 
 .button
   padding: 2px 20px
+
+.musical-notes-svg
+  bottom: 0
+  left: 20px
 
 .cloud-small
   max-width: 550px

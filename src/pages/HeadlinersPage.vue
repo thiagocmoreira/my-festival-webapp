@@ -19,7 +19,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Headliners',
+  name: 'HeadlinersPage',
   components: {
     BubbleButton: () => import('../components/common/BubbleButton')
   },
