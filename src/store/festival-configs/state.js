@@ -1,8 +1,8 @@
 export default function () {
   return {
     name: 'Meu festival',
-    colorPalette: ['#6886C5', '#FFACB7', '#FFE0AC'],
-    theme: 'leaf',
+    colorPalette: ['#71596C', '#AF8BAF', '#F6ACC8'],
+    theme: 'mountain',
     location: 'Brasília',
     dark: true,
     lineupDays: true,

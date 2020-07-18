@@ -1,5 +1,5 @@
 <template>
-  <a class="buttons column animate-pop no-wrap">
+  <a class="buttons column no-wrap" :class="{ 'animate-pop': !animateNone }">
     <button :class="{ 'dark': dark }" class="blob-btn">
       {{ label }}
       <slot name="content" />
@@ -32,6 +32,10 @@ export default {
   props: {
     label: String,
     dark: {
+      type: Boolean,
+      default: false
+    },
+    animateNone: {
       type: Boolean,
       default: false
     }
