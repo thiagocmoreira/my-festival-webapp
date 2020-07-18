@@ -5,7 +5,7 @@
       div.title.text-prater.q-mb-xl Os headliners do {{ festivalName || 'festival' }} são...
       div.flex.q-mb-xl
         div(v-for="headliner of headliners").headliner.column.items-center.q-mr-xl
-          q-img(:src="headliner.images[0].url").headliner__image.animate-pop
+          q-img(:src="headliner.images[0].url" :ratio="1").headliner__image.animate-pop
           div.headliner__name.text-white.text-prater.text-center.q-mt-md
             | {{ headliner.name }}
       div.others-artists.flex.flex-center
@@ -13,6 +13,7 @@
           v-for="(image, index) of otherArtistsPhotos"
           :key="index"
           :src="image"
+          :ratio="1"
         ).others-artists__image.animate-pop.q-mr-lg
       div.others-artists__text.q-mt-md.text-prater Além disso terá {{ otherArtistsNames }} e outros!
     festival-preview-svg

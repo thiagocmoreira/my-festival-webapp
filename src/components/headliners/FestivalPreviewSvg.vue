@@ -17,7 +17,9 @@ export default {
     TwoMountains: () => import('../svgs/mountains/TwoMountains'),
     Balloon: () => import('../svgs/balloon/Balloon'),
     Elephant: () => import('../svgs/africa/Elephant'),
-    FireStripe: () => import('../svgs/fire/FireStripe')
+    FireStripe: () => import('../svgs/fire/FireStripe'),
+    Saxophone: () => import('../svgs/saxophone/Saxophone'),
+    LeafRight: () => import('../svgs/leaf/LeafRight')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -74,6 +76,38 @@ export default {
                 this.darkenColor(this.festivalColorPalette[2], 0.04),
                 this.darkenColor(this.festivalColorPalette[2], 0.1),
                 this.darkenColor(this.festivalColorPalette[2], 0.14)
+              ]
+            }
+          }
+        case 'saxophone':
+          return {
+            name: 'Saxophone',
+            style: {
+              top: 0,
+              right: '30px',
+              'max-width': '230px'
+            },
+            props: {
+              colors: [
+                this.darkenColor(this.festivalColorPalette[2], 0.08),
+                this.darkenColor(this.festivalColorPalette[2], 0.14),
+                this.darkenColor(this.festivalColorPalette[2], 0.04)
+              ]
+            }
+          }
+        case 'leaf':
+          return {
+            name: 'LeafRight',
+            style: {
+              bottom: '10%',
+              right: 0,
+              'max-width': '150px'
+            },
+            props: {
+              colors: [
+                this.festivalColorPalette[1],
+                this.festivalColorPalette[2],
+                this.darkenColor(this.festivalColorPalette[2], 0.1)
               ]
             }
           }
