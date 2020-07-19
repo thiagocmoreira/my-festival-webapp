@@ -12,6 +12,13 @@ export default {
   name: 'LineupLayout',
   components: {
     ChangeConfigs: () => import('../components/lineup/common/ChangeConfigs')
+  },
+  meta () {
+    let routeName = (this.$route || {}).name
+    let title = routeName.length
+      ? `My Festival - ${routeName}`
+      : 'My Festival'
+    return { title }
   }
 }
 </script>

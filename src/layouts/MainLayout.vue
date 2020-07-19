@@ -11,6 +11,13 @@ export default {
   name: 'MainLayout',
   data () {
     return {}
+  },
+  meta () {
+    let routeName = (this.$route || {}).name
+    let title = routeName.length
+      ? `My Festival - ${routeName}`
+      : 'My Festival'
+    return { title }
   }
 }
 </script>
