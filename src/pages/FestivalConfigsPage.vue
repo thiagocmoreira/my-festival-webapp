@@ -18,6 +18,7 @@
         placeholder="Ex: Meu festival"
         type="text"
         :maxlength="max"
+        autofocus
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
     div(v-if="step === 2").column.items-center
       div.label.text-prater.text-bold.text-grey-10.flex.items-center
@@ -28,6 +29,7 @@
         type="text"
         placeholder="Ex: Ceilândia"
         :maxlength="max"
+        autofocus
       ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
     div(v-else-if="step === 3").column.items-center
       div.label.text-prater.text-bold.text-grey-10 Escolha a paleta de cores ideal

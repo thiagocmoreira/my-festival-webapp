@@ -19,7 +19,8 @@ export default {
     Elephant: () => import('../svgs/africa/Elephant'),
     FireStripe: () => import('../svgs/fire/FireStripe'),
     Saxophone: () => import('../svgs/saxophone/Saxophone'),
-    LeafRight: () => import('../svgs/leaf/LeafRight')
+    LeafRight: () => import('../svgs/leaf/LeafRight'),
+    RioSilhouette: () => import('../svgs/rio/RioSilhouette')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -90,7 +91,7 @@ export default {
             props: {
               colors: [
                 this.darkenColor(this.festivalColorPalette[2], 0.08),
-                this.darkenColor(this.festivalColorPalette[2], 0.14),
+                this.darkenColor(this.festivalColorPalette[2], 0.3),
                 this.darkenColor(this.festivalColorPalette[2], 0.04)
               ]
             }
@@ -111,12 +112,31 @@ export default {
               ]
             }
           }
+        case 'rio':
+          return {
+            name: 'RioSilhouette',
+            style: {
+              bottom: 0
+            },
+            props: {
+              colors: [
+                'rgba(0, 0, 0, 0)',
+                this.lightenColor(this.festivalColorPalette[2], 0.2),
+                this.festivalColorPalette[2]
+              ],
+              blackAndWhiteBg: false
+            }
+          }
         default:
           return {}
       }
     }
   },
   methods: {
+    lightenColor (color, percentage) {
+      color = Color(color)
+      return color.lighten(percentage).hex()
+    },
     darkenColor (color, percentage) {
       color = Color(color)
       return color.darken(percentage).hex()

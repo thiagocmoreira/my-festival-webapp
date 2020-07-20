@@ -28,7 +28,8 @@ export default function () {
       { label: 'África', value: 'africa', icon: 'mdi-elephant' },
       { label: 'Fogo', value: 'fire', icon: 'mdi-fire' },
       { label: 'Sax', value: 'saxophone', icon: 'mdi-saxophone' },
-      { label: 'Folhas', value: 'leaf', icon: 'mdi-leaf' }
+      { label: 'Folhas', value: 'leaf', icon: 'mdi-leaf' },
+      { label: 'Rio de Janeiro', value: 'rio', icon: 'mdi-speaker' }
       // 'Galáxia',
       // 'Céu',
       // 'Flores',
