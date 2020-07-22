@@ -45,9 +45,9 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupSaxophone',
   components: {
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupArtistsList: () => import('../common/LineupArtistsList'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
+    LineupFestivalName: () => import('../LineupFestivalName'),
+    LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
     SaxophoneTint: () => import('../../svgs/saxophone/SaxophoneTint'),
     Curve: () => import('../../svgs/saxophone/Curve')
   },

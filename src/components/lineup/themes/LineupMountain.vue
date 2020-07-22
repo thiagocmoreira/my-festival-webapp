@@ -33,9 +33,9 @@ export default {
   name: 'LineupMontain',
   components: {
     ThreeMountains: () => import('../../svgs/mountains/ThreeMountains'),
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    LineupArtistsList: () => import('../common/LineupArtistsList')
+    LineupFestivalName: () => import('../LineupFestivalName'),
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupArtistsList: () => import('../LineupArtistsList')
   },
   computed: {
     ...mapGetters('festivalConfigs', [

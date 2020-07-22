@@ -50,9 +50,9 @@ export default {
   components: {
     Guitar: () => import('../../svgs/fire/Guitar'),
     Lightning: () => import('../../svgs/fire/Lightning'),
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupArtistsList: () => import('../common/LineupArtistsList'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
+    LineupFestivalName: () => import('../LineupFestivalName'),
+    LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
     FireStripe: () => import('../../svgs/fire/FireStripe')
   },
   computed: {

@@ -35,10 +35,10 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupRio',
   components: {
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
+    LineupFestivalName: () => import('../LineupFestivalName'),
     RioSilhouette: () => import('../../svgs/rio/RioSilhouette'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    LineupArtistsList: () => import('../common/LineupArtistsList')
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupArtistsList: () => import('../LineupArtistsList')
   },
   computed: {
     ...mapGetters('festivalConfigs', [

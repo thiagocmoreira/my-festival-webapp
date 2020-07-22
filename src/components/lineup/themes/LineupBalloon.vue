@@ -36,9 +36,9 @@ export default {
   name: 'LineupBalloon',
   components: {
     CloudFull: () => import('../../svgs/balloon/CloudFull'),
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    LineupArtistsList: () => import('../common/LineupArtistsList'),
+    LineupFestivalName: () => import('../LineupFestivalName'),
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupArtistsList: () => import('../LineupArtistsList'),
     Balloon: () => import('../../svgs/balloon/Balloon')
   },
   computed: {

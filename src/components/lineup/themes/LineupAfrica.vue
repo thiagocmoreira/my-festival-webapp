@@ -54,9 +54,9 @@ export default {
   name: 'LineupAfrica',
   components: {
     AfricanStripe: () => import('../../svgs/africa/AfricanStripe'),
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
-    LineupArtistsList: () => import('../common/LineupArtistsList'),
+    LineupFestivalName: () => import('../LineupFestivalName'),
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupArtistsList: () => import('../LineupArtistsList'),
     Vase: () => import('../../svgs/africa/Vase'),
     VaseRound: () => import('../../svgs/africa/VaseRound'),
     AfricanSymbol: () => import('../../svgs/africa/AfricanSymbol'),

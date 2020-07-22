@@ -106,7 +106,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'ChangeConfigs',
   components: {
-    BubbleButton: () => import('../../common/BubbleButton')
+    BubbleButton: () => import('../common/BubbleButton')
   },
   data () {
     return {

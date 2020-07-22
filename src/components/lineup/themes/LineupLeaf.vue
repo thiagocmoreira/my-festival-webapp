@@ -57,9 +57,9 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LineupLeaf',
   components: {
-    LineupFestivalName: () => import('../common/LineupFestivalName'),
-    LineupArtistsList: () => import('../common/LineupArtistsList'),
-    LineupDayArtistsList: () => import('../common/LineupDayArtistsList'),
+    LineupFestivalName: () => import('../LineupFestivalName'),
+    LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupDayArtistsList: () => import('../LineupDayArtistsList'),
     LeafTopLeft: () => import('../../svgs/leaf/LeafTopLeft'),
     LeafTopRight: () => import('../../svgs/leaf/LeafTopRight'),
     LeafRight: () => import('../../svgs/leaf/LeafRight'),

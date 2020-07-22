@@ -11,7 +11,7 @@
 export default {
   name: 'LineupLayout',
   components: {
-    ChangeConfigs: () => import('../components/lineup/common/ChangeConfigs')
+    ChangeConfigs: () => import('../components/lineup/ChangeConfigs')
   },
   meta () {
     let routeName = (this.$route || {}).name
