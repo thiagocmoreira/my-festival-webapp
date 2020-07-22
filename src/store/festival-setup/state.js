@@ -29,7 +29,7 @@ export default function () {
       { label: 'Fogo', value: 'fire', icon: 'mdi-fire' },
       { label: 'Sax', value: 'saxophone', icon: 'mdi-saxophone' },
       { label: 'Folhas', value: 'leaf', icon: 'mdi-leaf' },
-      { label: 'Rio de Janeiro', value: 'rio', icon: 'mdi-speaker' }
+      { label: 'Rio de Janeiro', value: 'rio', iconUrl: '../statics/icons/cristo-redentor.svg' }
       // 'Galáxia',
       // 'Céu',
       // 'Flores',

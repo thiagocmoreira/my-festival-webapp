@@ -85,7 +85,13 @@
                   :title="theme.label"
                   @click="myTheme = theme.value"
                 ).animate-pop
+                  svg(
+                    v-if="theme.iconUrl"
+                    :style="{ 'fill': myTheme === theme.value ? '#424242' : '#fafafa' }"
+                  ).icon-theme-svg
+                    use(:xlink:href="getSvgUrl(theme.iconUrl, theme.value)")
                   q-icon(
+                    v-else
                     :name="theme.icon"
                     size="26px"
                     color="white"
@@ -145,6 +151,9 @@ export default {
         arr.unshift(item)
       }
       return arr
+    },
+    getSvgUrl (url, theme) {
+      return url + '#' + theme
     }
   },
   mounted () {
@@ -235,4 +244,8 @@ export default {
   grid-template-columns: repeat(4, 43px)
   grid-column-gap: 10px
   grid-row-gap: 10px
+
+.icon-theme-svg
+  height: 25px
+  width: 25px
 </style>

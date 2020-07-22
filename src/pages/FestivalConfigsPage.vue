@@ -82,18 +82,24 @@
         q-btn(
           v-for="(theme, index) of themes"
           :key="index.value"
-          no-caps
-          :color="myTheme === theme.value ? 'grey-9' : 'blue-5'"
+          :color="myTheme === theme.value ? 'grey-1' : 'blue-5'"
           unelevated
           round
           :title="theme.label"
-          size="18px"
           @click="myTheme = theme.value"
+          size="20px"
         ).theme-btn.animate-pop
+          svg(
+            v-if="theme.iconUrl"
+            :style="{ 'fill': myTheme === theme.value ? '#424242' : '#fafafa' }"
+          ).icon-theme-svg
+            use(:xlink:href="getSvgUrl(theme.iconUrl, theme.value)")
           q-icon(
+            v-else
             :name="theme.icon"
             size="30px"
             color="white"
+            :color="myTheme === theme.value ? 'grey-9' : 'grey-1'"
           )
     q-btn(
       v-if="step < 4"
@@ -194,6 +200,9 @@ export default {
           progress: true
         })
       }
+    },
+    getSvgUrl (url, theme) {
+      return url + '#' + theme
     }
   }
 }
@@ -254,4 +263,8 @@ export default {
 
   &:last-of-type
     margin: 0
+
+.icon-theme-svg
+  height: 26px
+  width: 26px
 </style>
