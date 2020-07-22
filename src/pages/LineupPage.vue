@@ -4,22 +4,12 @@
       div.buttons.fixed.column.q-mx-lg.q-my-md
         q-btn(
           round
-          :icon="festivalDark ? 'mdi-lightbulb-on' : 'mdi-lightbulb'"
+          icon="mdi-cog"
           :color="festivalDark ? 'grey-4' : 'grey-8'"
           :text-color="festivalDark ? 'grey-5' : 'grey-6'"
-          size="16px"
-          @click="setFestivalDark(!festivalDark)"
-          :title="festivalDark ? 'Mudar para o modo escuro' : 'Mudar para modo claro'"
-          unelevated
-        ).q-mb-sm
-        q-btn(
-          round
-          :icon="festivalLineupDays ? 'mdi-format-align-center' : 'mdi-format-list-text'"
-          :color="festivalDark ? 'grey-4' : 'grey-8'"
-          :text-color="festivalDark ? 'grey-5' : 'grey-6'"
-          size="16px"
-          @click="setFestivalLineupDays(!festivalLineupDays)"
-          :title="festivalLineupDays ? 'Mudar para lineup completa' : 'Mudar para lineup dividida em 3 dias'"
+          size="20px"
+          @click="generalConfigsOpened = true"
+          title="Ver configurações gerais"
           unelevated
         )
       div.column.items-center.justify-between.lineup-container
@@ -39,10 +29,11 @@
               div.flex.flex-center
                 q-icon(name="mdi-download" size="28px").q-mr-sm
                 div Baixar imagem
+      change-general-configs-dialog(v-model="generalConfigsOpened")
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import LineupNone from '../components/lineup/themes/LineupNone'
 import LineupMountain from '../components/lineup/themes/LineupMountain'
 import LineupBalloon from '../components/lineup/themes/LineupBalloon'
@@ -59,6 +50,7 @@ export default {
   name: 'LineupPage',
   components: {
     BubbleButton: () => import('../components/common/BubbleButton'),
+    ChangeGeneralConfigsDialog: () => import('../components/lineup/ChangeGeneralConfigsDialog'),
     LineupNone,
     LineupMountain,
     LineupBalloon,
@@ -67,6 +59,11 @@ export default {
     LineupSaxophone,
     LineupLeaf,
     LineupRio
+  },
+  data () {
+    return {
+      generalConfigsOpened: false
+    }
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -85,11 +82,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions('festivalConfigs', [
-      'setFestivalDark',
-      'setFestivalLineupDays',
-      'setTopArtists'
-    ]),
     capitalize (s) {
       return typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : ''
     },
