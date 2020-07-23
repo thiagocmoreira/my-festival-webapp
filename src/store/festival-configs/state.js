@@ -8,6 +8,7 @@ export default function () {
     lineupDays: true,
     artists: [],
     artistsNames: [],
-    artistsNamesPerDay: []
+    artistsNamesPerDay: [],
+    nameColor: '#272928'
   }
 }

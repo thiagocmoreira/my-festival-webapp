@@ -39,11 +39,12 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
       'festivalName',
-      'festivalLocation'
+      'festivalLocation',
+      'festivalNameColor'
     ]),
     bgColor () {
       let classes = {
-        color: this.dark ? '#272928' : '#fff'
+        color: this.festivalNameColor
       }
       if (this.blackAndWhite) {
         classes.background = this.dark ? '#fff' : '#272928'

@@ -3,10 +3,12 @@ export function setFestivalName (state, name) {
 }
 
 export function setFestivalColorPalette (state, colorPalette) {
+  state.nameColor = state.dark ? '#fafafa' : '#272928'
   state.colorPalette = colorPalette
 }
 
 export function setFestivalTheme (state, theme) {
+  state.nameColor = state.dark ? '#fafafa' : '#272928'
   state.theme = theme
 }
 
@@ -15,7 +17,12 @@ export function setFestivalLocation (state, location) {
 }
 
 export function setFestivalDark (state, dark) {
+  state.nameColor = dark ? '#fafafa' : '#272928'
   state.dark = dark
+}
+
+export function setFestivalNameColor (state, nameColor) {
+  state.nameColor = nameColor
 }
 
 export function setFestivalLineupDays (state, lineupDays) {

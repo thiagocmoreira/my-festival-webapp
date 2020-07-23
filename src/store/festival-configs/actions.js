@@ -20,6 +20,10 @@ export function setFestivalDark ({ commit }, dark) {
   commit('setFestivalDark', dark)
 }
 
+export function setFestivalNameColor ({ commit }, nameColor) {
+  commit('setFestivalNameColor', nameColor)
+}
+
 export function setFestivalLineupDays ({ commit }, lineupDays) {
   commit('setFestivalLineupDays', lineupDays)
 }

@@ -51,7 +51,8 @@ export default {
   methods: {
     ...mapActions('festivalConfigs', [
       'setFestivalDark',
-      'setFestivalLineupDays'
+      'setFestivalLineupDays',
+      'setFestivalNameColor'
     ])
   },
   mounted () {

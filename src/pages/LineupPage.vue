@@ -69,9 +69,7 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalName',
       'festivalTheme',
-      'festivalDark',
-      'festivalLineupDays',
-      'festivalArtists'
+      'festivalDark'
     ]),
     componentName () {
       return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
