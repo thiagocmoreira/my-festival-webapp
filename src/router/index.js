@@ -43,7 +43,7 @@ export default async function ({ store, ssrContext }) {
           let message = err.message
           if (/status code 403/.test(message)) {
             let a = document.createElement('a')
-            a.href = 'http://localhost:3000/login'
+            a.href = `http://localhost:3000/login?target=${to.path}`
             a.click()
             return
           }
