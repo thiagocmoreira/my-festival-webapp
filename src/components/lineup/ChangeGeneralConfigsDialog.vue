@@ -46,7 +46,7 @@ export default {
   },
   data () {
     return {
-      nameColorOptions: ['#fafafa', '#272928']
+      nameColorOptions: ['#FFFFFF', '#272928']
     }
   },
   computed: {
@@ -58,10 +58,10 @@ export default {
       'festivalNameColor'
     ]),
     confirmBtnStyle () {
-      let color = Color((this.festivalColorPalette || [])[0] || '#42a5f5')
+      let color = Color((this.festivalColorPalette || [])[0] || '#42A5F5')
       return {
         background: color,
-        color: color.isDark() ? '#fafafa' : '#272928'
+        color: color.isDark() ? '#FFFFFF' : '#272928'
       }
     },
     configs () {

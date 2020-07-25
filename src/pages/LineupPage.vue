@@ -71,6 +71,7 @@ export default {
       'festivalTheme',
       'festivalDark'
     ]),
+    ...mapGetters('user', ['profile']),
     componentName () {
       return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
     },

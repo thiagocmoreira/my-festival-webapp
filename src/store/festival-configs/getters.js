@@ -37,3 +37,10 @@ export function festivalArtistsNames (state) {
 export function festivalArtistsNamesPerDay (state) {
   return state.artistsNamesPerDay
 }
+
+export function hasFestivalConfigs (state) {
+  return state.name.length &&
+    state.colorPalette.length &&
+    state.theme.length &&
+    state.nameColor.length
+}

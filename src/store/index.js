@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import festivalConfigs from './festival-configs'
 import festivalSetup from './festival-setup'
+import user from './user'
 
 Vue.use(Vuex)
 
@@ -14,14 +15,16 @@ Vue.use(Vuex)
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+import createPersistedState from 'vuex-persistedstate'
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       festivalConfigs,
-      festivalSetup
+      festivalSetup,
+      user
     },
-
+    plugins: [createPersistedState()],
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV

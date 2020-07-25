@@ -36,7 +36,9 @@ export default async function ({ store, ssrContext }) {
           let response = await axios.get('http://localhost:3000/api/top-artists', { withCredentials: true })
           let data = response && response.data
           let artists = data && data.items
+          let user = data && data.user
           store.dispatch('festivalConfigs/setTopArtists', artists)
+          store.dispatch('user/setProfile', user)
         } catch (err) {
           let message = err.message
           if (/status code 403/.test(message)) {
