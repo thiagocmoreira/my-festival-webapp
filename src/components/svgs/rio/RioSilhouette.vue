@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Color from 'color'
+import { darkenColor } from '../../../helpers/color'
 
 export default {
   name: 'RioSilhouette',
@@ -31,8 +31,7 @@ export default {
   },
   computed: {
     colorDarken () {
-      let color = Color(this.colors[2])
-      return color.darken(0.1).hex()
+      return darkenColor(this.colors[2], 0.1)
     },
     firstColor () {
       if (this.blackAndWhiteBg) {

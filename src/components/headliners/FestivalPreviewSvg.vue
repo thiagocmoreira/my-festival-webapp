@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Color from 'color'
 import { mapGetters } from 'vuex'
+import { darkenColor, lightenColor } from '../../helpers/color'
 
 export default {
   name: 'FestivalPreviewSvg',
@@ -35,8 +35,8 @@ export default {
             style: { bottom: 0 },
             props: {
               colors: [
-                this.darkenColor(this.festivalColorPalette[2], 0.01),
-                this.darkenColor(this.festivalColorPalette[2], 0.1)
+                darkenColor(this.festivalColorPalette[2], 0.01),
+                darkenColor(this.festivalColorPalette[2], 0.1)
               ]
             }
           }
@@ -50,9 +50,9 @@ export default {
             },
             props: {
               colors: [
-                this.darkenColor(this.festivalColorPalette[2], 0.01),
-                this.darkenColor(this.festivalColorPalette[2], 0.08),
-                this.darkenColor(this.festivalColorPalette[2], 0.14)
+                darkenColor(this.festivalColorPalette[2], 0.01),
+                darkenColor(this.festivalColorPalette[2], 0.08),
+                darkenColor(this.festivalColorPalette[2], 0.14)
               ]
             }
           }
@@ -65,7 +65,7 @@ export default {
               'max-width': '280px'
             },
             props: {
-              color: this.darkenColor(this.festivalColorPalette[2], 0.06)
+              color: darkenColor(this.festivalColorPalette[2], 0.06)
             }
           }
         case 'fire':
@@ -74,9 +74,9 @@ export default {
             style: { bottom: 0 },
             props: {
               colors: [
-                this.darkenColor(this.festivalColorPalette[2], 0.04),
-                this.darkenColor(this.festivalColorPalette[2], 0.1),
-                this.darkenColor(this.festivalColorPalette[2], 0.14)
+                darkenColor(this.festivalColorPalette[2], 0.04),
+                darkenColor(this.festivalColorPalette[2], 0.1),
+                darkenColor(this.festivalColorPalette[2], 0.22)
               ]
             }
           }
@@ -90,9 +90,9 @@ export default {
             },
             props: {
               colors: [
-                this.darkenColor(this.festivalColorPalette[2], 0.08),
-                this.darkenColor(this.festivalColorPalette[2], 0.3),
-                this.darkenColor(this.festivalColorPalette[2], 0.04)
+                darkenColor(this.festivalColorPalette[2], 0.08),
+                darkenColor(this.festivalColorPalette[2], 0.3),
+                darkenColor(this.festivalColorPalette[2], 0.04)
               ]
             }
           }
@@ -108,7 +108,7 @@ export default {
               colors: [
                 this.festivalColorPalette[1],
                 this.festivalColorPalette[2],
-                this.darkenColor(this.festivalColorPalette[2], 0.1)
+                darkenColor(this.festivalColorPalette[2], 0.1)
               ]
             }
           }
@@ -121,7 +121,7 @@ export default {
             props: {
               colors: [
                 'rgba(0, 0, 0, 0)',
-                this.lightenColor(this.festivalColorPalette[2], 0.2),
+                lightenColor(this.festivalColorPalette[2], 0.2),
                 this.festivalColorPalette[2]
               ],
               blackAndWhiteBg: false
@@ -130,16 +130,6 @@ export default {
         default:
           return {}
       }
-    }
-  },
-  methods: {
-    lightenColor (color, percentage) {
-      color = Color(color)
-      return color.lighten(percentage).hex()
-    },
-    darkenColor (color, percentage) {
-      color = Color(color)
-      return color.darken(percentage).hex()
     }
   }
 }

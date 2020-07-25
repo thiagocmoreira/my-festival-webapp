@@ -45,6 +45,7 @@ import LineupRio from '../components/lineup/themes/LineupRio'
 
 import domToImage from 'dom-to-image'
 import { saveAs } from 'file-saver'
+import { capitalize } from '../helpers/text'
 
 export default {
   name: 'LineupPage',
@@ -71,9 +72,8 @@ export default {
       'festivalTheme',
       'festivalDark'
     ]),
-    ...mapGetters('user', ['profile']),
     componentName () {
-      return `Lineup${this.capitalize(this.festivalTheme || 'none')}`
+      return `Lineup${capitalize(this.festivalTheme || 'none')}`
     },
     background () {
       let color = this.festivalDark ? 'grey-1' : 'grey-9'
@@ -81,9 +81,6 @@ export default {
     }
   },
   methods: {
-    capitalize (s) {
-      return typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : ''
-    },
     async downloadPhoto () {
       try {
         let node = this.$refs.lineup

@@ -1,5 +1,5 @@
 <template lang="pug">
-  q-page(:style="backgroundColor").headliners.column.items-center.justify-between.q-pa-lg.relative
+  q-page(:style="backgroundColor").headliners.column.items-center.justify-between.q-pa-lg
     div
     div.content.column.items-center.text-grey-10
       div.title.text-prater.q-mb-xl Os headliners do {{ festivalName || 'festival' }} são...
@@ -69,7 +69,6 @@ export default {
 
 <style lang="sass" scoped>
 .headliners
-  background: $blue-4
   position: relative
 
 .title
