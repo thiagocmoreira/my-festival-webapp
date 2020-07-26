@@ -5,7 +5,7 @@
     div.column.flex-1.flex-center.text-prater.flex-1
       h1.title.text-lolapeluza.text-uppercase.text-white.text-grey-10.text-center
         | My festival
-      bubble-button(href="http://localhost:3000/login").connect-button.q-mt-xl
+      bubble-button(:href="loginUrl").connect-button.q-mt-xl
         template(#content)
           div.flex.flex-center
             q-icon(name="mdi-spotify" size="28px").q-mr-sm
@@ -22,9 +22,19 @@ export default {
     Cloud: () => import('../components/svgs/common/Cloud'),
     BubbleButton: () => import('../components/common/BubbleButton')
   },
+  data () {
+    return {
+      url: process.env.BACKEND_URL
+    }
+  },
   methods: {
     login () {
       this.$router.push('/welcome')
+    }
+  },
+  computed: {
+    loginUrl () {
+      return `http://${this.url}/login`
     }
   }
 }
