@@ -27,7 +27,7 @@
           div
             | O&nbsp;
             b My Festival&nbsp;
-            | é um aplicativo que utiliza os seus artistas mais ouvidos do Spotify nos últimos 6 meses e cria um banner de festival de acordo com as suas preferências.
+            | é um aplicativo que utiliza os seus artistas mais ouvidos do Spotify nos últimos 6 meses e cria um banner de festival customizado de acordo com as suas preferências.
             | É possível escolher o nome, local, cores, tema e outros detalhes do seu festival. Para iniciar, basta clicar no botão abaixo!
 
       div.column.text-white.text-center.items-center.text-grey-7
@@ -43,6 +43,8 @@
           div Para desenvolvimento deste projeto foi utilizado a&nbsp;
             a(href="https://developer.spotify.com/documentation/web-api/") Spotify Web API
             | .
+    img(src="../statics/icons/speaker.svg").speaker-svg.absolute
+    img(src="../statics/icons/speaker.svg").speaker-svg--right.absolute
 </template>
 
 <script>
@@ -71,6 +73,7 @@ export default {
 <style lang="sass" scoped>
 .welcome
   background: $grey-4
+  position: relative
 
   &__container
     max-width: 1110px
@@ -79,11 +82,18 @@ export default {
   &__image
     width: 80px
 
+    @media (max-width: 700px)
+      width: 60px
+    @media (max-width: 450px)
+      width: 45px
+
     .user
       border-radius: 80px
 
     &--operator
       width: 25px
+      @media (max-width: 450px)
+        width: 15px
 
 .hello
   &__title
@@ -97,11 +107,22 @@ export default {
 
 .texts
   max-width: 60%
+  @media (max-width: 650px)
+    max-width: 80%
+  @media (max-width: 450px)
+    max-width: 95%
+  @media (max-width: 360px)
+    font-size: 13px
 
   &__subtitle
     font-size: 20px
     line-height: 20px
     max-width: 80%
+    @media (max-width: 650px)
+      max-width: 100%
+    @media (max-width: 360px)
+      font-size: 16px
+      line-height: 16px
 
 .init-button
   max-width: 150px
@@ -118,4 +139,29 @@ export default {
 
     &:visited
       color: #45BD59
+
+.speaker-svg
+  max-width: 150px
+  left: 0
+  bottom: -20px
+  transform: scaleX(-1)
+
+  @media (max-width: 850px)
+    max-width: 110px
+  @media (max-width: 650px)
+    max-width: 80px
+  @media (max-width: 550px)
+    display: none
+
+  &--right
+    max-width: 150px
+    right: 0
+    bottom: -20px
+
+    @media (max-width: 850px)
+      max-width: 110px
+    @media (max-width: 650px)
+      max-width: 80px
+    @media (max-width: 550px)
+      display: none
 </style>

@@ -5,7 +5,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', name: 'Início', component: () => import('pages/IndexPage.vue') },
-      { path: 'welcome', name: 'Bem vindo', component: () => import('pages/WelcomePage.vue') },
+      { path: 'welcome', name: 'Bem-vindo', component: () => import('pages/WelcomePage.vue') },
       { path: 'configs', name: 'Configurar festival', component: () => import('pages/FestivalConfigsPage.vue') },
       { path: 'headliners', name: 'Headliners', component: () => import('pages/HeadlinersPage.vue') }
     ]
