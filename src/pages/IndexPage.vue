@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     login () {
-      this.$router.push('/configs')
+      this.$router.push('/welcome')
     }
   }
 }

@@ -10,7 +10,7 @@
 
         div.texts.column.items-center.text-center.text-grey-10
           div.texts__subtitle.text-prater.q-mb-xl
-            | Se os seus artistas preferidos se juntassem em um festival de música, como seria?
+            | E se os seus artistas preferidos se juntassem em um festival de música, como seria?
 
           div.explanation.flex.items-center.image.q-mb-xl
             div.explanation__image.q-mr-md
@@ -33,7 +33,7 @@
       div.column.text-white.text-center.items-center.text-grey-7
         bubble-button(
           label="Iniciar"
-          @click.native=""
+          @click.native="$router.push('/configs')"
         ).init-button.text-prater.q-mb-lg
         div.bottom-text.column
           div
@@ -41,7 +41,7 @@
             b My Festival&nbsp;
             | não é uma aplicação oficial do Spotify.
           div Para desenvolvimento deste projeto foi utilizado a&nbsp;
-            a(href="https://developer.spotify.com/documentation/web-api/") Spotify Web API
+            a(href="https://developer.spotify.com/documentation/web-api/" target="_blank") Spotify Web API
             | .
     img(src="../statics/icons/speaker.svg").speaker-svg.absolute
     img(src="../statics/icons/speaker.svg").speaker-svg--right.absolute
