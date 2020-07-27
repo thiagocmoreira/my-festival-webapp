@@ -7,6 +7,7 @@ const routes = [
       { path: '', name: 'Início', component: () => import('pages/IndexPage.vue') },
       { path: 'welcome', name: 'Bem-vindo', component: () => import('pages/WelcomePage.vue') },
       { path: 'configs', name: 'Configurar festival', component: () => import('pages/FestivalConfigsPage.vue') },
+      { path: 'creating', name: 'Criando festival', component: () => import('pages/FestivalCreationPage.vue') },
       { path: 'headliners', name: 'Headliners', component: () => import('pages/HeadlinersPage.vue') }
     ]
   },
