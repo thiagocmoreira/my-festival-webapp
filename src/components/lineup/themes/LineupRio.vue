@@ -74,10 +74,10 @@ export default {
     padding: 0 100px 40px 100px
 
     &.first
-      padding-top: 110px
+      padding-top: 120px
 
     &.last
-      padding-bottom: 140px
+      padding-bottom: 120px
 
   &__artists
     padding: 0 100px 140px 100px

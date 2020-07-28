@@ -3,7 +3,14 @@
     div
     div.column.items-center
       div.svgs.flex.q-mb-lg
-        img(src="../../statics/img/gears.svg").full-width
+        img(
+          v-if="step <= 4"
+          src="../../statics/img/gears.svg"
+        ).full-width
+        img(
+          v-else
+          src="../../statics/img/celebration.svg"
+        ).animate-pop.full-width.q-mb-lg
       div.steps.column.text-prater
         div(
           v-for="(stepName, index) of stepNames"
@@ -19,8 +26,8 @@
     div.go-to-festival-button.column
       bubble-button(
         label="Ver meu festival"
-        v-show="step >= 4"
-        @click.native=""
+        v-show="step >= 5"
+        @click.native="$router.push('/headliners')"
       ).text-prater
 </template>
 
@@ -38,7 +45,8 @@ export default {
         'Procurar elementos do tema',
         'Montar banner do festival',
         'Usar cores',
-        'Montar página'
+        'Montar página',
+        'Tudo pronto!'
       ]
     }
   },

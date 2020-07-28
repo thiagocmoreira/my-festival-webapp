@@ -191,7 +191,7 @@ export default {
         if (this.myLocation.length > 0) {
           this.setFestivalLocation(this.myLocation)
         }
-        this.$router.push('/headliners')
+        this.$router.push('/creating')
       } else {
         this.$q.notify({
           message: this.errorMessage,
