@@ -1,5 +1,5 @@
 <template lang="pug">
-  q-drawer(show-if-above v-model="left")
+  q-drawer(v-model="value")
     div.change-configs.column.text-white.absolute-top.bg-grey-10
       h1.title.text-prater.text-bold.text-uppercase.q-pa-xl.text-center.flex.flex-center
         q-icon(
@@ -108,6 +108,9 @@ export default {
   components: {
     BubbleButton: () => import('../common/BubbleButton')
   },
+  props: {
+    value: Boolean
+  },
   data () {
     return {
       left: true,
@@ -184,6 +187,7 @@ export default {
 <style lang="sass">
 .q-drawer
   background: $grey-10
+  // position: relative
 </style>
 
 <style lang="sass" scoped>
