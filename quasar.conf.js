@@ -7,6 +7,8 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 
+const envparser = require('./config/envparser')
+
 module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
@@ -75,11 +77,7 @@ module.exports = function (ctx) {
       vueRouterMode: 'history', // available values: 'hash', 'history'
       publicPath: '/my-festival-webapp/',
 
-      env: {
-        BACKEND_URL: ctx.dev
-          ? JSON.stringify('localhost:3000')
-          : JSON.stringify(process.env.SERVER_IP)
-      },
+      env: envparser(),
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       // preloadChunks: true,
@@ -116,7 +114,13 @@ module.exports = function (ctx) {
     devServer: {
       https: false,
       port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      proxy: {
+        '/api': {
+          target: JSON.stringify(process.env.SERVER_IP) || 'localhost:3000',
+          changeOrigin: true
+        }
+      }
     },
 
     // animations: 'all', // --- includes all animations

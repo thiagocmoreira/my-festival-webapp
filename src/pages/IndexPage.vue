@@ -24,7 +24,7 @@ export default {
   },
   data () {
     return {
-      url: process.env.BACKEND_URL
+      url: process.env.SERVER_IP
     }
   },
   methods: {
