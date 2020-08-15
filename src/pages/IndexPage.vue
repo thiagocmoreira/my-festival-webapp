@@ -22,11 +22,6 @@ export default {
     Cloud: () => import('../components/svgs/common/Cloud'),
     BubbleButton: () => import('../components/common/BubbleButton')
   },
-  data () {
-    return {
-      url: process.env.SERVER_IP
-    }
-  },
   methods: {
     login () {
       this.$router.push('/welcome')
@@ -34,7 +29,7 @@ export default {
   },
   computed: {
     loginUrl () {
-      return `http://${this.url}/login`
+      return 'https://myfestival-api.ml/login'
     }
   }
 }

@@ -74,7 +74,7 @@ module.exports = function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: 'hash', // available values: 'hash', 'history'
       publicPath: '/my-festival-webapp/',
 
       env: envparser(),
@@ -115,12 +115,6 @@ module.exports = function (ctx) {
       https: false,
       port: 8080,
       open: true, // opens browser window automatically
-      proxy: {
-        '/api': {
-          target: JSON.stringify(process.env.SERVER_IP) || 'localhost:3000',
-          changeOrigin: true
-        }
-      }
     },
 
     // animations: 'all', // --- includes all animations
