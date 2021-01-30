@@ -29,7 +29,8 @@ export default {
   },
   computed: {
     loginUrl () {
-      return 'https://myfestival-api.ml/login'
+      return 'http://localhost:3000/api/login'
+      // return 'https://myfestival-api.ml/login'
     }
   }
 }
