@@ -4,29 +4,19 @@
     div.column.items-center
       div.svgs.flex.q-mb-lg
         img(
-          v-if="step <= 4"
-          src="../../statics/img/gears.svg"
-        ).full-width
-        img(
-          v-else
-          src="../../statics/img/celebration.svg"
-        ).animate-pop.full-width.q-mb-lg
-      div.steps.column.text-prater
+          :key="stepsObjects[step].src"
+          :src="stepsObjects[step].src"
+        ).full-width.animate-fade
+      div(
+        :class="{ 'q-mt-lg': step >= stepsObjects.length - 1 }"
+      ).steps.column.text-prater
         div(
-          v-for="(stepName, index) of stepNames"
-          :key="index"
-        ).flex.q-mb-sm
-          div.check-icon.flex.flex-center.bg-white.animate-pop
-            q-icon(
-              v-show="index <= step"
-              name="mdi-check-bold"
-              color="green-7"
-            )
-          div.q-ml-md {{ stepName }}
+          :key="stepsObjects[step].name"
+        ).animate-pop {{ stepsObjects[step].name }}
     div.go-to-festival-button.column
       bubble-button(
         label="Ver meu festival"
-        v-show="step >= 5"
+        v-show="step >= stepsObjects.length - 1"
         @click.native="$router.push('/headliners')"
       ).text-prater
 </template>
@@ -40,13 +30,23 @@ export default {
   data () {
     return {
       step: 0,
-      stepNames: [
-        'Procurar artistas',
-        'Procurar elementos do tema',
-        'Montar banner do festival',
-        'Usar cores',
-        'Montar página',
-        'Tudo pronto!'
+      stepsObjects: [
+        {
+          name: 'Procurando artistas...',
+          src: '../../statics/img/equalizer.svg'
+        },
+        {
+          name: 'Separando cores...',
+          src: '../../statics/img/paint.svg'
+        },
+        {
+          name: 'Montando banner do festival...',
+          src: '../../statics/img/gooey-ring.svg'
+        },
+        {
+          name: 'Tudo pronto!',
+          src: '../../statics/img/celebration.svg'
+        }
       ]
     }
   },
@@ -54,10 +54,10 @@ export default {
     setAnimation () {
       let interval = setInterval(() => {
         this.step++
-        if (this.step === this.stepNames.length - 1) {
+        if (this.step === this.stepsObjects.length - 1) {
           clearInterval(interval)
         }
-      }, 700)
+      }, 2200)
     }
   },
   mounted () {
@@ -68,16 +68,11 @@ export default {
 
 <style lang="sass" scoped>
 .svgs
-  max-width: 150px
+  max-width: 250px
 
 .steps
-  font-size: 20px
-  line-height: 27px
-
-.check-icon
-  width: 25px
-  height: 25px
-  border-radius: 25px
+  font-size: 30px
+  line-height: 35px
 
 .go-to-festival-button
   min-height: 54px

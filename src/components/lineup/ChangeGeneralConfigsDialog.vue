@@ -86,7 +86,7 @@ export default {
           manyOptions: true
         },
         {
-          name: 'Fundo da lineup',
+          name: 'Fundo do banner',
           options: [
             {
               label: 'Claro',
