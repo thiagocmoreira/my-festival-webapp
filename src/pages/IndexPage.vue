@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     loginUrl () {
-      return 'https://myfestival-api/api/login'
+      return 'https://myfestival-api.ml/api/login'
     }
   }
 }

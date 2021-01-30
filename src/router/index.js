@@ -33,7 +33,7 @@ export default async function ({ store, ssrContext }) {
       let fetchedArtirts = store.getters['festivalConfigs/festivalArtists']
       if (!fetchedArtirts.length) {
         try {
-          let response = await axios.get('https://myfestival-api/api/top-artists', {
+          let response = await axios.get('https://myfestival-api.ml/api/top-artists', {
             withCredentials: true,
             headers: {}
           })
@@ -46,7 +46,7 @@ export default async function ({ store, ssrContext }) {
           let message = err.message
           if (/status code 403/.test(message)) {
             let a = document.createElement('a')
-            a.href = `https://myfestival-api/api/login?target=${to.path}`
+            a.href = `https://myfestival-api.ml/api/login?target=${to.path}`
             a.click()
             return
           }
