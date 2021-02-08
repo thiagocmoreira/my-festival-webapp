@@ -11,7 +11,7 @@
       text-color="grey-10"
       @click.native="step = step  - 1"
     )
-    div(v-if="step === 1").column.items-center
+    div(v-if="step === 1").festival-configs__step.column.items-center
       div.label.text-prater.text-bold.text-grey-10 Dê um nome ao seu festival
       input(
         v-model="myName"
@@ -19,9 +19,9 @@
         type="text"
         :maxlength="max"
         autofocus
-      ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
-    div(v-if="step === 2").column.items-center
-      div.label.text-prater.text-bold.text-grey-10.flex.items-center
+      ).input.text-lolapeluza.text-bold.q-mt-xl.full-width.animate-pop
+    div(v-if="step === 2").festival-configs__step.column.items-center
+      div.label.flex.justify-center.text-prater.text-bold.text-grey-10.flex.items-center
         | Em qual cidade, estado ou país ocorrerá o seu festival?
         i &nbsp;(opcional)
       input(
@@ -30,8 +30,8 @@
         placeholder="Ex: Ceilândia"
         :maxlength="max"
         autofocus
-      ).input.text-lolapeluza.text-bold.q-mt-xl.animate-pop
-    div(v-else-if="step === 3").column.items-center
+      ).input.text-lolapeluza.text-bold.q-mt-xl.full-width.animate-pop
+    div(v-else-if="step === 3").festival-configs__step.column.items-center
       div.label.text-prater.text-bold.text-grey-10 Escolha a paleta de cores ideal
       div.flex.justify-center.no-wrap.q-mt-xl
         div.flex.flex-center.q-mr-sm
@@ -50,7 +50,7 @@
               size="24px"
               color="white"
             )
-        div.color-palettes__container.color-palette
+        div.color-palettes__container
           div(
             :class="{ 'bg-grey-9': colorPalette === myColorPalette }"
             v-for="colorPalette of colorPalettesChunks[colorPalettePosition]"
@@ -76,9 +76,9 @@
               size="24px"
               color="white"
             )
-    div(v-if="step === 4").column.items-center
+    div(v-if="step === 4").festival-configs__step.column.items-center
       div.label.text-prater.text-bold.text-grey-10 Qual tema mais te agrada?
-      div.flex.q-mt-xl
+      div.themes.flex.flex-center.q-mt-xl
         q-btn(
           v-for="(theme, index) of themes"
           :key="index.value"
@@ -88,7 +88,7 @@
           :title="theme.label"
           @click="myTheme = theme.value"
           size="20px"
-        ).theme-btn.animate-pop
+        ).themes__btn.animate-pop
           svg(
             v-if="theme.iconUrl"
             :style="{ 'fill': myTheme === theme.value ? '#424242' : '#fafafa' }"
@@ -218,10 +218,25 @@ export default {
 .festival-configs
   background: $blue-4
 
+  &__step
+    @media (max-width: 960px)
+      width: 100%
+
 .label
   font-size: 2em
   line-height: 2em
   margin: 0
+
+  @media (max-width: 960px)
+    max-width: 60%
+    text-align: center
+    line-height: 1.4em
+
+  @media (max-width: 650px)
+    max-width: 80%
+
+  @media (max-width: 530px)
+    max-width: 95%
 
   i
     font-size: 0.7em
@@ -237,6 +252,18 @@ export default {
   color: white !important
   letter-spacing: 0.04em !important
 
+  @media (max-width: 850px)
+    font-size: 65px
+    line-height: 50px !important
+
+  @media (max-width: 670px)
+    font-size: 55px
+    line-height: 40px !important
+
+  @media (max-width: 580px)
+    font-size: 45px
+    line-height: 30px !important
+
   &:focus
     outline-width: 0
 
@@ -247,22 +274,56 @@ export default {
   grid-column-gap: 15px
   grid-row-gap: 15px
 
+  @media (max-width: 850px)
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: repeat(4, 1fr)
+
+  @media (max-width: 575px)
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(5, 1fr)
+
+  @media (max-width: 400px)
+    grid-gap: 10px
+
 .color-palette
   border-radius: 50px
+
+  @media (max-width: 435px)
+    padding: 6px !important
 
 .color-palette__item
   width: 40px
   height: 40px
   border-radius: 30px
 
-  &:last-of-type
-    margin: 0
+  @media (max-width: 690px)
+    width: 30px
+    height: 30px
 
-.theme-btn
-  margin-right: 15px
+  @media (max-width: 435px)
+    width: 25px
+    height: 25px
+    margin-right: 6px
+
+  @media (max-width: 374px)
+    width: 20px
+    height: 20px
 
   &:last-of-type
-    margin: 0
+    margin: 0 !important
+
+.themes
+  @media (max-width: 670px)
+    max-width: 80%
+
+  @media (max-width: 450px)
+    max-width: 90%
+
+  &__btn
+    margin: 0 7px
+
+    @media (max-width: 670px)
+      margin: 8px
 
 .icon-theme-svg
   height: 26px

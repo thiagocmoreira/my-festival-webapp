@@ -10,6 +10,11 @@
           div.flex.flex-center
             q-icon(name="mdi-spotify" size="28px").q-mr-sm
             div Conecte com o Spotify
+      bubble-button(:href="loginUrl").connect-button--mobile.q-mt-xl
+        template(#content)
+          div.flex.flex-center
+            q-icon(name="mdi-spotify" size="28px").q-mr-sm
+            div Conectar
     img(src="../statics/img/musical-notes.svg").musical-notes-svg.absolute
     cloud(color="#000").cloud-big--bg.q-ma-md.absolute
     cloud.cloud-big.q-ma-md.absolute
@@ -61,11 +66,14 @@ export default {
     line-height: 50px
 
 .connect-button
-  margin-top: 48px
+  @media (max-width: 390px)
+    display: none
 
-  @media (max-width: 375px)
-    max-width: 250px
-    margin-top: 28px
+.connect-button--mobile
+  display: none
+
+  @media (max-width: 390px)
+    display: block
 
 .musical-notes-svg
   bottom: 0

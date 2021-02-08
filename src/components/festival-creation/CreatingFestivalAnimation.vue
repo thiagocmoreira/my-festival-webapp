@@ -12,7 +12,7 @@
       ).steps.column.text-prater
         div(
           :key="stepsObjects[step].name"
-        ).animate-pop {{ stepsObjects[step].name }}
+        ).text-center.animate-pop {{ stepsObjects[step].name }}
     div.go-to-festival-button.column
       bubble-button(
         label="Ver meu festival"

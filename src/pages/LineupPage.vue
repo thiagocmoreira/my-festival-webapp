@@ -10,9 +10,9 @@
           title="Ver configurações gerais"
           :color="festivalDark ? 'grey-4' : 'grey-8'"
           :text-color="festivalDark ? 'grey-5' : 'grey-6'"
-          :class="{ 'animation-none': generalConfigsOpened }"
+          :class="{ 'animate-none': generalConfigsOpened }"
           @click="generalConfigsOpened = true"
-        ).pulse-button
+        ).animate-pulse
       div.column.items-center.justify-between.lineup-container
         div.position-relative.column.items-center
           div(ref="lineup").lineup-content.column
@@ -146,25 +146,4 @@ export default {
   right: 0
   top: 0
   z-index: 2000
-
-.pulse-button
-  cursor: pointer
-  box-shadow: 0 0 0 rgba(200, 200, 200, 0.6)
-  animation: pulse 2s infinite
-
-  &:hover
-    animation: none !important
-
-@keyframes pulse
-  0%
-    transform: scale(.9)
-  70%
-    transform: scale(1)
-    box-shadow: 0 0 0 50px rgba(#5a99d4, 0)
-  100%
-    transform: scale(.9)
-    box-shadow: 0 0 0 0 rgba(#5a99d4, 0)
-
-.animation-none
-  animation: none !important
 </style>
