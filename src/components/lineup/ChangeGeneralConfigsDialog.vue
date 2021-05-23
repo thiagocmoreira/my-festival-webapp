@@ -55,7 +55,8 @@ export default {
       'festivalColorPalette',
       'festivalDark',
       'festivalLineupDays',
-      'festivalNameColor'
+      'festivalNameColor',
+      'lineupWallTexture'
     ]),
     confirmBtnStyle () {
       let color = Color((this.festivalColorPalette || [])[0] || '#42A5F5')
@@ -116,6 +117,22 @@ export default {
             }
           ],
           action: 'festivalConfigs/setFestivalLineupDays'
+        },
+        {
+          name: 'Textura na parede',
+          options: [
+            {
+              label: 'Sim',
+              value: true,
+              selected: !this.lineupWallTexture
+            },
+            {
+              label: 'Não',
+              value: false,
+              selected: this.lineupWallTexture
+            }
+          ],
+          action: 'festivalConfigs/setLineupWallTexture'
         }
       ]
     }

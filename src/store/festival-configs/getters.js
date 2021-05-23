@@ -38,6 +38,10 @@ export function festivalArtistsNamesPerDay (state) {
   return state.artistsNamesPerDay
 }
 
+export function lineupWallTexture (state) {
+  return state.wallTexture
+}
+
 export function hasFestivalConfigs (state) {
   return state.name.length &&
     state.colorPalette.length &&

@@ -28,6 +28,10 @@ export function setFestivalLineupDays ({ commit }, lineupDays) {
   commit('setFestivalLineupDays', lineupDays)
 }
 
+export function setLineupWallTexture ({ commit }, wallTexture) {
+  commit('setLineupWallTexture', wallTexture)
+}
+
 export function setTopArtists ({ commit }, data) {
   let artists = data
   let artistsNames = data.map(t => t.name)

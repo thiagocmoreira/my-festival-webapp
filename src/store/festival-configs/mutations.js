@@ -21,6 +21,10 @@ export function setFestivalDark (state, dark) {
   state.dark = dark
 }
 
+export function setLineupWallTexture (state, wallTexture) {
+  state.wallTexture = wallTexture
+}
+
 export function setFestivalNameColor (state, nameColor) {
   state.nameColor = nameColor
 }

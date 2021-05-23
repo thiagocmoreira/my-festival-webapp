@@ -9,6 +9,7 @@ export default function () {
     artists: [],
     artistsNames: [],
     artistsNamesPerDay: [],
-    nameColor: '#272928'
+    nameColor: '#272928',
+    wallTexture: false
   }
 }

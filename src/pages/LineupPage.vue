@@ -1,5 +1,5 @@
 <template lang="pug">
-  q-page(:class="background").lineup.column.no-wrap.relative
+  q-page(:class="lineupClasses" ).lineup.column.no-wrap.relative
     div.buttons.fixed.column.q-mx-lg.q-my-md
       q-btn(
         round
@@ -20,6 +20,7 @@
         img(src="~assets/img/tape.png").tape.tape--top-right
         img(src="~assets/img/tape.png").tape.tape--bottom-left
         img(src="~assets/img/tape.png").tape.tape--bottom-right
+        div.paper-texture.absolute
       div.q-mt-xl
         bubble-button(
           :dark="festivalDark"
@@ -70,7 +71,8 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalName',
       'festivalTheme',
-      'festivalDark'
+      'festivalDark',
+      'lineupWallTexture'
     ]),
     componentName () {
       return `Lineup${capitalize(this.festivalTheme || 'none')}`
@@ -78,6 +80,13 @@ export default {
     background () {
       let color = this.festivalDark ? 'grey-1' : 'grey-9'
       return `bg-${color}`
+    },
+    lineupClasses () {
+      let classes = [this.background]
+      if (this.lineupWallTexture) {
+        classes.push('wall-background')
+      }
+      return classes
     }
   },
   methods: {
@@ -104,18 +113,23 @@ export default {
 .lineup
   max-height: 100vh
   transition: background 0.15s ease
-  // background-image: url("~assets/img/old-wall.png") !important
   overflow-y: scroll
 
-.scroll-area
-  height: 100vh
+.wall-background
+  background-image: url("~assets/img/old-wall.png") !important
 
 .lineup-container
   padding: 70px 48px
 
+.paper-texture
+  width: 100%
+  height: 100%
+  background-image: url("~assets/img/paper-texture.png") !important
+  opacity: 0.12
+
 .lineup-content
   overflow: hidden
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24)
+  // box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24)
 
 .tape
   max-width: 50px
