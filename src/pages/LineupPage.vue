@@ -1,5 +1,5 @@
 <template lang="pug">
-  q-page(:class="lineupClasses" ).lineup.column.no-wrap.relative
+  q-page(:class="backgroundClass").lineup.column.no-wrap.relative
     div.buttons.fixed.column.q-mx-lg.q-my-md
       q-btn(
         round
@@ -7,12 +7,12 @@
         size="20px"
         unelevated
         title="Ver configurações gerais"
-        :color="festivalDark ? 'grey-4' : 'grey-8'"
-        :text-color="festivalDark ? 'grey-5' : 'grey-6'"
+        :color="festivalDark ? 'grey-8' : 'grey-4'"
+        :text-color="festivalDark ? 'grey-5' : 'grey-7'"
         :class="{ 'animate-none': generalConfigsOpened }"
         @click="generalConfigsOpened = true"
       ).animate-pulse
-    div.column.items-center.justify-between.lineup-container
+    div.lineup-container.column.items-center.justify-between
       div.position-relative.column.items-center
         div(ref="lineup").lineup-content.column
           component(:is="componentName")
@@ -30,8 +30,13 @@
             div.flex.flex-center
               q-icon(name="mdi-download" size="28px").q-mr-sm
               div Baixar imagem
+      div(
+        v-if="lineupWallTexture"
+        :style="wallOpacityStyle"
+      ).wall-background.full-width.full-height
     change-general-configs-dialog(v-model="generalConfigsOpened")
 </template>
+position: fixed
 
 <script>
 import { mapGetters } from 'vuex'
@@ -77,16 +82,13 @@ export default {
     componentName () {
       return `Lineup${capitalize(this.festivalTheme || 'none')}`
     },
-    background () {
+    backgroundClass () {
       let color = this.festivalDark ? 'grey-1' : 'grey-9'
       return `bg-${color}`
     },
-    lineupClasses () {
-      let classes = [this.background]
-      if (this.lineupWallTexture) {
-        classes.push('wall-background')
-      }
-      return classes
+    wallOpacityStyle () {
+      let opacity = this.festivalDark ? 0.2 : 0.35
+      return { opacity }
     }
   },
   methods: {
@@ -113,13 +115,20 @@ export default {
 .lineup
   max-height: 100vh
   transition: background 0.15s ease
-  overflow-y: scroll
+  overflow-y: hidden
+  z-index: 2
 
 .wall-background
-  background-image: url("~assets/img/old-wall.png") !important
+  background-image: url("~assets/img/old-wall-2.png") !important
+  z-index: -1
+  position: fixed
+  top: 0
 
 .lineup-container
   padding: 70px 48px
+  overflow-y: scroll
+  overflow-x: hidden
+  flex-wrap: nowrap
 
 .paper-texture
   width: 100%
@@ -129,7 +138,7 @@ export default {
 
 .lineup-content
   overflow: hidden
-  // box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24)
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24)
 
 .tape
   max-width: 50px

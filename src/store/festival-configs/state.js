@@ -10,6 +10,6 @@ export default function () {
     artistsNames: [],
     artistsNamesPerDay: [],
     nameColor: '#272928',
-    wallTexture: false
+    wallTexture: true
   }
 }
