@@ -10,25 +10,25 @@
     q-scroll-area.scroll-area
       div.column.text-white.text-white
 
-        div.q-pt-lg.q-px-lg.q-pb-lg
+        div.q-pt-lg.q-px-lg.q-pb-lg.full-width
           div.label.text-prater.text-bold.text-center Nome do festival
           input(
             v-model="myName"
             placeholder="Ex: Meu festival"
             type="text"
             :maxlength="max"
-          ).input.text-prater.text-bold.q-mt-sm.animate-pop
+          ).input.text-prater.full-width.text-bold.q-mt-sm.animate-pop
 
-        div.q-px-lg.q-pb-lg
+        div.q-px-lg.q-pb-lg.full-width
           div.label.text-prater.text-bold.text-center Local
           input(
             v-model="myLocation"
             placeholder="Ex: Ceilândia"
             type="text"
             :maxlength="max"
-          ).input.text-prater.text-bold.q-mt-sm.animate-pop
+          ).input.text-prater.full-width.text-bold.q-mt-sm.animate-pop
 
-        div.q-px-md.q-pb-lg
+        div.q-px-md.q-pb-lg.full-width
           div.label.text-prater.text-bold.text-center Paleta de cores
           div.flex.justify-center.no-wrap.q-mt-sm
             div.flex.flex-center.q-mr-xs
@@ -72,7 +72,7 @@
                   color="white"
                 )
 
-        div.q-px-lg.q-pb-lg
+        div.q-px-lg.q-pb-lg.full-width
           div.label.text-prater.text-bold.text-center Tema
           div.flex.flex-center.q-mt-sm
             div.themes__container

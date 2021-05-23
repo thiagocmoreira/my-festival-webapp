@@ -4,7 +4,7 @@
       :is="svgConfig.name"
       :style="svgConfig.style"
       v-bind="svgConfig.props"
-    ).absolute.full-width
+    ).svg-preview-item.absolute
 </template>
 
 <script>
@@ -139,4 +139,10 @@ export default {
 .festival-preview-svg
   z-index: 1
   height: 100vh
+
+.svg-preview-item
+  width: 100%
+
+  @media (max-width: 600px)
+    width: 200% !important
 </style>

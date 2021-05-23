@@ -1,36 +1,35 @@
 <template lang="pug">
   q-page(:class="background").lineup.column.no-wrap.relative
-    q-scroll-area.scroll-area.flex-1
-      div.buttons.fixed.column.q-mx-lg.q-my-md
-        q-btn(
-          round
-          icon="mdi-cog"
-          size="20px"
-          unelevated
-          title="Ver configurações gerais"
-          :color="festivalDark ? 'grey-4' : 'grey-8'"
-          :text-color="festivalDark ? 'grey-5' : 'grey-6'"
-          :class="{ 'animate-none': generalConfigsOpened }"
-          @click="generalConfigsOpened = true"
-        ).animate-pulse
-      div.column.items-center.justify-between.lineup-container
-        div.position-relative.column.items-center
-          div(ref="lineup").lineup-content.column
-            component(:is="componentName")
-          img(src="~assets/img/tape.png").tape.tape--top-left
-          img(src="~assets/img/tape.png").tape.tape--top-right
-          img(src="~assets/img/tape.png").tape.tape--bottom-left
-          img(src="~assets/img/tape.png").tape.tape--bottom-right
-        div.q-mt-xl
-          bubble-button(
-            :dark="festivalDark"
-            @click.native="downloadPhoto"
-          ).text-prater
-            template(#content)
-              div.flex.flex-center
-                q-icon(name="mdi-download" size="28px").q-mr-sm
-                div Baixar imagem
-      change-general-configs-dialog(v-model="generalConfigsOpened")
+    div.buttons.fixed.column.q-mx-lg.q-my-md
+      q-btn(
+        round
+        icon="mdi-cog"
+        size="20px"
+        unelevated
+        title="Ver configurações gerais"
+        :color="festivalDark ? 'grey-4' : 'grey-8'"
+        :text-color="festivalDark ? 'grey-5' : 'grey-6'"
+        :class="{ 'animate-none': generalConfigsOpened }"
+        @click="generalConfigsOpened = true"
+      ).animate-pulse
+    div.column.items-center.justify-between.lineup-container
+      div.position-relative.column.items-center
+        div(ref="lineup").lineup-content.column
+          component(:is="componentName")
+        img(src="~assets/img/tape.png").tape.tape--top-left
+        img(src="~assets/img/tape.png").tape.tape--top-right
+        img(src="~assets/img/tape.png").tape.tape--bottom-left
+        img(src="~assets/img/tape.png").tape.tape--bottom-right
+      div.q-mt-xl
+        bubble-button(
+          :dark="festivalDark"
+          @click.native="downloadPhoto"
+        ).text-prater
+          template(#content)
+            div.flex.flex-center
+              q-icon(name="mdi-download" size="28px").q-mr-sm
+              div Baixar imagem
+    change-general-configs-dialog(v-model="generalConfigsOpened")
 </template>
 
 <script>
@@ -106,7 +105,7 @@ export default {
   max-height: 100vh
   transition: background 0.15s ease
   // background-image: url("~assets/img/old-wall.png") !important
-  // overflow-y: scroll
+  overflow-y: scroll
 
 .scroll-area
   height: 100vh

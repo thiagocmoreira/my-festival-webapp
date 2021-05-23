@@ -49,6 +49,7 @@ export default {
   border-radius: 15px;
   height: 54px;
   text-decoration: none;
+  max-width: 400px;
 }
 
 $color: rgb(36, 36, 36);
