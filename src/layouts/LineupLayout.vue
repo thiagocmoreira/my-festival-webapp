@@ -1,14 +1,18 @@
 <template lang="pug">
   q-layout(view="hHh lpR fFf").lineup-layout
-    change-configs(v-model="opened")
+    change-configs(
+      v-model="opened"
+      @close-drawer="opened = false"
+    )
     q-page-container.flex
-      div.container.flex-1.position-relative
+      div.flex-1.position-relative
         q-btn(
           @click="opened = !opened"
           round
           unelevated
           size="12px"
-          :style="bntStyle"
+          :style="btnStyle"
+          :class="opened ? 'show-drawer-button--to-right' : ''"
           :title="opened ? 'Fechar configurações' : 'Abrir configurações'"
         ).show-drawer-button.absolute
           q-icon(
@@ -44,7 +48,7 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette'
     ]),
-    bntStyle () {
+    btnStyle () {
       return { background: this.festivalColorPalette[1] }
     },
     iconStyle () {
@@ -56,6 +60,16 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.lineup-layout
+  .q-drawer
+    background: $grey-10
+    z-index: 20001
+
+    @media (max-width: 620px)
+      width: 250px !important
+</style>
 
 <style lang="sass" scoped>
 .lineup-layout
@@ -69,4 +83,14 @@ export default {
   z-index: 100
   border-top-left-radius: 0
   border-bottom-left-radius: 0
+
+  &--to-right
+    transition: all 0.07s
+
+    @media (max-width: 1008px)
+      left: 295px
+      z-index: 20000
+
+    @media (max-width: 620px)
+      left: 245px
 </style>

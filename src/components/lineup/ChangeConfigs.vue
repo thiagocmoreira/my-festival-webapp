@@ -1,5 +1,10 @@
 <template lang="pug">
-  q-drawer(v-model="value")
+  q-drawer(
+    :value="value"
+    :overlay="false"
+    @before-show="openDrawer"
+    @before-hide="closeDrawer"
+  )
     div.change-configs.column.text-white.absolute-top.bg-grey-10
       h1.title.text-prater.text-bold.text-uppercase.q-pa-xl.text-center.flex.flex-center
         q-icon(
@@ -93,10 +98,9 @@
                   q-icon(
                     v-else
                     :name="theme.icon"
-                    size="26px"
                     color="white"
                     :color="myTheme === theme.value ? 'grey-9' : 'grey-1'"
-                  )
+                  ).theme-icon
 </template>
 
 <script>
@@ -113,7 +117,6 @@ export default {
   },
   data () {
     return {
-      left: true,
       max: 16,
       myName: '',
       myLocation: '',
@@ -157,6 +160,12 @@ export default {
     },
     getSvgUrl (url, theme) {
       return url + '#' + theme
+    },
+    openDrawer () {
+      this.$emit('open-drawer')
+    },
+    closeDrawer () {
+      this.$emit('close-drawer')
     }
   },
   mounted () {
@@ -185,9 +194,11 @@ export default {
 </script>
 
 <style lang="sass">
-.q-drawer
-  background: $grey-10
-  // position: relative
+.theme-icon
+  font-size: 26px !important
+
+  @media (max-width: 620px)
+    font-size: 22px !important
 </style>
 
 <style lang="sass" scoped>
@@ -200,13 +211,25 @@ export default {
   letter-spacing: 1px
   margin: 0
 
+  @media (max-width: 620px)
+    font-size: 20px
+    line-height: 22px
+    padding: 32px 16px !important
+
 .scroll-area
   height: calc(100% - 122px)
   margin-top: 122px
 
+  @media (max-width: 620px)
+    height: calc(100% - 94px)
+    margin-top: 94px
+
 .label
   font-size: 16px
   margin: 0
+
+  @media (max-width: 620px)
+    font-size: 14px
 
 .input
   font-size: 20px
@@ -217,6 +240,9 @@ export default {
   text-align: center
   letter-spacing: 1px
   color: white !important
+
+  @media (max-width: 620px)
+    font-size: 18px
 
   &:focus
     outline-width: 0
@@ -232,6 +258,9 @@ export default {
   border-radius: 50px
   padding: 7px
 
+  @media (max-width: 620px)
+    padding: 5px
+
   &.selected
     background: white !important
 
@@ -239,6 +268,10 @@ export default {
   width: 25px
   height: 25px
   border-radius: 25px
+
+  @media (max-width: 620px)
+    width: 22px
+    height: 22px
 
   &:last-of-type
     margin: 0
@@ -252,4 +285,8 @@ export default {
 .icon-theme-svg
   height: 25px
   width: 25px
+
+  @media (max-width: 620px)
+    height: 20px
+    width: 20px
 </style>
