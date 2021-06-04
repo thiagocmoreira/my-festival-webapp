@@ -14,6 +14,7 @@
           v-if="index !== otherArtists.length - 1"
           :style="dotColor"
         ).q-px-sm .
+      slot(name="username")
     slot(name="bottom")
 </template>
 

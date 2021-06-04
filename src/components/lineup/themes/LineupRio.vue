@@ -21,12 +21,16 @@
         :dark="festivalDark"
         align="center"
       ).rio__artists--day.last
+        template(#username)
+          lineup-user-name.q-mt-xl
     div(v-else).column
       lineup-artists-list(
         headliners-classes="rio__headliners"
         artists-classes="rio__artists"
         :dark="festivalDark"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
 </template>
 
 <script>
@@ -38,7 +42,8 @@ export default {
     LineupFestivalName: () => import('../LineupFestivalName'),
     RioSilhouette: () => import('../../svgs/rio/RioSilhouette'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
-    LineupArtistsList: () => import('../LineupArtistsList')
+    LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupUserName: () => import('../LineupUserName')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -77,10 +82,10 @@ export default {
       padding-top: 120px
 
     &.last
-      padding-bottom: 120px
+      padding-bottom: 90px
 
   &__artists
-    padding: 0 100px 140px 100px
+    padding: 0 100px 90px 100px
 
 .rio-silhouette-svg
   margin-top: 100px
