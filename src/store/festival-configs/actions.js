@@ -32,6 +32,10 @@ export function setLineupWallTexture ({ commit }, wallTexture) {
   commit('setLineupWallTexture', wallTexture)
 }
 
+export function setUserSignature ({ commit }, userSignature) {
+  commit('setUserSignature', userSignature)
+}
+
 export function setTopArtists ({ commit }, data) {
   let artists = data
   let artistsNames = data.map(t => t.name)

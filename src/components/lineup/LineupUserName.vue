@@ -1,5 +1,8 @@
 <template lang="pug">
-  div(:class="textClass").lineup-user-name.text-center
+  div(
+    v-if="userSignature"
+    :class="textClass"
+  ).lineup-user-name.text-center
     span.lineup-user-name__by.text-silkysmoke por&nbsp;
     span.lineup-user-name__name.text-silkysmoke {{ userName }}
 </template>
@@ -14,7 +17,8 @@ export default {
       'profile'
     ]),
     ...mapGetters('festivalConfigs', [
-      'festivalDark'
+      'festivalDark',
+      'userSignature'
     ]),
     userName () {
       const name = (this.profile || {}).name || ''

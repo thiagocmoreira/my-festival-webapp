@@ -56,7 +56,8 @@ export default {
       'festivalDark',
       'festivalLineupDays',
       'festivalNameColor',
-      'lineupWallTexture'
+      'lineupWallTexture',
+      'userSignature'
     ]),
     confirmBtnStyle () {
       let color = Color((this.festivalColorPalette || [])[0] || '#42A5F5')
@@ -117,6 +118,22 @@ export default {
             }
           ],
           action: 'festivalConfigs/setFestivalLineupDays'
+        },
+        {
+          name: 'Mostrar sua assinatura',
+          options: [
+            {
+              label: 'Sim',
+              value: true,
+              selected: !this.userSignature
+            },
+            {
+              label: 'Não',
+              value: false,
+              selected: this.userSignature
+            }
+          ],
+          action: 'festivalConfigs/setUserSignature'
         },
         {
           name: 'Textura na parede',

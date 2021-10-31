@@ -10,6 +10,7 @@ export default function () {
     artistsNames: [],
     artistsNamesPerDay: [],
     nameColor: '#272928',
-    wallTexture: true
+    wallTexture: true,
+    userSignature: true
   }
 }

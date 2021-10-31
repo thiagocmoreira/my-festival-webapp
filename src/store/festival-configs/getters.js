@@ -42,6 +42,10 @@ export function lineupWallTexture (state) {
   return state.wallTexture
 }
 
+export function userSignature (state) {
+  return state.userSignature
+}
+
 export function hasFestivalConfigs (state) {
   return state.name.length &&
     state.colorPalette.length &&
