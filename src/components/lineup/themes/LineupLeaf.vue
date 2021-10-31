@@ -34,6 +34,8 @@
         :dark="festivalDark"
         align="center"
       ).leaf__artists--day.last
+        template(#username)
+          lineup-user-name.q-mt-xl
     div(v-else).column
       lineup-artists-list(
         headliners-classes="leaf__headliners"
@@ -41,6 +43,8 @@
         :dark="festivalDark"
         align="center"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
     leaf-bottom-left(
       :colors="festivalColorPalette"
       :dark="festivalDark"
@@ -60,6 +64,7 @@ export default {
     LineupFestivalName: () => import('../LineupFestivalName'),
     LineupArtistsList: () => import('../LineupArtistsList'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupUserName: () => import('../LineupUserName'),
     LeafTopLeft: () => import('../../svgs/leaf/LeafTopLeft'),
     LeafTopRight: () => import('../../svgs/leaf/LeafTopRight'),
     LeafRight: () => import('../../svgs/leaf/LeafRight'),
