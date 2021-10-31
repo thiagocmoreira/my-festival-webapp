@@ -32,6 +32,8 @@
         :dark="festivalDark"
         align="center"
       ).fire__artists--day.last
+        template(#username)
+          lineup-user-name.q-mt-xl
     div(v-else).column
       lineup-artists-list(
         headliners-classes="fire__headliners"
@@ -39,6 +41,8 @@
         :dark="festivalDark"
         align="center"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
     fire-stripe.fire-stripe--bottom
 </template>
 
@@ -53,6 +57,7 @@ export default {
     LineupFestivalName: () => import('../LineupFestivalName'),
     LineupArtistsList: () => import('../LineupArtistsList'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupUserName: () => import('../LineupUserName'),
     FireStripe: () => import('../../svgs/fire/FireStripe')
   },
   computed: {

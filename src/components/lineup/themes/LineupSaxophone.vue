@@ -21,14 +21,19 @@
         :day-artists="festivalArtistsNamesPerDay[2]"
         :dark="festivalDark"
         align="center"
-      ).saxophone__artists--day.last
+        :class="lineupDayLastClass"
+      ).saxophone__artists--day
+        template(#username)
+          lineup-user-name.q-mt-xl
     div(v-else).column
       lineup-artists-list(
         headliners-classes="saxophone__headliners"
-        artists-classes="saxophone__artists"
+        :artists-classes="lineupArtistsClass"
         :dark="festivalDark"
         align="center"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
     saxophone-tint(
       :style="saxBackgroundColor"
       :colors="festivalColorPalette"
@@ -48,6 +53,7 @@ export default {
     LineupFestivalName: () => import('../LineupFestivalName'),
     LineupArtistsList: () => import('../LineupArtistsList'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
+    LineupUserName: () => import('../LineupUserName'),
     SaxophoneTint: () => import('../../svgs/saxophone/SaxophoneTint'),
     Curve: () => import('../../svgs/saxophone/Curve')
   },
@@ -56,10 +62,17 @@ export default {
       'festivalColorPalette',
       'festivalDark',
       'festivalLineupDays',
-      'festivalArtistsNamesPerDay'
+      'festivalArtistsNamesPerDay',
+      'userSignature'
     ]),
     saxBackgroundColor () {
       return { background: this.festivalColorPalette[0] }
+    },
+    lineupArtistsClass () {
+      return this.userSignature ? 'saxophone__artists--username' : 'saxophone__artists'
+    },
+    lineupDayLastClass () {
+      return this.userSignature ? 'last--username' : 'last'
     }
   },
   methods: {
@@ -90,10 +103,16 @@ export default {
     padding: 0 90px 60px 90px
 
     &.last
-      padding-bottom: 90px
+      padding-bottom: 75px
+
+    &.last--username
+      padding-bottom: 45px
 
   &__artists
     padding: 0 100px 70px 100px
+
+    &--username
+      padding: 0 100px 45px 100px
 
 .saxophone-tint-svg
   position: absolute
