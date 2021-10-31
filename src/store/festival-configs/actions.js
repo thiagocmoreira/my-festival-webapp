@@ -4,6 +4,10 @@ export function setFestivalName ({ commit }, name) {
   commit('setFestivalName', name)
 }
 
+export function setFestivalNameFont ({ commit }, font) {
+  commit('setFestivalNameFont', font)
+}
+
 export function setFestivalColorPalette ({ commit }, colorPalette) {
   commit('setFestivalColorPalette', colorPalette)
 }

@@ -2,6 +2,10 @@ export function festivalName (state) {
   return state.name
 }
 
+export function festivalNameFont (state) {
+  return state.nameFont
+}
+
 export function festivalColorPalette (state) {
   return state.colorPalette
 }
