@@ -25,6 +25,10 @@ export function setLineupWallTexture (state, wallTexture) {
   state.wallTexture = wallTexture
 }
 
+export function setUserSignature (state, userSignature) {
+  state.userSignature = userSignature
+}
+
 export function setFestivalNameColor (state, nameColor) {
   state.nameColor = nameColor
 }

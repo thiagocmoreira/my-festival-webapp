@@ -7,15 +7,16 @@
           v-if="index !== 2"
           :style="dotColor"
         ).q-px-sm .
-    div(:class="artistsClasses").flex.justify-center
-      span(v-for="(artist, index) of otherArtists").artist
-        | {{ artist }}
-        span(
-          v-if="index !== otherArtists.length - 1"
-          :style="dotColor"
-        ).q-px-sm .
-      slot(name="username")
-    slot(name="bottom")
+    div(:class="artistsClasses").column
+      div.flex.justify-center
+        span(v-for="(artist, index) of otherArtists").artist
+          | {{ artist }}
+          span(
+            v-if="index !== otherArtists.length - 1"
+            :style="dotColor"
+          ).q-px-sm .
+      slot(name="username").full-width
+      slot(name="bottom")
 </template>
 
 <script>
