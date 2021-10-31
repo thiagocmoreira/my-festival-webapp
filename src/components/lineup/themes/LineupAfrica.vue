@@ -28,8 +28,10 @@
         :dark="festivalDark"
         has-image
         reverse
-      ).africa__artists--reverse.last
+        :class="lineupDayLastClass"
+      ).africa__artists--reverse
         vase(:color="festivalColorPalette[1]")
+      lineup-user-name(v-if="userSignature").signup.full-width
       african-stripe(
         :colors="festivalColorPalette"
         :dark="festivalDark"
@@ -40,6 +42,8 @@
         artists-classes="africa__artists--list"
         :dark="festivalDark"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
       african-stripe(
         :colors="festivalColorPalette"
         :dark="festivalDark"
@@ -57,6 +61,7 @@ export default {
     LineupFestivalName: () => import('../LineupFestivalName'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
     LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupUserName: () => import('../LineupUserName'),
     Vase: () => import('../../svgs/africa/Vase'),
     VaseRound: () => import('../../svgs/africa/VaseRound'),
     AfricanSymbol: () => import('../../svgs/africa/AfricanSymbol'),
@@ -68,10 +73,14 @@ export default {
       'festivalColorPalette',
       'festivalDark',
       'festivalArtistsNamesPerDay',
-      'festivalLineupDays'
+      'festivalLineupDays',
+      'userSignature'
     ]),
     spearColor () {
       return this.festivalDark ? '#333' : '#ececec'
+    },
+    lineupDayLastClass () {
+      return this.userSignature ? 'last--username' : 'last'
     }
   },
   methods: {
@@ -109,8 +118,15 @@ export default {
       &.last
         padding-bottom: 150px
 
+        &--username
+          padding-bottom: 220px
+
     &--list
       padding: 0 100px 170px 100px
+
+.signup
+  position: absolute
+  bottom: 130px
 
 .african-stripe-svg
   margin-top: -2px

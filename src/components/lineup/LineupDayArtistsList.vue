@@ -2,7 +2,7 @@
   div(:style="styles" :class="{ 'reverse': reverse }").artists.row.items-center.animate-fade
     div(v-if="hasImage" :class="imageClass").image
       slot
-    div.column
+    div.column.flex-1
       div(:class="alignText").flex.flex-1.text-prater
         span.headliner.q-mb-12
             | {{ headliner }}

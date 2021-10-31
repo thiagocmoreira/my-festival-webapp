@@ -21,12 +21,16 @@
         :day-artists="festivalArtistsNamesPerDay[2]"
         :dark="festivalDark"
       ).balloon__artists--day.last
+        template(#username)
+          lineup-user-name.q-mt-xl
     div(v-else).column
       lineup-artists-list(
         headliners-classes="balloon__headliners"
         artists-classes="balloon__artists"
         :dark="festivalDark"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
 </template>
 
 <script>
@@ -39,6 +43,7 @@ export default {
     LineupFestivalName: () => import('../LineupFestivalName'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
     LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupUserName: () => import('../LineupUserName'),
     Balloon: () => import('../../svgs/balloon/Balloon')
   },
   computed: {

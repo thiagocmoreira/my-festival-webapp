@@ -18,12 +18,16 @@
         :day-artists="festivalArtistsNamesPerDay[2]"
         :dark="festivalDark"
       ).mountain__artists--day.last
+        template(#username)
+          lineup-user-name.q-mt-xl
     div(v-else).column
       lineup-artists-list(
         headliners-classes="mountain__headliners"
         artists-classes="mountain__artists"
         :dark="festivalDark"
       )
+        template(#username)
+          lineup-user-name.q-mt-xl
 </template>
 
 <script>
@@ -35,7 +39,8 @@ export default {
     ThreeMountains: () => import('../../svgs/mountains/ThreeMountains'),
     LineupFestivalName: () => import('../LineupFestivalName'),
     LineupDayArtistsList: () => import('../LineupDayArtistsList'),
-    LineupArtistsList: () => import('../LineupArtistsList')
+    LineupArtistsList: () => import('../LineupArtistsList'),
+    LineupUserName: () => import('../LineupUserName')
   },
   computed: {
     ...mapGetters('festivalConfigs', [
@@ -73,8 +78,8 @@ export default {
       padding-top: 40px
 
     &.last
-      padding-bottom: 140px
+      padding-bottom: 120px
 
   &__artists
-    padding: 0 100px 140px 100px
+    padding: 0 100px 120px 100px
 </style>
