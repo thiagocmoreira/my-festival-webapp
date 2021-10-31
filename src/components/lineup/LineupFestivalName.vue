@@ -1,6 +1,9 @@
 <template lang="pug">
   div(:style="bgColor" :class="alignClassDiv").column.full-width
-    div(:class="[classes, alignClassName]" :style="containerWidth").text-lolapeluza.text-bold.column.flex
+    div(
+      :class="[classes, alignClassName, fontNameClass]"
+      :style="containerWidth"
+    ).text-lolapeluza.text-bold.column.flex
       div.column
         slot(name="top")
         div.name {{ festivalName }}
@@ -39,6 +42,7 @@ export default {
     ...mapGetters('festivalConfigs', [
       'festivalColorPalette',
       'festivalName',
+      'festivalNameFont',
       'festivalLocation',
       'festivalNameColor'
     ]),
@@ -60,6 +64,9 @@ export default {
     alignClassName () {
       let position = this.titlePosition.split(' ')[1]
       return this.getAlignClassName(position)
+    },
+    fontNameClass () {
+      return `text-${this.festivalNameFont}`
     },
     containerWidth () {
       return {

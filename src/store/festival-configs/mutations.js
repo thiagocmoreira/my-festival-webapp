@@ -2,6 +2,10 @@ export function setFestivalName (state, name) {
   state.name = name
 }
 
+export function setFestivalNameFont (state, font) {
+  state.nameFont = font
+}
+
 export function setFestivalColorPalette (state, colorPalette) {
   state.nameColor = state.dark ? '#FFFFFF' : '#272928'
   state.colorPalette = colorPalette

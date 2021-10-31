@@ -1,6 +1,7 @@
 export default function () {
   return {
     name: 'Meu festival',
+    nameFont: 'lolapeluza',
     colorPalette: ['#A6DCEF', '#F2AAAA', '#E36387'],
     theme: 'rio',
     location: 'Brasília',

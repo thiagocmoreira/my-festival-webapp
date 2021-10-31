@@ -1,6 +1,6 @@
 <template lang="pug">
   q-dialog(:value="value" persistent)
-    div.change-general-configs.column.bg-grey-1.text-grey-10.q-pa-lg.items-center
+    div.change-general-configs.column.bg-grey-1.text-grey-10.q-px-xl.q-py-lg.items-center
       div(
         v-for="(config, index) of configs"
         :key="index"
@@ -24,6 +24,7 @@
               unelevated
               :color="option.selected ? 'grey-3' : 'grey-9'"
               :text-color="option.selected ? 'grey-5' : 'grey-1'"
+              :class="(option.class || [])"
               @click="setAction(config.action, option.value)"
             ).config-item__option.text-prater
       div.flex.flex-center.q-mt-sm
@@ -52,6 +53,7 @@ export default {
   computed: {
     ...mapGetters('festivalConfigs', [
       'festivalName',
+      'festivalNameFont',
       'festivalColorPalette',
       'festivalDark',
       'festivalLineupDays',
@@ -86,6 +88,24 @@ export default {
           ],
           action: 'festivalConfigs/setFestivalNameColor',
           manyOptions: true
+        },
+        {
+          name: 'Fonte do título',
+          options: [
+            {
+              label: 'Lolapeluza',
+              value: 'lolapeluza',
+              selected: this.festivalNameFont !== 'lolapeluza',
+              class: ['text-lolapeluza', 'name-font-btn']
+            },
+            {
+              label: 'The Machinatos',
+              value: 'themachinatos',
+              selected: this.festivalNameFont !== 'themachinatos',
+              class: ['text-themachinatos', 'name-font-btn']
+            }
+          ],
+          action: 'festivalConfigs/setFestivalNameFont'
         },
         {
           name: 'Fundo do banner',
@@ -167,10 +187,27 @@ export default {
 }
 </script>
 
+<style lang="sass">
+.name-font-btn
+  font-size: 20px !important
+
+  @media (max-width: 420px)
+    width: 170px
+
+    &:first-of-type
+      border-radius: 30px 30px 0 0 !important
+
+    &:last-of-type
+      border-radius: 0 0 30px 30px !important
+</style>
+
 <style lang="sass" scoped>
 .change-general-configs
   border-radius: 50px
   min-width: 320px
+
+  @media (max-width: 510px)
+    padding: 24px !important
 
 .config-item
   &__name
@@ -181,10 +218,10 @@ export default {
     padding: 2px 15px
 
     &:first-of-type
-      border-radius: 20px 0 0 20px
+      border-radius: 30px 0 0 30px
 
     &:last-of-type
-      border-radius: 0 20px 20px 0
+      border-radius: 0 30px 30px 0
 
   &__many-option
     border-radius: 25px
