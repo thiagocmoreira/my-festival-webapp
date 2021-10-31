@@ -134,23 +134,23 @@ export default {
             }
           ],
           action: 'festivalConfigs/setUserSignature'
-        },
-        {
-          name: 'Textura na parede',
-          options: [
-            {
-              label: 'Sim',
-              value: true,
-              selected: !this.lineupWallTexture
-            },
-            {
-              label: 'Não',
-              value: false,
-              selected: this.lineupWallTexture
-            }
-          ],
-          action: 'festivalConfigs/setLineupWallTexture'
         }
+        // {
+        //   name: 'Textura na parede',
+        //   options: [
+        //     {
+        //       label: 'Sim',
+        //       value: true,
+        //       selected: !this.lineupWallTexture
+        //     },
+        //     {
+        //       label: 'Não',
+        //       value: false,
+        //       selected: this.lineupWallTexture
+        //     }
+        //   ],
+        //   action: 'festivalConfigs/setLineupWallTexture'
+        // }
       ]
     }
   },
